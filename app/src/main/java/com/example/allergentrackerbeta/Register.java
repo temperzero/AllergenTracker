@@ -53,7 +53,7 @@ public class Register extends AppCompatActivity {
                 //EditText phonenumber = findViewById(R.id.phoneNum);
                 //String string_phonenumber = phonenumber.getText().toString();
                 // if the user credentials are legal
-                if(validateUser(string_username, string_password))
+                if(validateUser(string_username, string_password, string_email))
                 {
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference users = database.getReference("Users").child(string_username);
@@ -65,7 +65,7 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "שם משתמש תפוס", Toast.LENGTH_SHORT).show();
                             else //username doesn't exist
                             {
-                                User usr = new User(string_username, string_password);
+                                User usr = new User(string_username, string_password, string_email);
                                 DatabaseReference userToAdd = database.getReference("Users").child(usr.uName);
                                 userToAdd.setValue(usr);
 
@@ -109,10 +109,10 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    public boolean validateUser(String username, String password)
+    public boolean validateUser(String username, String password, String email)
     {
         //check if user exists
-        if(checkUsername(username) && checkPassword(password))
+        if(checkUsername(username) && checkPassword(password) && checkEmail(email))
             return true;
         else
             return false;
@@ -150,7 +150,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    public boolean checkUserEmail(String p)
+    public boolean checkEmail(String p)
     {
         if(!p.isEmpty()) {
             if (!p.matches("^(.+)@(.+)$"))
