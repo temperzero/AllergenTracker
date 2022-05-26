@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +30,7 @@ public class Register extends AppCompatActivity {
     EditText username;
     EditText email;
     EditText password;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class Register extends AppCompatActivity {
         username = (EditText) findViewById(R.id.userName);
         email = (EditText) findViewById(R.id.eMail);
         password = (EditText) findViewById(R.id.password);
+        fAuth = FirebaseAuth.getInstance();
         registerBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -82,6 +88,7 @@ public class Register extends AppCompatActivity {
 
                                 finish();
                                 }
+
                         }
                         @Override
                         public void onCancelled(DatabaseError error)
@@ -164,6 +171,7 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
+
 
     // phone has to be 10 digits
     //public boolean checkPhone(String p)
