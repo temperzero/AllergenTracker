@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/drawable/background_background.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_addproduct.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_experts.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_info.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_loading_screen.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_main.xml" value="0.1265625" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_products_table.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/activity_scan.xml" value="0.4" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/item.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/layout/layout.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/mipmap-anydpi-v26/background.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/mipmap-anydpi-v26/barcode.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker - Copy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14479166666666668" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_products_table.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerBeta/app/src/main/res/layout/activity_menu.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_addproduct.xml" value="0.4" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_info.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_loading_screen.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_products_table.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/item.xml" value="0.536" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

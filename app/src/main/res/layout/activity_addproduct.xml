@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context=".AddProduct">
+
+    <TextView
+        android:id="@+id/addpHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="monospace"
+        android:includeFontPadding="true"
+        android:text="@string/addproductH"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/OatsBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="@string/oat"
+        android:textColor="@color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RyeBox"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/RyeBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/rye"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/MilkBox"
+        app:layout_constraintTop_toBottomOf="@+id/MilkBox" />
+
+    <CheckBox
+        android:id="@+id/BarleyBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/barley"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/NutsBox"
+        app:layout_constraintTop_toBottomOf="@+id/NutsBox" />
+
+    <CheckBox
+        android:id="@+id/SeasameBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/seasame"
+        android:textColor="@color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/BarleyBox"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/scanH"
+        app:layout_constraintStart_toStartOf="@+id/SeasameBox"
+        app:layout_constraintTop_toBottomOf="@+id/SeasameBox" />
+
+    <Button
+        android:id="@+id/addbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/addH"
+        app:layout_constraintStart_toEndOf="@+id/RyeBox"
+        app:layout_constraintTop_toBottomOf="@+id/OatsBox" />
+
+    <TextView
+        android:id="@+id/barcode"
+        android:layout_width="0dp"
+        android:layout_height="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="35dp"
+        android:hint="@string/barcodeH"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/ProductName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/CompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="@string/companynameH"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/PeanutBox"
+        app:layout_constraintStart_toEndOf="@+id/Fishbox"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/ProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="@string/productnameH"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/CompanyName"
+        app:layout_constraintStart_toStartOf="@+id/CompanyName"
+        tools:ignore="TextContrastCheck" />
+
+    <CheckBox
+        android:id="@+id/PeanutBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/nuts"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/SeaBox"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/MilkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/milk"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/WheatBox"
+        app:layout_constraintTop_toBottomOf="@+id/WheatBox" />
+
+    <CheckBox
+        android:id="@+id/SeaBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="186dp"
+        android:text="@string/seafruits"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/SoyBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/soy"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/BarleyBox"
+        app:layout_constraintStart_toStartOf="@+id/BarleyBox" />
+
+    <CheckBox
+        android:id="@+id/NutsBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="53dp"
+        android:text="@string/nuts2"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/SeasameBox"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+
+    <CheckBox
+        android:id="@+id/WheatBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/wheat"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/SeaBox"
+        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+
+    <CheckBox
+        android:id="@+id/EggsBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/eggs"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/SoyBox"
+        app:layout_constraintStart_toStartOf="@+id/SoyBox" />
+
+    <CheckBox
+        android:id="@+id/Fishbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/fish"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/NutsBox"
+        app:layout_constraintEnd_toEndOf="@+id/NutsBox" />
+
+    <Button
+        android:id="@+id/backBtn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="17dp"
+        android:text="@string/backH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addbutton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

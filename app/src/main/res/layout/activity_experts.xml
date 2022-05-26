@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".Experts">
+
+    <TextView
+        android:id="@+id/expertsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="monospace"
+        android:includeFontPadding="true"
+        android:text="@string/contact_medical_experts"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/leumit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/leumit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/maccabi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/clalit"
+        app:layout_constraintTop_toBottomOf="@+id/expertsHeader"
+        app:srcCompat="@drawable/leumit" />
+
+    <ImageView
+        android:id="@+id/maccabi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="388dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/meuhedet"
+        app:layout_constraintTop_toBottomOf="@+id/leumit"
+        app:srcCompat="@drawable/maccabi" />
+
+    <ImageView
+        android:id="@+id/clalit"
+        android:layout_width="0dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="31dp"
+        app:layout_constraintBottom_toTopOf="@+id/maccabi"
+        app:layout_constraintEnd_toStartOf="@+id/leumit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expertsHeader"
+        app:srcCompat="@drawable/clalit" />
+
+    <ImageView
+        android:id="@+id/meuhedet"
+        android:layout_width="0dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="85dp"
+        app:layout_constraintEnd_toStartOf="@+id/maccabi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clalit"
+        app:srcCompat="@drawable/meuhedet" />
+
+    <Button
+        android:id="@+id/backtoinfoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

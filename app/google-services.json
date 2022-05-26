@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "822142268365",
+    "project_id": "allergen-tracker",
+    "storage_bucket": "allergen-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822142268365:android:255c3c45abb36fcd4b4a84",
+        "android_client_info": {
+          "package_name": "com.example.allergentracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822142268365-6l15mn4p8fvk43reufeogd7rqt9dhnr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZvDeKZcLguaUBm9iwquJQU0RYTN-x0To"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822142268365-6l15mn4p8fvk43reufeogd7rqt9dhnr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
