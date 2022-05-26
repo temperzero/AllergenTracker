@@ -1,5 +1,6 @@
 package com.example.allergentrackerbeta;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
@@ -22,6 +23,10 @@ public class Register extends AppCompatActivity {
     // views
     Button registerBtn;
     Button back;
+    EditText username;
+    EditText email;
+    EditText password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +37,18 @@ public class Register extends AppCompatActivity {
 
 
         registerBtn = findViewById(R.id.confirmBtn);
+        username = (EditText) findViewById(R.id.userName);
+        email = (EditText) findViewById(R.id.eMail);
+        password = (EditText) findViewById(R.id.password);
         registerBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 // user credentials to strings
-                EditText username = findViewById(R.id.userName);
-                String string_username = username.getText().toString();
 
-                EditText password = findViewById(R.id.password);
+                String string_username = username.getText().toString();
+                String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
                 //EditText phonenumber = findViewById(R.id.phoneNum);
                 //String string_phonenumber = phonenumber.getText().toString();
@@ -71,7 +78,7 @@ public class Register extends AppCompatActivity {
                                 //String msg = "Thank you for registering to Allergen Tracker! \nYour username is " + string_username + " and password is " + string_password;
                                 //sendSMS(string_phonenumber, msg);
 
-                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + " נוצר בהצלחה", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + "נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
 
                                 finish();
                                 }
@@ -114,19 +121,48 @@ public class Register extends AppCompatActivity {
 
     public boolean checkUsername(String p)
     {
-        if(!p.matches("^[a-zA-Z0-9._-]{3,}$"))
+        if(!p.isEmpty()) {
+            if (!p.matches("^[a-zA-Z0-9._-]{3,}$"))
+                return false;
+            else
+                return true;
+        }
+        else {
+            username.setError("שדה זה לא יכול להיות ריק");
+            username.requestFocus();
             return false;
-        else
-            return true;
+        }
     }
 
     public boolean checkPassword(String p)
     {
-        int length = p.length();
-        if(length < 5)
+        if(!p.isEmpty()) {
+            int length = p.length();
+            if (length < 5)
+                return false;
+            else
+                return true;
+        }
+        else {
+            password.setError("שדה זה לא יכול להיות ריק");
+            password.requestFocus();
             return false;
-        else
-            return true;
+        }
+    }
+
+    public boolean checkUserEmail(String p)
+    {
+        if(!p.isEmpty()) {
+            if (!p.matches("^(.+)@(.+)$"))
+                return false;
+            else
+                return true;
+        }
+        else {
+            email.setError("שדה זה לא יכול להיות ריק");
+            email.requestFocus();
+            return false;
+        }
     }
 
     // phone has to be 10 digits
