@@ -171,7 +171,23 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
-
+//    private void sendEmailVerification(FirebaseAuth fAuth) {
+//        FirebaseUser firebaseUser = fAuth.getCurrentUser();
+//
+//        firebaseUser.sendEmailVerification()
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+//                        Toast.makeText(getApplicationContext(), "Instructions Sent...", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(Exception e) {
+//                        Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//    }
 
     // phone has to be 10 digits
     //public boolean checkPhone(String p)

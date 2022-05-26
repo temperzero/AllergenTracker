@@ -94,6 +94,18 @@ public class Menu extends AppCompatActivity {
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
                 DatabaseReference user = database.getReference("Users").child(string_username);
+
+                if (string_username.isEmpty())
+                {
+                    username.setError("שדה זה לא יכול להיות ריק");
+                    return;
+                }
+                if(string_password.isEmpty())
+                {
+                    password.setError("שדה זה לא יכול להיות ריק");
+                    return;
+                }
+
                 user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
