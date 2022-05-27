@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-
+//TODO: need to work out on how to send email verification. Users will need to be stored in firebaseAuth database instead? might change login process as well
 public class Register extends AppCompatActivity {
     // views
     Button registerBtn;
@@ -67,12 +67,15 @@ public class Register extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot)
                         {
-                            if (dataSnapshot.exists()) // username exists
+                            if (dataSnapshot.child(string_username).exists()) // username  exists
                                 Toast.makeText(getApplicationContext(), "שם משתמש תפוס", Toast.LENGTH_SHORT).show();
+                            if( dataSnapshot.child(string_email).exists())
+                                Toast.makeText(getApplicationContext(), "כתובת אימייל תפוסה", Toast.LENGTH_SHORT).show(); //email exists
                             else //username doesn't exist
                             {
                                 User usr = new User(string_username, string_password, string_email);
                                 DatabaseReference userToAdd = database.getReference("Users").child(usr.uName);
+                                //sendEmailVerification( fAuth );
                                 userToAdd.setValue(usr);
 
                                 /*// User object into json and save in shared prefrences
@@ -84,7 +87,7 @@ public class Register extends AppCompatActivity {
                                 //String msg = "Thank you for registering to Allergen Tracker! \nYour username is " + string_username + " and password is " + string_password;
                                 //sendSMS(string_phonenumber, msg);
 
-                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + "נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + " נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
 
                                 finish();
                                 }
@@ -94,13 +97,13 @@ public class Register extends AppCompatActivity {
                         public void onCancelled(DatabaseError error)
                         {
                             // Failed to read value
-                            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "שגיאה", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
                 else // invalid user
                 {
-                    Toast.makeText(getApplicationContext(), "invalid user credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "לא נמצא משתמש לפי הנתונים שהוזנו", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -171,23 +174,23 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
-//    private void sendEmailVerification(FirebaseAuth fAuth) {
-//        FirebaseUser firebaseUser = fAuth.getCurrentUser();
-//
-//        firebaseUser.sendEmailVerification()
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-//                        Toast.makeText(getApplicationContext(), "Instructions Sent...", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(Exception e) {
-//                        Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//    }
+    private void sendEmailVerification(FirebaseAuth fAuth) {
+        FirebaseUser firebaseUser = fAuth.getCurrentUser();
+
+        firebaseUser.sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getApplicationContext(), "Instructions Sent...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
     // phone has to be 10 digits
     //public boolean checkPhone(String p)
