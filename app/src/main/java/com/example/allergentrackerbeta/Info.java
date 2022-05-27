@@ -10,12 +10,46 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Info extends AppCompatActivity {
-    Button back;
-    Button next;
+    Button back, next;
+    TextView info, s_info, s_causes, b_text1, b_text2 ,b_text3, b_text4, b_text5, b_text6;
+    TextView d_header, d_header2, b_doctor1, b_doctor2, b_doctor3 ,p_text, f, g, h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+        info = (TextView)findViewById(R.id.FoodAllergiesInfo);
+        s_info = (TextView)findViewById(R.id.SymptomsInfo);
+        s_causes = (TextView)findViewById(R.id.SymptomCausesText);
+        b_text1 = (TextView)findViewById(R.id.bullet1text);
+        b_text2 = (TextView)findViewById(R.id.bullet2text);
+        b_text3 = (TextView)findViewById(R.id.bullet3text);
+        b_text4 = (TextView)findViewById(R.id.bullet4text);
+        b_text5 = (TextView)findViewById(R.id.bullet5text);
+        b_text6 = (TextView)findViewById(R.id.bullet6text);
+        d_header = (TextView)findViewById(R.id.DoctorHeader );
+        d_header2 = (TextView)findViewById(R.id.DoctorHeader2);
+        b_doctor1 = (TextView)findViewById(R.id.doctorbullet1);
+        b_doctor2 = (TextView)findViewById(R.id.doctorbullet2);
+        b_doctor3 = (TextView)findViewById(R.id.Doctorbullet3);
+        p_text = (TextView)findViewById(R.id.PrecautionText);
+        info.setText("אלרגיית מזון היא תגובה של המערכת החיסונית המופיעה לאחר אכילת מזון מסויים שאפילו כמות קטנה של צריכתו גורמת לתסמינים כגון בעיות עיכול, פריחה או נפיחות בדרכי הנשימה.\n" +
+                "לחלק מהאנשים, אלרגיה למזון יכולה לגרום לתסמינים חריפים יותר ולתגובות מסכנות חיים. \n");
+        s_info.setText("עבור חלק מהאנשים תגובה אלרגית למזון מסויים יכולה לגרום לאי נוחות אך לא חמורה, " +
+                "ולחלקם תגובה אלרגית כזו עלולה להיות הרבה יותר מפחידה ומסכנת חיים.\n" +
+                "התסמינים בדרך כלל מתפתחים בטווח של כמה דקות ועד לשעתיים אחרי אכילת המזון. בפעמים נדירות יותר, התסמינים יתפתחו תוך כמה שעות.   \n");
+        s_causes.setText("התסמינים הנפוצים ביותר לתגובה אלרית למזון כוללים:");
+        b_text1.setText("\u2022 עקצוץ או גירוד בפה" );
+        b_text2.setText("\u2022 פריחה גירוד או אקזמה" );
+        b_text3.setText("\u2022 נפיחות של השפתיים, הפנים, הלשון והגרון או חלקים אחרים בגוף" );
+        b_text4.setText("\u2022 צפצופים, נזלת, גודש או קשיי נשימה" );
+        b_text5.setText("\u2022 כאבי בטן, שלשולים, בחילות או הקאות" );
+        b_text6.setText("\u2022 סחרחורות או עלפון\n" );
+        d_header.setText("גש לרופא או אלרגולוג קופת החולים שלך במידה ויש לך תסמינים של אלרגיה למזון זמן קצר לאחר צריכת האוכל. אם אפשר, פנה לקופת החולים שלך כאשר התגובה האלרגית מתרחשת לצורך ביצוע אבחנה.");
+        d_header2.setText("חפש טיפול חירום אם אתה מפתח סימנים או תסמינים של אנפילקסיס כגון:");
+        b_doctor1.setText("\u2022 היצרות של דרכי הנשימה המקשה על הנשימה");
+        b_doctor2.setText("\u2022 הלם עם ירידה חמורה בלחץ הדם");
+        b_doctor3.setText("\u2022 סחרחורת\u2022\n דופק מהיר");
+    p_text.setText("ברגע שאלרגיה למזון כבר התפתחה, הדרך הטובה ביותר למניעת תגובה אלרגית היא להכיר ולהימנע ממזונות שגורמים לתסמינים. כמו כן, מזונות מסוימים משומשים כמרכיבים במנות מסויימות עשויים להיות מוסתרים היטב. זה נכון במיוחד במסעדות ובמסגרות חברתיות אחרות. אם את.ה יודע.ת שיש לך אלרגיה למזון, בצע.י את השלבים הבאים:");
 
         back = findViewById(R.id.backBtn);
         back.setOnClickListener(new View.OnClickListener()

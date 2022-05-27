@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="monospace"
         android:includeFontPadding="true"
-        android:text="@string/information"
+        android:text=" מידע"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -55,7 +55,7 @@
                 android:id="@+id/FoodAllergiesHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/general_information_on_food_allergies"
+                android:text="מידע כללי על אלרגיות מזון"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -63,14 +63,13 @@
                 android:id="@+id/FoodAllergiesInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/food_allergy_is_an_immune_system_reaction_that_occurs_soon_after_eating_a_certain_food_even_a_tiny_amount_of_the_allergy_causing_food_can_trigger_signs_and_symptoms_such_as_digestive_problems_hives_or_swollen_airways_in_some_people_a_food_allergy_can_cause_severe_symptoms_or_even_a_life_threatening_reaction_known_as_anaphylaxis"
                 android:textColor="#2088d1" />
 
             <TextView
                 android:id="@+id/SymptomsHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/symptoms"
+                android:text="תסמינים"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -78,42 +77,36 @@
                 android:id="@+id/SymptomsInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/for_some_people_an_allergic_reaction_to_a_particular_food_may_be_uncomfortable_but_not_severe_for_other_people_an_allergic_food_reaction_can_be_frightening_and_even_life_threatening_food_allergy_symptoms_usually_develop_within_a_few_minutes_to_2_hours_after_eating_the_offending_food_rarely_symptoms_may_be_delayed_for_several_hours"
                 android:textColor="#0288D1" />
 
             <TextView
                 android:id="@+id/SymptomCausesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/the_most_common_food_allergy_signs_and_symptoms_include"
                 android:textColor="#0288D1" />
 
             <TextView
                 android:id="@+id/bullet1text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_tingling_or_itching_in_the_mouth"
                 android:textColor="#0288D1" />
 
             <TextView
                 android:id="@+id/bullet2text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_hives_itching_or_eczema"
                 android:textColor="#0288D1" />
 
             <TextView
                 android:id="@+id/bullet3text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_swelling_of_the_lips_face_tongue_and_throat_or_other_parts_of_the_body"
                 android:textColor="#0288D1" />
 
             <TextView
                 android:id="@+id/bullet4text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_wheezing_nasal_congestion_or_trouble_breathing"
                 android:textColor="#0288D1"
                 tools:ignore="TextContrastCheck" />
 
@@ -121,14 +114,12 @@
                 android:id="@+id/bullet5text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_abdominal_pain_diarrhea_nausea_or_vomiting"
                 android:textColor="#0299d1" />
 
             <TextView
                 android:id="@+id/bullet6text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_dizziness_lightheadedness_or_fainting"
                 android:textColor="#0288d1"
                 tools:ignore="TextContrastCheck" />
 
@@ -136,7 +127,7 @@
                 android:id="@+id/WhenToSeeADoctorHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/when_to_see_a_doctor"
+                android:text="מתי לראות רופא"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TextContrastCheck" />
@@ -145,7 +136,6 @@
                 android:id="@+id/DoctorHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/see_your_health_care_provider_or_allergist_if_you_have_food_allergy_symptoms_shortly_after_eating_if_possible_see_your_provider_when_the_allergic_reaction_is_occurring_this_will_help_your_provider_make_a_diagnosis"
                 android:textColor="#0288d1"
                 tools:ignore="TextContrastCheck" />
 
@@ -153,7 +143,6 @@
                 android:id="@+id/DoctorHeader2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/seek_emergency_treatment_if_you_develop_any_signs_or_symptoms_of_anaphylaxis_such_as"
                 android:textColor="#0288d1"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
@@ -161,7 +150,6 @@
                 android:id="@+id/doctorbullet1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_constriction_of_airways_that_makes_it_difficult_to_breathe"
                 android:textColor="#0288d1"
                 tools:ignore="TextContrastCheck" />
 
@@ -169,7 +157,6 @@
                 android:id="@+id/doctorbullet2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_shock_with_a_severe_drop_in_blood_pressure"
                 android:textColor="#2088d1"
                 tools:ignore="TextContrastCheck" />
 
@@ -177,14 +164,13 @@
                 android:id="@+id/Doctorbullet3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_rapid_pulse_n_u2022_dizziness_or_lightheadedness"
                 android:textColor="#2088d1" />
 
             <TextView
                 android:id="@+id/PrecautionHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/precautions"
+                android:text="אמצעי זהירות"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -192,7 +178,6 @@
                 android:id="@+id/PrecautionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/once_a_food_allergy_has_already_developed_the_best_way_to_prevent_an_allergic_reaction_is_to_know_and_avoid_foods_that_cause_signs_and_symptoms_for_some_people_this_is_a_mere_inconvenience_but_others_find_it_a_greater_hardship_also_some_foods_when_used_as_ingredients_in_certain_dishes_may_be_well_hidden_this_is_especially_true_in_restaurants_and_in_other_social_settings_nif_you_know_you_have_a_food_allergy_follow_these_steps"
                 android:textColor="#2088d1"
                 tools:ignore="TextContrastCheck" />
 
