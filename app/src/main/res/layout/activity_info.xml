@@ -12,12 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="monospace"
         android:includeFontPadding="true"
         android:text=" מידע"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,11 +28,11 @@
         android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
+        android:layout_marginEnd="190dp"
         android:layout_marginBottom="26dp"
-        android:text="@string/back"
+        android:text="חזרה"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <ScrollView
@@ -38,13 +40,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="80dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/backBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/infoHeader">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -185,7 +186,6 @@
                 android:id="@+id/precautionbullets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/u2022_know_what_you_re_eating_and_drinking_be_sure_to_read_food_labels_carefully_n_u2022_if_you_have_already_had_a_severe_reaction_wear_a_medical_alert_bracelet_or_necklace_that_lets_others_know_that_you_have_a_food_allergy_in_case_you_have_a_reaction_and_you_re_unable_to_communicate_n_u2022_talk_with_your_doctor_about_prescribing_emergency_epinephrine_you_may_need_to_carry_an_epinephrine_autoinjector_adrenaclick_epipen_if_you_re_at_risk_of_a_severe_allergic_reaction_n_u2022_be_careful_at_restaurants_be_certain_your_server_or_chef_is_aware_that_you_absolutely_can_t_eat_the_food_you_re_allergic_to_and_you_need_to_be_completely_certain_that_the_meal_you_order_doesn_t_contain_it_also_make_sure_food_isn_t_prepared_on_surfaces_or_in_pans_that_contained_any_of_the_food_you_re_allergic_to_n_u2022_plan_meals_and_snacks_before_leaving_home_if_necessary_take_a_cooler_packed_with_allergen_free_foods_when_you_travel_or_go_to_an_event_if_you_or_your_child_can_t_have_the_cake_or_dessert_at_a_party_bring_an_approved_special_treat_so_no_one_feels_left_out_of_the_celebration"
                 android:textColor="#2088d1"
                 tools:ignore="TextContrastCheck" />
 
@@ -193,7 +193,7 @@
                 android:id="@+id/Credits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/information_taken_from_the_website"
+                android:text="המידע נלקח מהאתר"
                 android:textColor="@color/white" />
 
             <TextView
@@ -207,7 +207,7 @@
                 android:id="@+id/nextBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next_page" />
+                android:text="עמוד הבא" />
 
         </LinearLayout>
     </ScrollView>

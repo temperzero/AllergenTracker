@@ -16,7 +16,7 @@
         android:layout_marginBottom="35dp"
         android:fontFamily="monospace"
         android:includeFontPadding="true"
-        android:text="@string/contact_medical_experts"
+        android:text="צור קשר עם מומחה רפואי"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="75dp"
-        android:text="@string/back"
+        android:text="חזרה"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
