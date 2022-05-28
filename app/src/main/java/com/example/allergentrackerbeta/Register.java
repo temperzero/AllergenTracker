@@ -25,11 +25,8 @@ import com.google.gson.Gson;
 //TODO: need to work out on how to send email verification. Users will need to be stored in firebaseAuth database instead? might change login process as well
 public class Register extends AppCompatActivity {
     // views
-    Button registerBtn;
-    Button back;
-    EditText username;
-    EditText email;
-    EditText password;
+    Button registerBtn, back;
+    EditText username, email, password;
     FirebaseAuth fAuth;
 
     @Override

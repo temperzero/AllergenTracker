@@ -27,14 +27,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends AppCompatActivity {
     // views
-    Button scan_product;
-    Button add_product;
-    Button register;
-    Button info;
-    Button login;
-    Button logout;
-    EditText username;
-    EditText password;
+    Button scan_product, add_product, register, info, login, logout;
+    EditText username, password;
     TextView welcome;
     // global variables
     boolean found = false; // used to check if product was found in DB
