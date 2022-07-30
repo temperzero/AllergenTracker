@@ -113,10 +113,12 @@ public class Menu extends AppCompatActivity {
 
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
                 loginTask.addOnCompleteListener((Activity)view.getContext(),new LoginCompleteListener());
+                System.out.println(loginTask.isSuccessful());
                 if(loginTask.isSuccessful()){
                     FirebaseUser login = fAuth.getCurrentUser();
                     //login.getDisplayName();
-                    repositionButtons(string_username.split("@")[0]);
+                    //repositionButtons(string_username.split("@")[0]);
+                    System.out.println("hi");
                 }
 
 

@@ -59,8 +59,6 @@ public class Register extends AppCompatActivity {
                 String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
 
-                //EditText phonenumber = findViewById(R.id.phoneNum);
-                //String string_phonenumber = phonenumber.getText().toString();
                 // if the user credentials are legal
                 if(validateUser(string_username, string_password, string_email))
                 {
@@ -108,7 +106,7 @@ public class Register extends AppCompatActivity {
                 }
                 else // invalid user
                 {
-                    Toast.makeText(getApplicationContext(), "לא נמצא משתמש לפי הנתונים שהוזנו", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "נתונים לא תקינים", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -137,8 +135,11 @@ public class Register extends AppCompatActivity {
     public boolean checkUsername(String p)
     {
         if(!p.isEmpty()) {
-            if (!p.matches("^[a-zA-Z0-9._-]{3,}$"))
+            if (!p.matches("^[a-zA-Z0-9._-]{3,}$")) {
+                username.setError("שם משתמש לא תקין");
+                username.requestFocus();
                 return false;
+            }
             else
                 return true;
         }
@@ -168,8 +169,11 @@ public class Register extends AppCompatActivity {
     public boolean checkEmail(String p)
     {
         if(!p.isEmpty()) {
-            if (!p.matches("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b"))
+            if (!p.matches("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b")) {
+                email.setError("כתובת מייל לא תקינה");
+                email.requestFocus();
                 return false;
+            }
             else
                 return true;
         }
