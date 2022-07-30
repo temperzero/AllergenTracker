@@ -117,7 +117,8 @@ public class Menu extends AppCompatActivity {
                 if(loginTask.isSuccessful()){
                     FirebaseUser login = fAuth.getCurrentUser();
                     //login.getDisplayName();
-                    //repositionButtons(string_username.split("@")[0]);
+                    repositionButtons(string_username.split("@")[0]);
+                    addButtonOn(true);
                     System.out.println("hi");
                 }
 

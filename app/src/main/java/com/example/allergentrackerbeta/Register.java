@@ -26,12 +26,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-//TODO: need to work out on how to send email verification. Users will need to be stored in firebaseAuth database instead? might change login process as well
+//TODO: investigate why login is successful when email is not yet validated, registration with an existing email crashes the app,
+// navigate back to main menu without register and login buttons
 public class Register extends AppCompatActivity {
     // views
     Button registerBtn, back;
     EditText username, email, password;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth; //firebase Authentication instance
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +60,10 @@ public class Register extends AppCompatActivity {
                 String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
 
-                // if the user credentials are legal
+                // check if the user credentials are legal
                 if(validateUser(string_username, string_password, string_email))
                 {
-                    onRegister(string_email, string_password);
+                    register(string_email, string_password);
 
                     //FirebaseDatabase database = FirebaseDatabase.getInstance();
                     //DatabaseReference users = database.getReference("Users"); //.child(string_username);
@@ -124,7 +125,7 @@ public class Register extends AppCompatActivity {
 
     public boolean validateUser(String username, String password, String email)
     {
-        //check if user exists
+        //check if user input is eligible
         if(checkUsername(username) && checkPassword(password) && checkEmail(email))
             return true;
         else
@@ -183,11 +184,12 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
-
-    private void onRegister(String email, String password){
+    //registration process
+    private void register(String email, String password){
         Task<AuthResult> registerTask = fAuth.createUserWithEmailAndPassword(email, password);
         registerTask.addOnCompleteListener(this, new RegisterCompleteListener());
     }
+    // implementation of the complete registration interface
     class RegisterCompleteListener implements OnCompleteListener<AuthResult>{
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -200,6 +202,7 @@ public class Register extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(getApplicationContext(), "קישור לאימות המשתמש נשלח לכתובת המייל", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -210,48 +213,8 @@ public class Register extends AppCompatActivity {
                         });
             }else{
                 String error = task.getResult().toString();
-                Toast.makeText(getApplicationContext(), "Registration failed: " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-    private void sendEmailVerification(FirebaseAuth fAuth) {
-        FirebaseUser firebaseUser = fAuth.getCurrentUser();
-
-        firebaseUser.sendEmailVerification()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getApplicationContext(), "Instructions Sent...", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-    // phone has to be 10 digits
-    //public boolean checkPhone(String p)
-    //{
-    //    if(!p.matches("[0][5][0-9]{8}"))
-    //        return false;
-    //    else
-    //        return true;
-    //}
-
-    //public void sendSMS(String num,String msg)
-    //{
-    //    try
-    //    {
-    //        SmsManager smsManager = SmsManager.getDefault();
-    //        smsManager.sendTextMessage(num, null, msg, null, null);
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        Toast.makeText(getApplicationContext(), "unable to send SMS message", Toast.LENGTH_SHORT).show();
-    //        e.printStackTrace();
-    //    }
-    //}
 }
