@@ -169,7 +169,7 @@ public class Register extends AppCompatActivity {
     public boolean checkEmail(String p)
     {
         if(!p.isEmpty()) {
-            if (!p.matches("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b")) {
+            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
                 email.setError("כתובת מייל לא תקינה");
                 email.requestFocus();
                 return false;
