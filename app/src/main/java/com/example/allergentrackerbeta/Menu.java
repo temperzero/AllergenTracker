@@ -1,8 +1,10 @@
 package com.example.allergentrackerbeta;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +18,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +41,7 @@ public class Menu extends AppCompatActivity {
     TextView welcome;
     // global variables
     boolean found = false; // used to check if product was found in DB
+    FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +53,7 @@ public class Menu extends AppCompatActivity {
         initViews();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        fAuth = FirebaseAuth.getInstance();
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +98,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View view) {
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
-                DatabaseReference user = database.getReference("Users").child(string_username);
+               // DatabaseReference user = database.getReference("Users").child(string_username);
 
                 if (string_username.isEmpty())
                 {
@@ -100,41 +111,50 @@ public class Menu extends AppCompatActivity {
                     return;
                 }
 
-                user.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) // username exists
-                        {
-                            User a = dataSnapshot.getValue(User.class);
-                            if (a.uPass.equals(string_password)) // check if password is correct
-                            {
-                                repositionButtons(a.uName);
+                Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
+                loginTask.addOnCompleteListener((Activity)view.getContext(),new LoginCompleteListener());
+                if(loginTask.isSuccessful()){
+                    FirebaseUser login = fAuth.getCurrentUser();
+                    //login.getDisplayName();
+                    repositionButtons(string_username.split("@")[0]);
+                }
 
-                                addButtonOn(true);
 
-                                // User object into json and save in shared prefrences
-                                Gson gson = new Gson();
-                                String json = gson.toJson(a);
-                                sedt.putString("User",json);
-                                sedt.commit();
-
-                                Toast.makeText(getApplicationContext(), "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                                Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
-
-                        } else //username doesn't exist
-                        {
-                            Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                user.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) // username exists
+//                        {
+//                            User a = dataSnapshot.getValue(User.class);
+//                            if (a.uPass.equals(string_password)) // check if password is correct
+//                            {
+//                                repositionButtons(a.uName);
+//
+//                                addButtonOn(true);
+//
+//                                // User object into json and save in shared prefrences
+//                                Gson gson = new Gson();
+//                                String json = gson.toJson(a);
+//                                sedt.putString("User",json);
+//                                sedt.commit();
+//
+//                                Toast.makeText(getApplicationContext(), "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
+//                            }
+//                            else
+//                                Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
+//
+//                        } else //username doesn't exist
+//                        {
+//                            Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError error) {
+//                        // Failed to read value
+//                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
         });
 
@@ -296,6 +316,20 @@ public class Menu extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "על מנת להוסיף מוצרים למאגר, יש צורך בהרשמה או התחברות", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+    }
+
+    class LoginCompleteListener implements OnCompleteListener<AuthResult> {
+
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            if(task.isSuccessful()){
+                Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT).show();
+
+            }else{
+                String error = task.getResult().toString();
+                Toast.makeText(getApplicationContext(), "login failed: " + error, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.allergentrackerbeta;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +47,7 @@ public class Register extends AppCompatActivity {
         email = (EditText) findViewById(R.id.eMail);
         password = (EditText) findViewById(R.id.password);
         fAuth = FirebaseAuth.getInstance();
+
         registerBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -53,50 +58,53 @@ public class Register extends AppCompatActivity {
                 String string_username = username.getText().toString();
                 String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
+
                 //EditText phonenumber = findViewById(R.id.phoneNum);
                 //String string_phonenumber = phonenumber.getText().toString();
                 // if the user credentials are legal
                 if(validateUser(string_username, string_password, string_email))
                 {
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference users = database.getReference("Users").child(string_username);
-                    users.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot)
-                        {
-                            if (dataSnapshot.child(string_username).exists()) // username  exists
-                                Toast.makeText(getApplicationContext(), "שם משתמש תפוס", Toast.LENGTH_SHORT).show();
-                            if( dataSnapshot.child(string_email).exists())
-                                Toast.makeText(getApplicationContext(), "כתובת אימייל תפוסה", Toast.LENGTH_SHORT).show(); //email exists
-                            else //username doesn't exist
-                            {
-                                User usr = new User(string_username, string_password, string_email);
-                                DatabaseReference userToAdd = database.getReference("Users").child(usr.uName);
-                                //sendEmailVerification( fAuth );
-                                userToAdd.setValue(usr);
+                    onRegister(string_email, string_password);
 
-                                /*// User object into json and save in shared prefrences
-                                Gson gson = new Gson();
-                                String json = gson.toJson(usr);
-                                sedt.putString("User",json);
-                                sedt.commit();*/
-
-                                //String msg = "Thank you for registering to Allergen Tracker! \nYour username is " + string_username + " and password is " + string_password;
-                                //sendSMS(string_phonenumber, msg);
-
-                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + " נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
-
-                                finish();
-                                }
-
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError error)
-                        {
-                            // Failed to read value
-                            Toast.makeText(getApplicationContext(), "שגיאה", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    //DatabaseReference users = database.getReference("Users"); //.child(string_username);
+//                    users.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot)
+//                        {
+//                            if (dataSnapshot.child(string_username).exists()) // username  exists
+//                                Toast.makeText(getApplicationContext(), "שם משתמש תפוס", Toast.LENGTH_SHORT).show();
+//                            if( dataSnapshot.child(string_email).exists()) // abc@mail.com abcmailcom
+//                                Toast.makeText(getApplicationContext(), "כתובת אימייל תפוסה", Toast.LENGTH_SHORT).show(); //email exists
+//                            else //username doesn't exist
+//                            {
+//                                User usr = new User(string_username, string_password, string_email);
+//                                DatabaseReference userToAdd = database.getReference("Users").child(usr.uName);
+//                                //sendEmailVerification( fAuth );
+//                                userToAdd.setValue(usr);
+//
+//                                /*// User object into json and save in shared prefrences
+//                                Gson gson = new Gson();
+//                                String json = gson.toJson(usr);
+//                                sedt.putString("User",json);
+//                                sedt.commit();*/
+//
+//                                //String msg = "Thank you for registering to Allergen Tracker! \nYour username is " + string_username + " and password is " + string_password;
+//                                //sendSMS(string_phonenumber, msg);
+//
+//                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + " נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
+//
+//                                finish();
+//                                }
+//
+//                        }
+//                        @Override
+//                        public void onCancelled(DatabaseError error)
+//                        {
+//                            // Failed to read value
+//                            Toast.makeText(getApplicationContext(), "שגיאה", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
                 }
                 else // invalid user
                 {
@@ -160,7 +168,7 @@ public class Register extends AppCompatActivity {
     public boolean checkEmail(String p)
     {
         if(!p.isEmpty()) {
-            if (!p.matches("^(.+)@(.+)$"))
+            if (!p.matches("\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b"))
                 return false;
             else
                 return true;
@@ -171,6 +179,38 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
+
+    private void onRegister(String email, String password){
+        Task<AuthResult> registerTask = fAuth.createUserWithEmailAndPassword(email, password);
+        registerTask.addOnCompleteListener(this, new RegisterCompleteListener());
+    }
+    class RegisterCompleteListener implements OnCompleteListener<AuthResult>{
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            if(task.isSuccessful()){
+                Toast.makeText(getApplicationContext(), "ההרשמה הושלמה בהצלחה", Toast.LENGTH_SHORT).show();
+
+                FirebaseUser firebaseUser = fAuth.getCurrentUser();
+                firebaseUser.sendEmailVerification()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getApplicationContext(), "קישור לאימות המשתמש נשלח לכתובת המייל", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(Exception e) {
+                                Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }else{
+                String error = task.getResult().toString();
+                Toast.makeText(getApplicationContext(), "Registration failed: " + error, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     private void sendEmailVerification(FirebaseAuth fAuth) {
         FirebaseUser firebaseUser = fAuth.getCurrentUser();
 
@@ -188,7 +228,6 @@ public class Register extends AppCompatActivity {
                     }
                 });
     }
-
     // phone has to be 10 digits
     //public boolean checkPhone(String p)
     //{
