@@ -55,6 +55,11 @@ public class Menu extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
+        if(fAuth.getCurrentUser() != null)
+        {
+
+        }
+
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,13 +118,10 @@ public class Menu extends AppCompatActivity {
 
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
                 loginTask.addOnCompleteListener((Activity)view.getContext(),new LoginCompleteListener());
-                System.out.println(loginTask.isSuccessful());
                 if(loginTask.isSuccessful()){
                     FirebaseUser login = fAuth.getCurrentUser();
-                    //login.getDisplayName();
-                    repositionButtons(string_username.split("@")[0]);
+                    repositionButtons(login.getDisplayName());
                     addButtonOn(true);
-                    System.out.println("hi");
                 }
 
 
