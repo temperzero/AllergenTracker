@@ -123,10 +123,10 @@ public class Menu extends AppCompatActivity {
 
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
                 loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
-
                 prefs.edit().putString("username", string_username);
                 prefs.edit().putString("password", string_password);
                 prefs.edit().apply();
+
 
 //                user.addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -171,18 +171,22 @@ public class Menu extends AppCompatActivity {
             public void onClick(View view) {
                 initViews();
                 addButtonOn(false);
-                sedt.clear(); // delete user info
-                sedt.commit();
+                //sedt.clear(); // delete user info
+                prefs.edit().clear(); // delete user info
+                //sedt.commit();
+                prefs.edit().commit();
+                username.getText().clear();
+                password.getText().clear();
             }
         });
 
-        if(sp.contains("User")) // if user is logged on from previous app use
+        if(prefs.contains("username")) // if user is logged on from previous app use
         {
-            Gson gson = new Gson();
-            String json = sp.getString("User", null);
-            User usr = gson.fromJson(json, User.class);
-            repositionButtons(usr.uName);
-
+            //Gson gson = new Gson();
+            //String json = sp.getString("User", null);
+            //String uname = prefs.getString("username", "");
+            //User usr = gson.fromJson(json, User.class);
+            repositionButtons(prefs.getString(USERNAME_KEY, ""));
             // add product button
             addButtonOn(true);
         }
@@ -339,12 +343,12 @@ public class Menu extends AppCompatActivity {
                 addButtonOn(true);
             }else{
                 String error = "";
-                try {
-                    error = task.getResult().toString();
-                }catch(Exception ex){
-
-                }
-                Toast.makeText(getApplicationContext(), "ההתחברות נכשלה: " + error, Toast.LENGTH_SHORT).show();
+                //try {
+                //    error = task.getResult().toString();
+               // }catch(Exception ex){
+//
+               // }
+                Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים ", Toast.LENGTH_SHORT).show();
             }
         }
     }

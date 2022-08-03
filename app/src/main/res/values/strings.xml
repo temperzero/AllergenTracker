@@ -35,8 +35,8 @@
     <string name="enter_user_name">Enter user name</string>
     <string name="password">Password</string>
     <string name="phone_number">Phone Number</string>
-    <string name="back">Back</string>
-    <string name="logout">Logout</string>
+    <string name="back">חזרה</string>
+    <string name="logout">התנתקות</string>
     <string name="app_logo">App Logo</string>
     <string name="information">Information</string>
     <string name="food_allergy_is_an_immune_system_reaction_that_occurs_soon_after_eating_a_certain_food_even_a_tiny_amount_of_the_allergy_causing_food_can_trigger_signs_and_symptoms_such_as_digestive_problems_hives_or_swollen_airways_in_some_people_a_food_allergy_can_cause_severe_symptoms_or_even_a_life_threatening_reaction_known_as_anaphylaxis">Food allergy is an immune system reaction that occurs soon after eating a certain food. Even a tiny amount of the allergy-causing food can trigger signs and symptoms such as digestive problems, hives or swollen airways. In some people, a food allergy can cause severe symptoms or even a life-threatening reaction known as anaphylaxis.</string>
