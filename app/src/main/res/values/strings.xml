@@ -74,7 +74,7 @@
     <string name="addH">הוספת מוצר</string>
     <string name="scanH">סריקה</string>
     <string name="infoH">מידע</string>
-    <string name="usernameH">שם משתמש</string>
+    <string name="usernameH">אימייל</string>
     <string name="passwordH">סיסמה</string>
     <string name="logoutH">התנתקות</string>
     <string name="productnameH">שם מוצר</string>

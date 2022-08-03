@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +40,8 @@ public class Menu extends AppCompatActivity {
     // views
     Button scan_product, add_product, register, info, login, logout;
     EditText username, password;
+    final static String USERNAME_KEY = "username";
+    final static String  PASSWORD_KEY= "password";
     TextView welcome;
     // global variables
     boolean found = false; // used to check if product was found in DB
@@ -50,15 +54,15 @@ public class Menu extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
         SharedPreferences.Editor sedt = sp.edit ();
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
         initViews();
+
+        username.setText(prefs.getString(USERNAME_KEY, ""));
+        password.setText(prefs.getString(PASSWORD_KEY, ""));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
-
-        if(fAuth.getCurrentUser() != null)
-        {
-
-        }
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +105,7 @@ public class Menu extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(view.getContext());
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
                // DatabaseReference user = database.getReference("Users").child(string_username);
@@ -117,13 +122,11 @@ public class Menu extends AppCompatActivity {
                 }
 
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
-                loginTask.addOnCompleteListener((Activity)view.getContext(),new LoginCompleteListener());
-                if(loginTask.isSuccessful()){
-                    FirebaseUser login = fAuth.getCurrentUser();
-                    repositionButtons(login.getDisplayName());
-                    addButtonOn(true);
-                }
+                loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
 
+                prefs.edit().putString("username", string_username);
+                prefs.edit().putString("password", string_password);
+                prefs.edit().apply();
 
 //                user.addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -329,11 +332,19 @@ public class Menu extends AppCompatActivity {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
-                Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                FirebaseUser login = fAuth.getCurrentUser();
+                repositionButtons(login.getDisplayName());
 
+                addButtonOn(true);
             }else{
-                String error = task.getResult().toString();
-                Toast.makeText(getApplicationContext(), "login failed: " + error, Toast.LENGTH_SHORT).show();
+                String error = "";
+                try {
+                    error = task.getResult().toString();
+                }catch(Exception ex){
+
+                }
+                Toast.makeText(getApplicationContext(), "ההתחברות נכשלה: " + error, Toast.LENGTH_SHORT).show();
             }
         }
     }
