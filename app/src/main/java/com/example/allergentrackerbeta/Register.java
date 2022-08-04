@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
@@ -157,6 +159,8 @@ public class Register extends AppCompatActivity {
         if(!p.isEmpty()) {
             int length = p.length();
             if (length < 5)
+                password.setError("הססמא צריכה להכיל מינימום 6 תווים");
+            password.requestFocus();
                 return false;
             else
                 return true;
@@ -217,8 +221,17 @@ public class Register extends AppCompatActivity {
                             }
                         });
             }else{
-                String error = task.getResult().toString();
-                Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show();
+                try{
+                    String error = task.getResult().toString();
+                    Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show();
+                }catch(Exception ex){
+                    if(ex.getCause() instanceof FirebaseAuthUserCollisionException){
+                        Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
+                    }else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
+                        Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         }
     }
