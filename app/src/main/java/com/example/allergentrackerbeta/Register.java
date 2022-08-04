@@ -159,7 +159,7 @@ public class Register extends AppCompatActivity {
         if(!p.isEmpty()) {
             int length = p.length();
             if (length < 5) {
-                password.setError("הססמא צריכה להכיל מינימום 6 תווים");
+                password.setError("הססמא צריכה להכיל לפחות 6 תווים");
                 password.requestFocus();
                 return false;
             }
