@@ -42,11 +42,6 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        /*SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
-        SharedPreferences.Editor sedt = sp.edit ();*/
-
-
         registerBtn = findViewById(R.id.confirmBtn);
         username = (EditText) findViewById(R.id.userName);
         email = (EditText) findViewById(R.id.eMail);
@@ -136,7 +131,6 @@ public class Register extends AppCompatActivity {
             return false;
     }
 
-
     public boolean checkUsername(String p)
     {
         if(!p.isEmpty()) {
@@ -224,15 +218,15 @@ public class Register extends AppCompatActivity {
             }else{
                 try{
                     String error = task.getResult().toString();
-                    Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show();
-                }catch(Exception ex){
+                    Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show(); }
+                catch(Exception ex){
                     if(ex.getCause() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
-                    }else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
+                    }
+                    else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
                     }
                 }
-
             }
         }
     }

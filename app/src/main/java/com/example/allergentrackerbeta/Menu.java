@@ -61,8 +61,6 @@ public class Menu extends AppCompatActivity {
 
         SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
         username.setText(prefs.getString(USERNAME_KEY, ""));
-        //password.setText(prefs.getString(PASSWORD_KEY, ""));
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
@@ -110,7 +108,6 @@ public class Menu extends AppCompatActivity {
                 SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
-               // DatabaseReference user = database.getReference("Users").child(string_username);
                  if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
                      return;
                         Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
@@ -118,7 +115,7 @@ public class Menu extends AppCompatActivity {
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString(USERNAME_KEY, string_username);
                         editor.putString(PASSWORD_KEY, string_password);
-                        editor.commit();
+                        editor.apply();
 
 //                user.addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -163,15 +160,8 @@ public class Menu extends AppCompatActivity {
             public void onClick(View view) {
                 initViews();
                 addButtonOn(false);
-                //sedt.clear(); // delete user info
-                //prefs.edit().clear(); // delete user info
-                //sedt.commit();
-                //prefs.edit().commit();
-                username.getText().clear();
+                //username.getText().clear();
                 password.getText().clear();
-               // SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
-               // prefs.edit().clear();
-               // prefs.edit().commit();
                 fAuth.signOut();
             }
         });
@@ -187,11 +177,7 @@ public class Menu extends AppCompatActivity {
             addButtonOn(true);
         }
         else
-        {
-            // add product button
-            addButtonOn(false);
-        }
-
+            addButtonOn(false);  // add product button
     }
 
     // activated after scanning a barcode in Scan button
@@ -259,10 +245,8 @@ public class Menu extends AppCompatActivity {
             });
         }
         else
-        {
             //when result content is null
             Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
-        }
     }
 
     // starting views positioning
@@ -337,7 +321,8 @@ public class Menu extends AppCompatActivity {
                     repositionButtons(login.getDisplayName());
                     addButtonOn(true);
                     Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
-                } else Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
+                }
+                else Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
             }
             else {
                 try { throw task.getException(); }
