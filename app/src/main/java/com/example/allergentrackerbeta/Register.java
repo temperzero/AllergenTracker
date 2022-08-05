@@ -11,6 +11,7 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -129,7 +130,7 @@ public class Register extends AppCompatActivity {
     public boolean validateUser(String username, String password, String email)
     {
         //check if user input is eligible
-        if(checkUsername(username) && checkPassword(password) && checkEmail(email))
+        if(checkUsername(username) && checkPassword(password, this.password) && checkEmail(email, this.email))
             return true;
         else
             return false;
@@ -154,7 +155,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    public boolean checkPassword(String p)
+    public static boolean checkPassword(String p, TextView password)
     {
         if(!p.isEmpty()) {
             int length = p.length();
@@ -173,7 +174,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    public boolean checkEmail(String p)
+    public static boolean checkEmail(String p, TextView email )
     {
         if(!p.isEmpty()) {
             if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
@@ -201,7 +202,6 @@ public class Register extends AppCompatActivity {
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
                 Toast.makeText(getApplicationContext(), "ההרשמה הושלמה בהצלחה", Toast.LENGTH_SHORT).show();
-
                 FirebaseUser firebaseUser = fAuth.getCurrentUser();
                 firebaseUser.sendEmailVerification()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {

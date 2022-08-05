@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="9dp"
         android:text="@string/infoH"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/addBtn"
@@ -48,29 +48,30 @@
         android:id="@+id/regBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="6dp"
         android:text="@string/register1"
         android:textColor="@color/black"
-        app:layout_constraintBaseline_toBaselineOf="@+id/loginPassword"
         app:layout_constraintEnd_toStartOf="@+id/loginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/logoutBtn"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="2dp"
         android:text="@string/login1"
         android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/loginUsername"
         app:layout_constraintEnd_toStartOf="@+id/loginUsername"
+        app:layout_constraintStart_toEndOf="@+id/logoutBtn"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
     <EditText
         android:id="@+id/loginUsername"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
         android:ems="10"
         android:hint="@string/usernameH"
         android:importantForAutofill="no"
@@ -79,6 +80,7 @@
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/userText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/loginBtn"
         app:layout_constraintTop_toTopOf="@+id/userText"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -86,8 +88,7 @@
         android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
         android:hint="@string/passwordH"
         android:importantForAutofill="no"
@@ -95,33 +96,33 @@
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/regBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="4dp"
         android:minHeight="48dp"
         android:text="@string/logoutH"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/loginUsername"
+        app:layout_constraintEnd_toStartOf="@+id/loginBtn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/userText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="9dp"
         android:textColor="@color/white"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/loginPassword"
+        app:layout_constraintBottom_toTopOf="@+id/regBtn"
         app:layout_constraintEnd_toEndOf="@+id/loginUsername"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loginUsername"
-        app:layout_constraintTop_toTopOf="@+id/logoutBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
