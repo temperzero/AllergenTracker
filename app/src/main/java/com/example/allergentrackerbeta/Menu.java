@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +36,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.sql.SQLOutput;
 
 public class Menu extends AppCompatActivity {
     // views
@@ -54,12 +57,11 @@ public class Menu extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
         SharedPreferences.Editor sedt = sp.edit ();
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
         initViews();
 
+        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
         username.setText(prefs.getString(USERNAME_KEY, ""));
-        password.setText(prefs.getString(PASSWORD_KEY, ""));
+        //password.setText(prefs.getString(PASSWORD_KEY, ""));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -105,28 +107,18 @@ public class Menu extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+                SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
                // DatabaseReference user = database.getReference("Users").child(string_username);
-
-                if (string_username.isEmpty())
-                {
-                    username.setError("שדה זה לא יכול להיות ריק");
-                    return;
-                }
-                if(string_password.isEmpty())
-                {
-                    password.setError("שדה זה לא יכול להיות ריק");
-                    return;
-                }
-
-                Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
-                loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
-                prefs.edit().putString("username", string_username);
-                prefs.edit().putString("password", string_password);
-                prefs.edit().apply();
-
+                 if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
+                     return;
+                        Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
+                        loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString(USERNAME_KEY, string_username);
+                        editor.putString(PASSWORD_KEY, string_password);
+                        editor.commit();
 
 //                user.addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -172,21 +164,25 @@ public class Menu extends AppCompatActivity {
                 initViews();
                 addButtonOn(false);
                 //sedt.clear(); // delete user info
-                prefs.edit().clear(); // delete user info
+                //prefs.edit().clear(); // delete user info
                 //sedt.commit();
-                prefs.edit().commit();
+                //prefs.edit().commit();
                 username.getText().clear();
                 password.getText().clear();
+               // SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
+               // prefs.edit().clear();
+               // prefs.edit().commit();
+                fAuth.signOut();
             }
         });
 
-        if(prefs.contains("username")) // if user is logged on from previous app use
+        if(fAuth.getCurrentUser() != null) // if user is logged on from previous app use
         {
             //Gson gson = new Gson();
             //String json = sp.getString("User", null);
             //String uname = prefs.getString("username", "");
             //User usr = gson.fromJson(json, User.class);
-            repositionButtons(prefs.getString(USERNAME_KEY, ""));
+            repositionButtons(fAuth.getCurrentUser().getDisplayName());
             // add product button
             addButtonOn(true);
         }
@@ -335,20 +331,18 @@ public class Menu extends AppCompatActivity {
 
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
-            if(task.isSuccessful()){
-                Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+            if(task.isSuccessful()) {
                 FirebaseUser login = fAuth.getCurrentUser();
-                repositionButtons(login.getDisplayName());
-
-                addButtonOn(true);
-            }else{
-                String error = "";
-                //try {
-                //    error = task.getResult().toString();
-               // }catch(Exception ex){
-//
-               // }
-                Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים ", Toast.LENGTH_SHORT).show();
+                if (login.isEmailVerified()) {
+                    repositionButtons(login.getDisplayName());
+                    addButtonOn(true);
+                    Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                } else Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                try { throw task.getException(); }
+                catch(FirebaseAuthInvalidCredentialsException e){ Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים", Toast.LENGTH_SHORT).show(); }
+                catch (Exception e) {}
             }
         }
     }
