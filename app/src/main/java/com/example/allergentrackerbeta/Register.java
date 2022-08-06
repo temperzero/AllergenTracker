@@ -59,55 +59,12 @@ public class Register extends AppCompatActivity {
                 String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
 
-                // check if the user credentials are legal
+                // check if the user credentials are legal, if they are continue to registration process
                 if(validateUser(string_username, string_password, string_email))
-                {
                     register(string_email, string_password);
 
-                    //FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    //DatabaseReference users = database.getReference("Users"); //.child(string_username);
-//                    users.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot)
-//                        {
-//                            if (dataSnapshot.child(string_username).exists()) // username  exists
-//                                Toast.makeText(getApplicationContext(), "שם משתמש תפוס", Toast.LENGTH_SHORT).show();
-//                            if( dataSnapshot.child(string_email).exists()) // abc@mail.com abcmailcom
-//                                Toast.makeText(getApplicationContext(), "כתובת אימייל תפוסה", Toast.LENGTH_SHORT).show(); //email exists
-//                            else //username doesn't exist
-//                            {
-//                                User usr = new User(string_username, string_password, string_email);
-//                                DatabaseReference userToAdd = database.getReference("Users").child(usr.uName);
-//                                //sendEmailVerification( fAuth );
-//                                userToAdd.setValue(usr);
-//
-//                                /*// User object into json and save in shared prefrences
-//                                Gson gson = new Gson();
-//                                String json = gson.toJson(usr);
-//                                sedt.putString("User",json);
-//                                sedt.commit();*/
-//
-//                                //String msg = "Thank you for registering to Allergen Tracker! \nYour username is " + string_username + " and password is " + string_password;
-//                                //sendSMS(string_phonenumber, msg);
-//
-//                                Toast.makeText(getApplicationContext(), "המשתמש " + usr.uName + " נוצר בהצלחה. נשלח מייל לאימות משתמש", Toast.LENGTH_SHORT).show();
-//
-//                                finish();
-//                                }
-//
-//                        }
-//                        @Override
-//                        public void onCancelled(DatabaseError error)
-//                        {
-//                            // Failed to read value
-//                            Toast.makeText(getApplicationContext(), "שגיאה", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-                }
                 else // invalid user
-                {
-                    Toast.makeText(getApplicationContext(), "נתונים לא תקינים", Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(getApplicationContext(), "ההרשמה נכשלה, נתונים לא תקינים", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -122,6 +79,7 @@ public class Register extends AppCompatActivity {
         });
     }
 
+    // check whether all user credentials are valid
     public boolean validateUser(String username, String password, String email)
     {
         //check if user input is eligible
@@ -131,6 +89,7 @@ public class Register extends AppCompatActivity {
             return false;
     }
 
+    //check if username is valid
     public boolean checkUsername(String p)
     {
         if(!p.isEmpty()) {
@@ -149,6 +108,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
+    //check if password is valid
     public static boolean checkPassword(String p, TextView password)
     {
         if(!p.isEmpty()) {
@@ -168,6 +128,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
+    //check if email is valid
     public static boolean checkEmail(String p, TextView email )
     {
         if(!p.isEmpty()) {
@@ -187,6 +148,7 @@ public class Register extends AppCompatActivity {
     }
     //registration process
     private void register(String email, String password){
+        //create a register task and add on complete listener interface
         Task<AuthResult> registerTask = fAuth.createUserWithEmailAndPassword(email, password);
         registerTask.addOnCompleteListener(this, new RegisterCompleteListener());
     }
@@ -194,6 +156,7 @@ public class Register extends AppCompatActivity {
     class RegisterCompleteListener implements OnCompleteListener<AuthResult>{
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
+            //check if register task succeeded, if so, registration process succeeded, send verification email to the new user
             if(task.isSuccessful()){
                 Toast.makeText(getApplicationContext(), "ההרשמה הושלמה בהצלחה", Toast.LENGTH_SHORT).show();
                 FirebaseUser firebaseUser = fAuth.getCurrentUser();
@@ -215,19 +178,20 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "לא ניתן לשלוח את מייל, יש לוודא שכתובת המייל תקינה", Toast.LENGTH_SHORT).show();
                             }
                         });
-            }else{
+            }
+            // if register task failed, catch the exception
+            else{
                 try{
                     String error = task.getResult().toString();
-                    Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show(); }
+                    Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל. " + error, Toast.LENGTH_SHORT).show();
+                }
                 catch(Exception ex){
-                    if(ex.getCause() instanceof FirebaseAuthUserCollisionException){
+                    if(ex.getCause() instanceof FirebaseAuthUserCollisionException)
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
-                    }
                     //else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
-                    //    Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(getApplicationContext(), "ססמא לא תקינה" , Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         }
     }
-}
