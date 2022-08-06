@@ -212,7 +212,7 @@ public class Register extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(Exception e) {
-                                Toast.makeText(getApplicationContext(), "Failed to send due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "לא ניתן לשלוח את מייל, יש לוודא שכתובת המייל תקינה", Toast.LENGTH_SHORT).show();
                             }
                         });
             }else{
@@ -223,8 +223,8 @@ public class Register extends AppCompatActivity {
                     if(ex.getCause() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
                     }
-                    else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
-                        Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
+                    //else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
+                    //    Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
                     }
                 }
             }
