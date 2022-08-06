@@ -81,11 +81,7 @@ public class Register extends AppCompatActivity {
     // check whether all user credentials are valid
     public boolean validateUser(String username, String password, String email)
     {
-        //check if user input is eligible
-        if(checkUsername(username) && checkPassword(password, this.password) && checkEmail(email, this.email))
-            return true;
-        else
-            return false;
+        return (checkUsername(username) && checkPassword(password, this.password) && checkEmail(email, this.email));
     }
 
     //check if username is valid
