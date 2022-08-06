@@ -54,7 +54,6 @@ public class Register extends AppCompatActivity {
             public void onClick(View view)
             {
                 // user credentials to strings
-
                 String string_username = username.getText().toString();
                 String string_email = email.getText().toString();
                 String string_password = password.getText().toString();
