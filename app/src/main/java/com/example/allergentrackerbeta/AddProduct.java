@@ -47,7 +47,7 @@ public class AddProduct extends AppCompatActivity
                 //init intent integrator
                 IntentIntegrator intentIntegrator = new IntentIntegrator(AddProduct.this);
                 //set prompt text -- show message
-                intentIntegrator.setPrompt("for flash use volume up key");
+                intentIntegrator.setPrompt("לפלאש השתמש בכפתור הווליום");
                 //set beep
                 intentIntegrator.setBeepEnabled(true);
                 //locked orientation
@@ -171,11 +171,11 @@ public class AddProduct extends AppCompatActivity
                     productToAdd.child("Products").child("Product " + addProduct.pNum);
                     productToAdd.setValue(addProduct);
 
-                    Toast.makeText(getApplicationContext(), "Company: " + addProduct.cName + "\nProduct: " + addProduct.pName
-                            + "\nBarcode: " + addProduct.barcode +"\nAllergens: " + allergens +"\nNum: " + num, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "שם החברה: " + addProduct.cName + "\nשם המוצר: " + addProduct.pName
+                            + "\nברקוד: " + addProduct.barcode +"\nאלרגנים: " + allergens +"\nמס' מוצר: " + num, Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "unable to add product, please scan a barcode", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "ברקוד לא מזוהה", Toast.LENGTH_SHORT).show();
 
                 // reset text
                 editP.setText("");
@@ -195,12 +195,12 @@ public class AddProduct extends AppCompatActivity
         {
             TextView text = (TextView)findViewById(R.id.barcode);
             text.setText(intentResult.getContents());
-            Toast.makeText(getApplicationContext(), "Scanning succes",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "הסריקה בוצעה בהצלחה!",Toast.LENGTH_SHORT).show();
         }
         else
         {
             //when result content is null
-            Toast.makeText(getApplicationContext(), "Scanning error! Please try again",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
         }
     }
 }

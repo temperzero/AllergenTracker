@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
     Button scan_product, add_product, register, info, login, logout;
     EditText username, password;
     final static String USERNAME_KEY = "username";
-    final static String  PASSWORD_KEY= "password";
+    final static String PASSWORD_KEY = "password";
     TextView welcome;
     // global variables
     boolean found = false; // used to check if product was found in DB
@@ -54,8 +54,8 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
-        SharedPreferences.Editor sedt = sp.edit ();
+        //SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
+        //SharedPreferences.Editor sedt = sp.edit ();
 
         initViews();
 
@@ -83,7 +83,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        // misc. button
+        // info button
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -53,42 +53,40 @@
         android:text="@string/register1"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/loginPassword"
-        app:layout_constraintTop_toBottomOf="@+id/logoutBtn"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginEnd="6dp"
         android:text="@string/login1"
         android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/loginUsername"
         app:layout_constraintEnd_toStartOf="@+id/loginUsername"
-        app:layout_constraintStart_toEndOf="@+id/logoutBtn"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
     <EditText
         android:id="@+id/loginUsername"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="3dp"
         android:ems="10"
         android:hint="@string/usernameH"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/userText"
+        app:layout_constraintBaseline_toBaselineOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/loginBtn"
-        app:layout_constraintTop_toTopOf="@+id/userText"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="3dp"
         android:ems="10"
         android:hint="@string/passwordH"
         android:importantForAutofill="no"
@@ -103,26 +101,21 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
         android:layout_marginTop="13dp"
-        android:layout_marginEnd="4dp"
         android:minHeight="48dp"
         android:text="@string/logoutH"
         android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/loginBtn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/loginUsername"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/userText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="9dp"
         android:textColor="@color/white"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/regBtn"
+        app:layout_constraintBottom_toBottomOf="@+id/loginUsername"
         app:layout_constraintEnd_toEndOf="@+id/loginUsername"
         app:layout_constraintStart_toStartOf="@+id/loginUsername"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/loginUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>
