@@ -30,8 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-//TODO: investigate why login is successful when email is not yet validated, registration with an existing email crashes the app,
-// navigate back to main menu without register and login buttons
+
 public class Register extends AppCompatActivity {
     // views
     Button registerBtn, back;

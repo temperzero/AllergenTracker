@@ -57,7 +57,7 @@ public class Menu extends AppCompatActivity {
         //SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
         //SharedPreferences.Editor sedt = sp.edit ();
 
-        initViews();
+        initViews(); // arrange Views
 
         SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
         username.setText(prefs.getString(USERNAME_KEY, ""));
@@ -108,14 +108,14 @@ public class Menu extends AppCompatActivity {
                 SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
-                 if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
-                     return;
-                        Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
-                        loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString(USERNAME_KEY, string_username);
-                        editor.putString(PASSWORD_KEY, string_password);
-                        editor.apply();
+                if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
+                    return;
+                Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
+                loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString(USERNAME_KEY, string_username);
+                editor.putString(PASSWORD_KEY, string_password);
+                editor.apply();
 
 //                user.addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -158,9 +158,8 @@ public class Menu extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initViews();
+                initViews(); // arrange Views
                 addButtonOn(false);
-                //username.getText().clear();
                 password.getText().clear();
                 fAuth.signOut();
             }
@@ -168,16 +167,11 @@ public class Menu extends AppCompatActivity {
 
         if(fAuth.getCurrentUser() != null) // if user is logged on from previous app use
         {
-            //Gson gson = new Gson();
-            //String json = sp.getString("User", null);
-            //String uname = prefs.getString("username", "");
-            //User usr = gson.fromJson(json, User.class);
             repositionButtons(fAuth.getCurrentUser().getDisplayName());
-            // add product button
-            addButtonOn(true);
+            addButtonOn(true); // add product button enabled
         }
         else
-            addButtonOn(false);  // add product button
+            addButtonOn(false);  // add product button disabled
     }
 
     // activated after scanning a barcode in Scan button
