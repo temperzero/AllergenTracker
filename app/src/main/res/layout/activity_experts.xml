@@ -4,84 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/green_bg"
     tools:context=".Experts">
+
+    <TextView
+        android:id="@+id/expertsHeader2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="27dp"
+        android:fontFamily="monospace"
+        android:includeFontPadding="true"
+        android:text="@string/yahelstr"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/yahel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maccabi" />
 
     <TextView
         android:id="@+id/expertsHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="monospace"
         android:includeFontPadding="true"
-        android:text="צור קשר עם מומחה רפואי"
+        android:text="@string/kopah"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/leumit"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/leumit"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="19dp"
+        android:contentDescription="@string/leumit_image"
         app:layout_constraintBottom_toTopOf="@+id/maccabi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clalit"
         app:layout_constraintTop_toBottomOf="@+id/expertsHeader"
-        app:srcCompat="@drawable/leumit" />
+        app:srcCompat="@drawable/leumit2"
+        tools:ignore="ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/maccabi"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="388dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="34dp"
+        android:contentDescription="@string/maccabi_image"
+        app:layout_constraintBottom_toTopOf="@+id/expertsHeader2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/meuhedet"
         app:layout_constraintTop_toBottomOf="@+id/leumit"
-        app:srcCompat="@drawable/maccabi" />
+        app:srcCompat="@drawable/maccabi2" />
 
     <ImageView
         android:id="@+id/clalit"
         android:layout_width="0dp"
-        android:layout_height="99dp"
+        android:layout_height="0dp"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="114dp"
-        android:layout_marginBottom="31dp"
-        app:layout_constraintBottom_toTopOf="@+id/maccabi"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="22dp"
+        android:contentDescription="@string/clalit_image"
+        app:layout_constraintBottom_toTopOf="@+id/meuhedet"
         app:layout_constraintEnd_toStartOf="@+id/leumit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expertsHeader"
-        app:srcCompat="@drawable/clalit" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clalit2"
+        tools:ignore="ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/meuhedet"
         android:layout_width="0dp"
-        android:layout_height="113dp"
+        android:layout_height="0dp"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="310dp"
+        android:contentDescription="@string/meuhedet_image"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/maccabi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clalit"
-        app:srcCompat="@drawable/meuhedet" />
+        app:srcCompat="@drawable/meuhedet2"
+        tools:ignore="ImageContrastCheck" />
 
-    <Button
-        android:id="@+id/backtoinfoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:text="חזרה"
+    <ImageView
+        android:id="@+id/yahel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="117dp"
+        android:contentDescription="@string/yahel_image"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/expertsHeader2"
+        app:layout_constraintStart_toStartOf="@+id/maccabi"
+        app:layout_constraintTop_toBottomOf="@+id/expertsHeader2"
+        app:srcCompat="@drawable/yahel"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

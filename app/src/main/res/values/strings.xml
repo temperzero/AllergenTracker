@@ -91,4 +91,11 @@
     <string name="disclaimer">Disclaimer</string>
     <string name="genInfo">מידע כללי</string>
     <string name="Exp">מומחים</string>
+    <string name="yahelstr">עמותת יהל</string>
+    <string name="kopah">קופות חולים</string>
+    <string name="clalit_image">clalit image</string>
+    <string name="meuhedet_image">meuhedet image</string>
+    <string name="leumit_image">leumit image</string>
+    <string name="maccabi_image">maccabi image</string>
+    <string name="yahel_image">yahel image</string>
 </resources>

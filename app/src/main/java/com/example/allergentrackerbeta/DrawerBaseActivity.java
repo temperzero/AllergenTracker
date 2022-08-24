@@ -63,16 +63,13 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_info: {
-                Intent infoIntent = new Intent(this, Info.class);
-                startActivity(infoIntent);
+                Intent infoNexpertsIntent = new Intent(this, InfoAndExperts.class);
+                startActivity(infoNexpertsIntent);
                 overridePendingTransition(0,0);
                 break;
             }
             case R.id.nav_logout: {
-                Intent DisclaimerIntent = new Intent(this, InfoAndExperts.class);
-                startActivity(DisclaimerIntent);
-                overridePendingTransition(0,0);
-                //Toast.makeText(getApplicationContext(), "you clicked on logout!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "you clicked on logout!", Toast.LENGTH_SHORT).show();
                 break;
             }
             default:
@@ -92,11 +89,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
     protected void UpdateUserName(String userName)
     {
-        //userNameText = findViewById(R.id.HeaderUserText);
         if(userNameText == null)
             Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
         else
-            userNameText.setText("Welcome " + userName);
+            userNameText.setText("ברוך הבא " + userName);
     }
 
 }

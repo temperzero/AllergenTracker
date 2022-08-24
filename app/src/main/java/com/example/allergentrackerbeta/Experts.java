@@ -15,10 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class Experts extends AppCompatActivity {
-    ImageView clalit;
-    ImageView maccabi;
-    ImageView meuhedet;
-    ImageView leumit;
+    ImageView clalit, maccabi, meuhedet, leumit, yahel;
     Button back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,7 @@ public class Experts extends AppCompatActivity {
             }
         });
 
-        meuhedet = findViewById(R.id.meuhedet);
+        meuhedet = findViewById(R.id.yahel);
         meuhedet.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -78,13 +75,14 @@ public class Experts extends AppCompatActivity {
             }
         });
 
-        back = findViewById(R.id.backtoinfoBtn);
-        back.setOnClickListener(new View.OnClickListener()
+        yahel = findViewById(R.id.yahel);
+        yahel.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                finish();
+                Intent openlinkyahel = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.allergyisrael.org.il"));
+                startActivity(openlinkyahel);
             }
         });
     }
