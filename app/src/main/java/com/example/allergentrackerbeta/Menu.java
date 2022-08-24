@@ -42,7 +42,7 @@ import java.sql.SQLOutput;
 
 public class Menu extends DrawerBaseActivity {
     // views
-    Button scan_product, add_product, register, info, login, logout;
+    Button scan_product, add_product, register, login, logout;
     EditText username, password;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
@@ -87,15 +87,6 @@ public class Menu extends DrawerBaseActivity {
                 intentIntegrator.setCaptureActivity(Capture.class);
                 //init scan
                 intentIntegrator.initiateScan();
-            }
-        });
-
-        // info button
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent infoIntent = new Intent(Menu.this, Info.class);
-                startActivity(infoIntent);
             }
         });
 
@@ -267,7 +258,6 @@ public class Menu extends DrawerBaseActivity {
         login.setVisibility(View.VISIBLE);
         register = findViewById(R.id.regBtn);
         register.setVisibility(View.VISIBLE);
-        info = findViewById(R.id.infoBtn);
         add_product = findViewById(R.id.addBtn);
         add_product.setTextColor(Color.GRAY);
         scan_product = findViewById(R.id.scanBtn);

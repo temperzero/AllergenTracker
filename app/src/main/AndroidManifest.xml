@@ -13,23 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
+            android:name=".InfoAndExperts"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity
             android:name=".DrawerBaseActivity"
             android:exported="false" />
         <activity
             android:name=".Experts"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".Menu"
             android:exported="false" />
         <activity
             android:name=".Info"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".Register"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".LoadingScreen"
             android:exported="true">
@@ -42,7 +46,7 @@
         <activity
             android:name=".AddProduct"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".Capture"
             android:screenOrientation="portrait"

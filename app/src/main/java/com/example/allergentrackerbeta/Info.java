@@ -15,9 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Info extends AppCompatActivity {
-    Button back, next;
+
     TextView info, s_info, s_causes, b_text1, b_text2 ,b_text3, b_text4, b_text5, b_text6;
-    TextView d_header, d_header2, b_doctor1, b_doctor2, b_doctor3 ,p_text,b_prec;
+    TextView d_header, d_header2, b_doctor1, b_doctor2, b_doctor3 ,p_text, b_prec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,26 +74,6 @@ public class Info extends AppCompatActivity {
         b_prec.append("\u2022 היו זהירים במסעדות, תהיו בטוחים שהמלצר או השף מודעים  לכך שאתם לחלוטין לא יכולים לאכול את המנות שאתם אלרגיים אליהם. כמו כן אתם צריכים להיות בטוחים לחלוטין שהארוכה שאתם מזמינים לא מכילה אלרגניים בעייתיים עבורכם. כמו כן, וודאו כי שהאוכל אינו מוכן על גבי משטחים או כלים שהכילו כל סוג שהוא של אוכל שאתם אלרגיים אליו\n");
         b_prec.append("\u2022 תכננו ארוחות וחטיפים לפני היציאה מהבית. במידת הצורך, קחו צידנית עמוסה במזון נטול אלרגנים כשאתם נוסעים או הולכים לאירוע. אם אתם או ילדכם לא יכולים לקבל את העוגה או הקינוח במסיבה, הביאו פינוק מיוחד מאושר כדי שאף אחד לא ירגיש מחוץ לחגיגה\n");
 
-        back = findViewById(R.id.backBtn);
-        back.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
-
-        next = findViewById(R.id.nextBtn);
-        next.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent showIntent = new Intent(Info.this, Experts.class);
-                startActivity(showIntent);
-            }
-        });
 
         TextView Website = (TextView)findViewById(R.id.Website);
         Website.setMovementMethod(LinkMovementMethod.getInstance());

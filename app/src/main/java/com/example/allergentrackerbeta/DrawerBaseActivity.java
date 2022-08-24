@@ -8,7 +8,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -70,7 +69,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_logout: {
-                Toast.makeText(getApplicationContext(), "you clicked on logout!", Toast.LENGTH_SHORT).show();
+                Intent DisclaimerIntent = new Intent(this, InfoAndExperts.class);
+                startActivity(DisclaimerIntent);
+                overridePendingTransition(0,0);
+                //Toast.makeText(getApplicationContext(), "you clicked on logout!", Toast.LENGTH_SHORT).show();
                 break;
             }
             default:

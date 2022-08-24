@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_bg"
+    android:orientation="vertical"
+    tools:context=".InfoAndExperts">
+
+    <Button
+        android:id="@+id/InfoButton"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="281dp"
+        android:layout_marginBottom="22dp"
+        android:backgroundTint="#649866"
+        android:text="@string/genInfo"
+        android:textColor="#212121"
+        app:layout_constraintBottom_toTopOf="@+id/ExpertsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/ExpertsButton"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="256dp"
+        android:backgroundTint="#649866"
+        android:text="@string/Exp"
+        android:textColor="#212121"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InfoButton"
+        tools:ignore="TextContrastCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

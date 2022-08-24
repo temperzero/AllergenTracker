@@ -88,4 +88,7 @@
     <string name="UserName">שם משתמש</string>
     <string name="menu_open">פתח</string>
     <string name="menu_close">סגור</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="genInfo">מידע כללי</string>
+    <string name="Exp">מומחים</string>
 </resources>
