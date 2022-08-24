@@ -1,10 +1,15 @@
 package com.example.allergentrackerbeta;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +22,17 @@ public class Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        // action bar initialization
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // Set BackgroundDrawable
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        // set actionbar title
+        actionBar.setTitle("מידע כללי");
+
+        // text
         info = (TextView)findViewById(R.id.FoodAllergiesInfo);
         s_info = (TextView)findViewById(R.id.SymptomsInfo);
         s_causes = (TextView)findViewById(R.id.SymptomCausesText);
@@ -26,7 +42,7 @@ public class Info extends AppCompatActivity {
         b_text4 = (TextView)findViewById(R.id.bullet4text);
         b_text5 = (TextView)findViewById(R.id.bullet5text);
         b_text6 = (TextView)findViewById(R.id.bullet6text);
-        d_header = (TextView)findViewById(R.id.DoctorHeader );
+        d_header = (TextView)findViewById(R.id.DoctorHeader);
         d_header2 = (TextView)findViewById(R.id.DoctorHeader2);
         b_doctor1 = (TextView)findViewById(R.id.doctorbullet1);
         b_doctor2 = (TextView)findViewById(R.id.doctorbullet2);
@@ -81,5 +97,16 @@ public class Info extends AppCompatActivity {
 
         TextView Website = (TextView)findViewById(R.id.Website);
         Website.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    // back button enabled
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,10 +1,15 @@
 package com.example.allergentrackerbeta;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +25,14 @@ public class Experts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experts);
 
+        // action bar initialization
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // Set BackgroundDrawable
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        // set actionbar title
+        actionBar.setTitle("מומחים");
 
         clalit = findViewById(R.id.clalit);
         clalit.setOnClickListener(new View.OnClickListener()
@@ -74,5 +87,16 @@ public class Experts extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    // back button enabled
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

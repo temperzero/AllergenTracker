@@ -1,13 +1,17 @@
 package com.example.allergentrackerbeta;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +45,16 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // action bar initialization
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // Set BackgroundDrawable
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        // set actionbar title
+        actionBar.setTitle("הרשמה");
+
         registerBtn = findViewById(R.id.confirmBtn);
         username = (EditText) findViewById(R.id.userName);
         email = (EditText) findViewById(R.id.eMail);
@@ -187,5 +201,16 @@ public class Register extends AppCompatActivity {
                     }
                 }
             }
+        }
+
+        // back button enabled
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case android.R.id.home:
+                    this.finish();
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
     }

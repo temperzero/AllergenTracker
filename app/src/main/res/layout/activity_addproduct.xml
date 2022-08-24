@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     android:textAlignment="center"
     tools:context=".AddProduct">
 
@@ -12,7 +12,7 @@
         android:id="@+id/addpHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="69dp"
         android:fontFamily="monospace"
         android:includeFontPadding="true"
         android:text="@string/addproductH"
@@ -27,18 +27,19 @@
         android:id="@+id/OatsBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/oat"
         android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/RyeBox"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/SeaBox"
+        app:layout_constraintTop_toBottomOf="@+id/SeaBox" />
 
     <CheckBox
         android:id="@+id/RyeBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="14dp"
         android:text="@string/rye"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/MilkBox"
@@ -49,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="5dp"
         android:text="@string/barley"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/NutsBox"
@@ -60,9 +61,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginBottom="150dp"
         android:text="@string/seasame"
         android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/BarleyBox"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -72,7 +74,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="19dp"
         android:text="@string/scanH"
         app:layout_constraintStart_toStartOf="@+id/SeasameBox"
         app:layout_constraintTop_toBottomOf="@+id/SeasameBox" />
@@ -84,7 +86,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="19dp"
         android:text="@string/addH"
         app:layout_constraintStart_toEndOf="@+id/RyeBox"
         app:layout_constraintTop_toBottomOf="@+id/OatsBox" />
@@ -96,15 +99,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="68dp"
+        android:layout_marginTop="159dp"
         android:layout_marginEnd="68dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="158dp"
         android:hint="@string/barcodeH"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/ProductName"
+        app:layout_constraintBottom_toBottomOf="@+id/CompanyName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -114,7 +119,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="7dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="14dp"
         android:ems="10"
         android:hint="@string/companynameH"
         android:importantForAutofill="no"
@@ -122,7 +127,7 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/PeanutBox"
+        app:layout_constraintBottom_toTopOf="@+id/WheatBox"
         app:layout_constraintStart_toEndOf="@+id/Fishbox"
         tools:ignore="TextContrastCheck" />
 
@@ -132,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="29dp"
         android:ems="10"
         android:hint="@string/productnameH"
         android:importantForAutofill="no"
@@ -159,30 +164,30 @@
         android:id="@+id/MilkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/milk"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/WheatBox"
-        app:layout_constraintTop_toBottomOf="@+id/WheatBox" />
+        app:layout_constraintBottom_toTopOf="@+id/OatsBox"
+        app:layout_constraintEnd_toEndOf="@+id/WheatBox" />
 
     <CheckBox
         android:id="@+id/SeaBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="186dp"
+        android:layout_marginEnd="9dp"
         android:text="@string/seafruits"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/SoyBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/SoyBox" />
 
     <CheckBox
         android:id="@+id/SoyBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/soy"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/BarleyBox"
@@ -193,22 +198,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/nuts2"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/SeasameBox"
-        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+        app:layout_constraintBottom_toTopOf="@+id/SeasameBox"
+        app:layout_constraintStart_toStartOf="@+id/SeasameBox" />
 
     <CheckBox
         android:id="@+id/WheatBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/wheat"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/SeaBox"
-        app:layout_constraintTop_toBottomOf="@+id/CompanyName" />
+        app:layout_constraintBottom_toTopOf="@+id/MilkBox"
+        app:layout_constraintEnd_toEndOf="@+id/CompanyName" />
 
     <CheckBox
         android:id="@+id/EggsBox"
@@ -225,20 +230,20 @@
         android:id="@+id/Fishbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="5dp"
         android:layout_marginBottom="8dp"
         android:text="@string/fish"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/NutsBox"
-        app:layout_constraintEnd_toEndOf="@+id/NutsBox" />
+        app:layout_constraintStart_toStartOf="@+id/NutsBox" />
 
     <Button
         android:id="@+id/backBtn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="19dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="18dp"
         android:text="@string/backH"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addbutton" />

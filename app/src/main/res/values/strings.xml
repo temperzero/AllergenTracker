@@ -84,4 +84,8 @@
     <string name="backH">חזרה</string>
     <string name="registrationH">הרשמה</string>
     <string name="newuserH">יצירת משתמש</string>
+    <string name="leaf_icon">משתמש</string>
+    <string name="UserName">שם משתמש</string>
+    <string name="menu_open">פתח</string>
+    <string name="menu_close">סגור</string>
 </resources>

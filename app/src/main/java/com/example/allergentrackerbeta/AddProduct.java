@@ -1,7 +1,10 @@
 package com.example.allergentrackerbeta;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -9,8 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +38,15 @@ public class AddProduct extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproduct);
+
+        // action bar initialization
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        // Set BackgroundDrawable
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        // set actionbar title
+        actionBar.setTitle("הוספת מוצר");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -202,5 +215,16 @@ public class AddProduct extends AppCompatActivity
             //when result content is null
             Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // back button enabled
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

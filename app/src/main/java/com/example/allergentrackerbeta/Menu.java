@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,20 +40,26 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.sql.SQLOutput;
 
-public class Menu extends AppCompatActivity {
+public class Menu extends DrawerBaseActivity {
     // views
     Button scan_product, add_product, register, info, login, logout;
     EditText username, password;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
     TextView welcome;
+    TextView userNameText;
     // global variables
     boolean found = false; // used to check if product was found in DB
     FirebaseAuth fAuth;
+    // drawer menu binding
+    ActivityMenuBinding activityMenuBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        activityMenuBinding = ActivityMenuBinding.inflate(getLayoutInflater());
+        setContentView(activityMenuBinding.getRoot());
+        AllocateActivityTitle("מסך ראשי");
+        //setContentView(R.layout.activity_menu);
 
         //SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
         //SharedPreferences.Editor sedt = sp.edit ();
@@ -169,6 +176,8 @@ public class Menu extends AppCompatActivity {
         {
             repositionButtons(fAuth.getCurrentUser().getDisplayName());
             addButtonOn(true); // add product button enabled
+            // test
+            UpdateUserName(fAuth.getCurrentUser().getDisplayName());
         }
         else
             addButtonOn(false);  // add product button disabled
