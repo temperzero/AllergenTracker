@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
@@ -39,7 +41,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class Login extends AppCompatActivity {
 
     Button login, goToRegister, forgotPassword;
-    TextInputEditText username, password;
+    TextInputEditText mail, password;
 
     FirebaseAuth fAuth;
 
@@ -60,54 +62,25 @@ public class Login extends AppCompatActivity {
         // set actionbar title
         actionBar.setTitle("התחברות");
 
-        username = findViewById(R.id.login_username);
+        mail = findViewById(R.id.login_username);
         password = findViewById(R.id.login_password);
         login = findViewById(R.id.loginButton);
 
-        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
-        //username.setText(prefs.getString(USERNAME_KEY, ""));
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
-
         fAuth = FirebaseAuth.getInstance();
-
-        // init dialog box for testing
-        final Context context = this;
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
         // login button
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // dialog test
-                alertDialogBuilder.setTitle("פרטי משתמש");
-                alertDialogBuilder.setMessage("שם משתמש: " + username.getText().toString() + "\n סיסמה: " + password.getText().toString())
-                        .setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-                // end test
-
-
-                // the real deal
                 SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-                String string_username = username.getText().toString();
+                String string_username = mail.getText().toString();
                 String string_password = password.getText().toString();
-                if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
+                if(!(checkEmail(string_username, mail) && checkPassword(string_password, password)))
                     return;
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
                 loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString(USERNAME_KEY, string_username);
-                editor.putString(PASSWORD_KEY, string_password);
-                editor.apply();
             }
         });
-
     }
 
     // back button enabled
@@ -121,21 +94,76 @@ public class Login extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //check if password is valid
+    public static boolean checkPassword(String p, TextInputEditText password)
+    {
+        if(!p.isEmpty()) {
+            int length = p.length();
+            if (length < 5) {
+                password.setError("הסיסמא צריכה להכיל לפחות 6 תווים");
+                password.requestFocus();
+                return false;
+            }
+            else
+                return true;
+        }
+        else {
+            password.setError("שדה זה לא יכול להיות ריק");
+            password.requestFocus();
+            return false;
+        }
+    }
+
+    //check if email is valid
+    public static boolean checkEmail(String p, TextInputEditText email )
+    {
+        if(!p.isEmpty()) {
+            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
+                email.setError("כתובת מייל לא תקינה");
+                email.requestFocus();
+                return false;
+            }
+            else
+                return true;
+        }
+        else {
+            email.setError("שדה זה לא יכול להיות ריק");
+            email.requestFocus();
+            return false;
+        }
+    }
+
     class LoginCompleteListener implements OnCompleteListener<AuthResult> {
 
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()) {
                 FirebaseUser login = fAuth.getCurrentUser();
-                if (login.isEmailVerified()) {
-                    Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                if (login.isEmailVerified())
+                {
+                    Toast.makeText(getApplicationContext(),"ההתחברות בוצעה בהצלחה" , Toast.LENGTH_SHORT).show();
+                    SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+                    String string_username = mail.getText().toString();
+                    String string_password = password.getText().toString();
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString(USERNAME_KEY, string_username);
+                    editor.putString(PASSWORD_KEY, string_password);
+                    editor.apply();
+                    Intent MenuIntent = new Intent(Login.this, Menu.class);
+                    startActivity(MenuIntent);
                 }
-                else Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
+                }
             }
             else {
                 try { throw task.getException(); }
-                catch(FirebaseAuthInvalidCredentialsException e){ Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים", Toast.LENGTH_SHORT).show(); }
-                catch (Exception e) {}
+                catch(FirebaseAuthInvalidCredentialsException e)
+                {
+                    Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) { }
             }
         }
     }

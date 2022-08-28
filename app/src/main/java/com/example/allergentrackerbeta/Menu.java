@@ -38,6 +38,8 @@ public class Menu extends DrawerBaseActivity {
     EditText username, password;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
+    TextView welcome;
+    TextView userNameText;
     // global variables
     boolean found = false; // used to check if product was found in DB
     FirebaseAuth fAuth;
