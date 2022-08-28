@@ -1,9 +1,5 @@
 package com.example.allergentrackerbeta;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,33 +8,29 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import java.sql.SQLOutput;
 
 public class Menu extends DrawerBaseActivity {
     // views
@@ -46,8 +38,6 @@ public class Menu extends DrawerBaseActivity {
     EditText username, password;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
-    TextView welcome;
-    TextView userNameText;
     // global variables
     boolean found = false; // used to check if product was found in DB
     FirebaseAuth fAuth;
@@ -59,10 +49,6 @@ public class Menu extends DrawerBaseActivity {
         activityMenuBinding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(activityMenuBinding.getRoot());
         AllocateActivityTitle("מסך ראשי");
-        //setContentView(R.layout.activity_menu);
-
-        //SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0 );
-        //SharedPreferences.Editor sedt = sp.edit ();
 
         initViews(); // arrange Views
 
@@ -114,42 +100,6 @@ public class Menu extends DrawerBaseActivity {
                 editor.putString(USERNAME_KEY, string_username);
                 editor.putString(PASSWORD_KEY, string_password);
                 editor.apply();
-
-//                user.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        if (dataSnapshot.exists()) // username exists
-//                        {
-//                            User a = dataSnapshot.getValue(User.class);
-//                            if (a.uPass.equals(string_password)) // check if password is correct
-//                            {
-//                                repositionButtons(a.uName);
-//
-//                                addButtonOn(true);
-//
-//                                // User object into json and save in shared prefrences
-//                                Gson gson = new Gson();
-//                                String json = gson.toJson(a);
-//                                sedt.putString("User",json);
-//                                sedt.commit();
-//
-//                                Toast.makeText(getApplicationContext(), "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
-//                            }
-//                            else
-//                                Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
-//
-//                        } else //username doesn't exist
-//                        {
-//                            Toast.makeText(getApplicationContext(), "טעות בפרטי המשתמש", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError error) {
-//                        // Failed to read value
-//                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
             }
         });
 

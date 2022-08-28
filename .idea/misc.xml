@@ -27,10 +27,13 @@
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_drawer_base.xml" value="0.1" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_experts.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info_experts.xml" value="0.4" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_menu.xml" value="0.264" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_products_table.xml" value="0.264" />
-        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.2" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/header_menu.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/menu/main_menu.xml" value="0.264" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/mipmap-anydpi-v26/description.xml" value="0.14791666666666667" />

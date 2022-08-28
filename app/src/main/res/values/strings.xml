@@ -98,4 +98,9 @@
     <string name="leumit_image">leumit image</string>
     <string name="maccabi_image">maccabi image</string>
     <string name="yahel_image">yahel image</string>
+    <string name="login_slogan">התחברו בשביל להוסיף מוצרים חדשים למאגר!</string>
+    <string name="login_welcome_text">ברוכים השבים</string>
+    <string name="login_user_logo">user logo</string>
+    <string name="login_recovery">שחזור סיסמה</string>
+    <string name="login_register">משתמש חדש? הירשם</string>
 </resources>

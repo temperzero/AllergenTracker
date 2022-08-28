@@ -37,7 +37,7 @@ import com.google.gson.Gson;
 
 public class Register extends AppCompatActivity {
     // views
-    Button registerBtn, back;
+    Button registerBtn;
     EditText username, email, password;
     FirebaseAuth fAuth; //firebase Authentication instance
 
@@ -77,16 +77,6 @@ public class Register extends AppCompatActivity {
 
                 else // invalid user
                     Toast.makeText(getApplicationContext(), "ההרשמה נכשלה, נתונים לא תקינים", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        back = findViewById(R.id.backBtn2);
-        back.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
             }
         });
     }
