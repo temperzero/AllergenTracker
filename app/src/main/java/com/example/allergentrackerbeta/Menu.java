@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -94,7 +95,7 @@ public class Menu extends DrawerBaseActivity {
                 SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
                 String string_username = username.getText().toString();
                 String string_password = password.getText().toString();
-                if(!(Register.checkPassword(string_password,password ) &&  Register.checkEmail(string_username,username)))
+                if(!(checkPassword(string_password,password ) &&  checkEmail(string_username,username)))
                     return;
                 Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
                 loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
@@ -253,6 +254,43 @@ public class Menu extends DrawerBaseActivity {
                     Toast.makeText(getApplicationContext(), "על מנת להוסיף מוצרים למאגר, יש צורך בהרשמה או התחברות", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
+    }
+
+    //check if password is valid -- will be deleted later
+    public static boolean checkPassword(String p, TextView password)
+    {
+        if(!p.isEmpty()) {
+            int length = p.length();
+            if (length < 5) {
+                password.setError("הסיסמא צריכה להכיל לפחות 6 תווים");
+                password.requestFocus();
+                return false;
+            }
+            else
+                return true;
+        }
+        else {
+            password.setError("שדה זה לא יכול להיות ריק");
+            password.requestFocus();
+            return false;
+        }
+    }
+
+    //check if email is valid -- will be deleted later
+    public static boolean checkEmail(String p, TextView email )
+    {
+        if (!p.isEmpty()) {
+            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
+                email.setError("כתובת מייל לא תקינה");
+                email.requestFocus();
+                return false;
+            } else
+                return true;
+        } else {
+            email.setError("שדה זה לא יכול להיות ריק");
+            email.requestFocus();
+            return false;
         }
     }
 

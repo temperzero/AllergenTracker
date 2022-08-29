@@ -37,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class Login extends AppCompatActivity {
+public class Login extends LoginAndReg {
 
     Button login, goToRegister, forgotPassword;
     TextInputEditText mail, password;
@@ -104,45 +104,6 @@ public class Login extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    //check if password is valid
-    public static boolean checkPassword(String p, TextInputEditText password)
-    {
-        if(!p.isEmpty()) {
-            int length = p.length();
-            if (length < 5) {
-                password.setError("הסיסמא צריכה להכיל לפחות 6 תווים");
-                password.requestFocus();
-                return false;
-            }
-            else
-                return true;
-        }
-        else {
-            password.setError("שדה זה לא יכול להיות ריק");
-            password.requestFocus();
-            return false;
-        }
-    }
-
-    //check if email is valid
-    public static boolean checkEmail(String p, TextInputEditText email )
-    {
-        if(!p.isEmpty()) {
-            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
-                email.setError("כתובת מייל לא תקינה");
-                email.requestFocus();
-                return false;
-            }
-            else
-                return true;
-        }
-        else {
-            email.setError("שדה זה לא יכול להיות ריק");
-            email.requestFocus();
-            return false;
-        }
     }
 
     class LoginCompleteListener implements OnCompleteListener<AuthResult> {

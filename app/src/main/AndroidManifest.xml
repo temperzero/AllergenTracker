@@ -39,10 +39,6 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".Register"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity
             android:name=".LoadingScreen"
             android:exported="true">
             <intent-filter>
