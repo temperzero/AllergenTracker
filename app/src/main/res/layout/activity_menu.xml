@@ -61,7 +61,7 @@
         android:layout_height="48dp"
         android:layout_marginEnd="3dp"
         android:ems="10"
-        android:hint="@string/usernameH"
+        android:hint="@string/UserName"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColor="@color/common_google_signin_btn_text_dark_default"

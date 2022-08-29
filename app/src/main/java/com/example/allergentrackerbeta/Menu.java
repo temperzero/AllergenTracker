@@ -82,7 +82,7 @@ public class Menu extends DrawerBaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regIntent = new Intent(Menu.this, Register.class);
+                Intent regIntent = new Intent(Menu.this, SignUp.class);
                 startActivity(regIntent);
             }
         });

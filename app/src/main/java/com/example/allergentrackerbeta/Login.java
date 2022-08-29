@@ -23,7 +23,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 
-import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,6 +64,8 @@ public class Login extends AppCompatActivity {
         mail = findViewById(R.id.login_username);
         password = findViewById(R.id.login_password);
         login = findViewById(R.id.loginButton);
+        goToRegister = findViewById(R.id.loginToSignup);
+        forgotPassword = findViewById(R.id.passwordRecovery);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -81,6 +82,17 @@ public class Login extends AppCompatActivity {
                 loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
             }
         });
+
+        //go to register button
+        goToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent SignupIntent = new Intent(Login.this, SignUp.class);
+                startActivity(SignupIntent);
+            }
+        });
+
+
     }
 
     // back button enabled

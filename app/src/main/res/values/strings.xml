@@ -74,7 +74,7 @@
     <string name="addH">הוספת מוצר</string>
     <string name="scanH">סריקה</string>
     <string name="infoH">מידע</string>
-    <string name="usernameH">אימייל</string>
+    <string name="emailH">אימייל</string>
     <string name="passwordH">סיסמה</string>
     <string name="logoutH">התנתקות</string>
     <string name="productnameH">שם מוצר</string>
@@ -103,4 +103,7 @@
     <string name="login_user_logo">user logo</string>
     <string name="login_recovery">שחזור סיסמה</string>
     <string name="login_register">משתמש חדש? הירשם</string>
+    <string name="signup_welcome">ברוכים הבאים</string>
+    <string name="signup_slogan">הירשמו ותוכלו להוסיף מוצרים למאגר!</string>
+    <string name="signup_newuser">משתמש קיים? התחברות</string>
 </resources>

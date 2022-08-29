@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    tools:context=".SignUp"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".Login">
+    android:background="@color/white"
+    android:padding="20dp" >
 
     <ImageView
-        android:id="@+id/logo_image_login"
+        android:id="@+id/logo_image_signup"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/login_user_logo"
@@ -18,11 +18,11 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/logo_name_login"
+        android:id="@+id/logo_name_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="@string/login_welcome_text"
+        android:text="@string/signup_welcome"
         android:textSize="40sp"
         android:textColor="@color/black"
         android:layout_gravity="end"/>
@@ -31,7 +31,7 @@
         android:id="@+id/slogan_name_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_slogan"
+        android:text="@string/signup_slogan"
         android:textSize="18sp"
         android:layout_gravity="end"/>
 
@@ -43,23 +43,39 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/usernameLogin"
+            android:id="@+id/usernameSignUp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/emailH">
+            android:hint="@string/UserName">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_username"
+                android:id="@+id/signup_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordLogin"
+            android:id="@+id/emailSignUp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/emailH" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordSignUp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,44 +83,34 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_password"
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/passwordRecovery"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="5dp"
-            android:background="#00000000"
-            android:text="@string/login_recovery"
-            android:textColor="@color/black" />
-        <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/signupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login1"
+            android:text="@string/register1"
             android:background="@color/black"
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
 
         <Button
-            android:id="@+id/loginToSignup"
+            android:id="@+id/signup_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="5dp"
             android:background="#00000000"
-            android:text="@string/login_register"
-            android:textColor="@color/black"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:text="@string/signup_newuser"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
