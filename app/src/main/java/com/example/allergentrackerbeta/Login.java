@@ -124,6 +124,7 @@ public class Login extends AppCompatActivity {
                 }
                 else
                 {
+                    fAuth.signOut();
                     Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
                 }
             }

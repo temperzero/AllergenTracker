@@ -35,13 +35,11 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends DrawerBaseActivity {
     // views
-    Button scan_product, logout;
+    Button scan_product;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
-    TextView welcome;
     // global variables
     boolean found = false; // used to check if product was found in DB
-    FirebaseAuth fAuth;
     // drawer menu binding
     ActivityMenuBinding activityMenuBinding;
     @Override
@@ -51,13 +49,7 @@ public class Menu extends DrawerBaseActivity {
         setContentView(activityMenuBinding.getRoot());
         AllocateActivityTitle("מסך ראשי");
 
-        initViews(); // arrange Views
-
-        //SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
-        //username.setText(prefs.getString(USERNAME_KEY, ""));
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        fAuth = FirebaseAuth.getInstance();
+        scan_product = findViewById(R.id.scanBtn);
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
@@ -78,20 +70,13 @@ public class Menu extends DrawerBaseActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initViews(); // arrange Views
-                fAuth.signOut();
-            }
-        });
-
         if(fAuth.getCurrentUser() != null) // if user is logged on from previous app use
-        {
-            repositionButtons(fAuth.getCurrentUser().getDisplayName());
-            // test
-            UpdateUserName(fAuth.getCurrentUser().getDisplayName());
-        }
+            if(fAuth.getCurrentUser().isEmailVerified())
+                UpdateUserTags(fAuth.getCurrentUser().getDisplayName(), fAuth.getCurrentUser().getEmail());
+            else
+                UpdateUserTags("אורח", "");
+        else
+            UpdateUserTags("אורח", "");
     }
 
     // activated after scanning a barcode in Scan button
@@ -161,24 +146,5 @@ public class Menu extends DrawerBaseActivity {
         else
             //when result content is null
             Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
-    }
-
-    // starting views positioning
-    public void initViews()
-    {
-        welcome = findViewById(R.id.userText);
-        welcome.setVisibility(View.INVISIBLE);
-        logout = findViewById(R.id.logoutBtn);
-        logout.setVisibility(View.INVISIBLE);
-        scan_product = findViewById(R.id.scanBtn);
-    }
-
-    // position the views after logging in
-    public void repositionButtons(String uName)
-    {
-        logout.setVisibility(View.VISIBLE);
-        welcome.setVisibility(View.VISIBLE);
-        welcome.setText("ברוך הבא " + uName);
-        welcome.setTextColor(Color.WHITE);
     }
 }

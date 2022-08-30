@@ -16,11 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
-    TextView userNameText;
+    TextView userNameText, emailText;
+    FirebaseAuth fAuth;
 
     @Override
     public void setContentView(View view) {
@@ -37,11 +39,13 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         navigationView.setNavigationItemSelectedListener(this);
         // saving the view id of the drawer text
         userNameText = navigationView.getHeaderView(0).findViewById(R.id.HeaderUserText);
+        emailText = navigationView.getHeaderView(0).findViewById(R.id.HeaderEmailText);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.menu_open,R.string.menu_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        fAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -69,7 +73,7 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 overridePendingTransition(0,0);
                 break;
             }
-            case R.id.nav_register: {
+            case R.id.nav_signin: {
                 Intent LoginIntent = new Intent(this, Login.class);
                 startActivity(LoginIntent);
                 overridePendingTransition(0,0);
@@ -82,7 +86,18 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_logout: {
-                Toast.makeText(getApplicationContext(), "nothing happens", Toast.LENGTH_SHORT).show();
+                if(fAuth.getCurrentUser() != null)
+                {
+                    fAuth.signOut();
+                    Intent logoutIntent = new Intent(this, Menu.class);
+                    startActivity(logoutIntent);
+                    overridePendingTransition(0,0);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "משתמש כבר מנותק - בהמשך אני אוריד את האייקון", Toast.LENGTH_SHORT).show();
+                }
+                break;
             }
             default:
             {
@@ -99,12 +114,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         }
     }
 
-    protected void UpdateUserName(String userName)
+    protected void UpdateUserTags(String userName, String email)
     {
-        if(userNameText == null)
-            Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
-        else
-            userNameText.setText("ברוך הבא " + userName);
+            userNameText.setText(userName);
+            emailText.setText(email);
     }
 
 }

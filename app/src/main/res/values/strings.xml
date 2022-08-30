@@ -84,7 +84,6 @@
     <string name="backH">חזרה</string>
     <string name="registrationH">הרשמה</string>
     <string name="newuserH">יצירת משתמש</string>
-    <string name="leaf_icon">משתמש</string>
     <string name="UserName">שם משתמש</string>
     <string name="menu_open">פתח</string>
     <string name="menu_close">סגור</string>
@@ -111,4 +110,13 @@
     <string name="reset_button_text">איפוס סיסמה</string>
     <string name="reset_main_text">איפוס סיסמה</string>
     <string name="reset_explanation">הזינו את האימייל של החשבון ועקבו אחר ההוראות במייל</string>
+    <string name="menu_mainpage">מסך ראשי</string>
+    <string name="menu_addproduct">הוספת מוצר</string>
+    <string name="menu_info">מידע נוסף</string>
+    <string name="menu_logout">יציאה מהמשתמש</string>
+    <string name="menu_register">התחברות</string>
+    <string name="menu_register2">הרשמה</string>
+    <string name="menu_group1">פעולות</string>
+    <string name="menu_group2">משתמש</string>
+    <string name="guestH">אורח</string>
 </resources>
