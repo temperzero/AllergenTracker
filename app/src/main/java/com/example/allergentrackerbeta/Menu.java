@@ -125,14 +125,18 @@ public class Menu extends DrawerBaseActivity {
                         alertDialogBuilder.setTitle("מוצר לא נמצא");
                         alertDialogBuilder.setMessage("האם תרצו להוסיף את המוצר ידנית?")
 
-                                .setCancelable(false).setPositiveButton("כן", new DialogInterface.OnClickListener() {
+                                .setCancelable(false).setPositiveButton("הוסף", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
+                                SharedPreferences.Editor sedt = sp.edit();
+                                sedt.putString("barcode", intentResult.getContents());
+                                sedt.commit();
                                 Intent addProduct = new Intent(Menu.this, AddProduct.class);
                                 startActivity(addProduct);
                             }
                         })
-                                .setNegativeButton("לא", new DialogInterface.OnClickListener() {
+                                .setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.cancel();

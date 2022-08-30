@@ -1,6 +1,7 @@
 package com.example.allergentrackerbeta;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -51,6 +52,15 @@ public class AddProduct extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         btScan = findViewById(R.id.bt_scan);
+
+        TextView bc = (TextView)findViewById(R.id.barcode);
+        SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
+        SharedPreferences.Editor sedt = sp.edit();
+        String getBarcode = sp.getString("barcode",null);
+        bc.setText(getBarcode);
+        sedt.putString("barcode", "");
+        sedt.commit();
+
         // scan button click event
         btScan.setOnClickListener(new View.OnClickListener()
         {
@@ -83,18 +93,19 @@ public class AddProduct extends AppCompatActivity
         });
 
         DatabaseReference products = database.getReference("Products");
-        products.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            num = (int) dataSnapshot.getChildrenCount();
-        }
-        @Override
-        public void onCancelled(DatabaseError error)
+        products.addValueEventListener(new ValueEventListener()
         {
-            // Failed to read value
-            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
-        }
-    });
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                num = (int) dataSnapshot.getChildrenCount();
+            }
+            @Override
+            public void onCancelled(DatabaseError error)
+            {
+                // Failed to read value
+                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // add to database button click event
         addToDB = findViewById(R.id.addbutton);
