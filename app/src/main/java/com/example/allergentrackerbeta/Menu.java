@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -89,7 +90,6 @@ public class Menu extends DrawerBaseActivity {
         //dialog initialize
         final Context context = this;
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-
         super.onActivityResult(requestCode, resultCode, data);
         //initialize intent result
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
@@ -123,13 +123,21 @@ public class Menu extends DrawerBaseActivity {
                     {
                         // set dialog box
                         alertDialogBuilder.setTitle("מוצר לא נמצא");
-                        alertDialogBuilder.setMessage("לחץ אישור ליציאה")
-                                .setCancelable(false).setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+                        alertDialogBuilder.setMessage("האם תרצו להוסיף את המוצר ידנית?")
+
+                                .setCancelable(false).setPositiveButton("כן", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
+                                Intent addProduct = new Intent(Menu.this, AddProduct.class);
+                                startActivity(addProduct);
                             }
-                        });
+                        })
+                                .setNegativeButton("לא", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
                     }
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();

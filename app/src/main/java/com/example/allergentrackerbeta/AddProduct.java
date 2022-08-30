@@ -60,7 +60,7 @@ public class AddProduct extends AppCompatActivity
                 //init intent integrator
                 IntentIntegrator intentIntegrator = new IntentIntegrator(AddProduct.this);
                 //set prompt text -- show message
-                intentIntegrator.setPrompt("לפלאש השתמש בכפתור הווליום");
+                intentIntegrator.setPrompt("לפלאש השתמש בכפתור הגברת עוצמת הקול");
                 //set beep
                 intentIntegrator.setBeepEnabled(true);
                 //locked orientation
