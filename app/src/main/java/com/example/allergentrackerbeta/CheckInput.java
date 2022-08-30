@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginAndReg  extends AppCompatActivity {
+public class CheckInput {
 
-    // class contains the check input functions for SignUp and Login classes
+    // class contains the check input functions for SignUp, Login and PasswordRecovery classes
 
     //check if username is valid
-    public boolean checkUsername(String p, TextInputEditText username)
+    public static boolean checkUsername(String p, TextInputEditText username)
     {
         if(!p.isEmpty()) {
             if (!p.matches("^[a-zA-Z0-9._-]{3,}$")) {

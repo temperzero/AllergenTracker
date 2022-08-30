@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class SignUp extends LoginAndReg {
+public class SignUp extends AppCompatActivity {
 
     Button login, signup;
     TextInputEditText username, email, password;
@@ -80,7 +80,7 @@ public class SignUp extends LoginAndReg {
     // check whether all user credentials are valid
     public boolean validateUser(String username, String password, String email)
     {
-        return (checkUsername(username, this.username) && checkPassword(password, this.password) && checkEmail(email, this.email));
+        return (CheckInput.checkUsername(username, this.username) && CheckInput.checkEmail(email, this.email) && CheckInput.checkPassword(password, this.password) );
     }
 
     //registration process

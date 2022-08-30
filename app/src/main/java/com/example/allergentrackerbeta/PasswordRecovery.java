@@ -4,10 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,14 +16,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 
 public class PasswordRecovery extends AppCompatActivity {
 
-    private TextInputEditText email, password;
+    private TextInputEditText email;
     private Button send;
     private FirebaseAuth profile;
 
@@ -46,18 +41,14 @@ public class PasswordRecovery extends AppCompatActivity {
         actionBar.setTitle("איפוס סיסמה");
 
         email = findViewById(R.id.reset_email);
-        password = findViewById(R.id.reset_password);
         send = findViewById(R.id.sendButton);
 
         send.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         String string_email = email.getText().toString();
-                                        //String string_username = password.getText().toString();
-
-                                        if (!LoginAndReg.checkEmail(string_email, email))
+                                        if (!CheckInput.checkEmail(string_email, email))
                                             return;
-                                        Toast.makeText(getApplicationContext(), "yarosh sika", Toast.LENGTH_SHORT).show();
                                         resetPassword(string_email);
                                     }
 
@@ -92,6 +83,7 @@ public class PasswordRecovery extends AppCompatActivity {
                 //FirebaseUser login = fAuth.getCurrentUser();
                 Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(PasswordRecovery.this, Menu.class);
+                startActivity(intent);
             }
             else {
                 try { throw task.getException(); }
@@ -99,7 +91,10 @@ public class PasswordRecovery extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(), "בעיה בשליחת קישור לאיפוס הסיסמה לכתובת האימייל", Toast.LENGTH_SHORT).show();
                 }
-                catch (Exception e) { }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "בעיה בשליחת קישור לאיפוס הסיסמה לכתובת האימייל2", Toast.LENGTH_SHORT).show();
+                }
             }
         }
 
