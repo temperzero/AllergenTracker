@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -68,11 +69,20 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 overridePendingTransition(0,0);
                 break;
             }
-            case R.id.nav_logout: {
+            case R.id.nav_register: {
                 Intent LoginIntent = new Intent(this, Login.class);
                 startActivity(LoginIntent);
                 overridePendingTransition(0,0);
                 break;
+            }
+            case R.id.nav_signup: {
+                Intent registerIntent = new Intent(this, SignUp.class);
+                startActivity(registerIntent);
+                overridePendingTransition(0,0);
+                break;
+            }
+            case R.id.nav_logout: {
+                Toast.makeText(getApplicationContext(), "nothing happens", Toast.LENGTH_SHORT).show();
             }
             default:
             {

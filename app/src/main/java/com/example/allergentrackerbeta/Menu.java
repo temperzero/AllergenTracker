@@ -35,7 +35,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends DrawerBaseActivity {
     // views
-    Button scan_product, add_product, logout;
+    Button scan_product, logout;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
     TextView welcome;
@@ -78,12 +78,10 @@ public class Menu extends DrawerBaseActivity {
             }
         });
 
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 initViews(); // arrange Views
-                addButtonOn(false);
                 fAuth.signOut();
             }
         });
@@ -91,12 +89,9 @@ public class Menu extends DrawerBaseActivity {
         if(fAuth.getCurrentUser() != null) // if user is logged on from previous app use
         {
             repositionButtons(fAuth.getCurrentUser().getDisplayName());
-            addButtonOn(true); // add product button enabled
             // test
             UpdateUserName(fAuth.getCurrentUser().getDisplayName());
         }
-        else
-            addButtonOn(false);  // add product button disabled
     }
 
     // activated after scanning a barcode in Scan button
@@ -175,44 +170,15 @@ public class Menu extends DrawerBaseActivity {
         welcome.setVisibility(View.INVISIBLE);
         logout = findViewById(R.id.logoutBtn);
         logout.setVisibility(View.INVISIBLE);
-        add_product = findViewById(R.id.addBtn);
-        add_product.setTextColor(Color.GRAY);
         scan_product = findViewById(R.id.scanBtn);
     }
 
     // position the views after logging in
     public void repositionButtons(String uName)
     {
-        welcome.setVisibility(View.VISIBLE);
         logout.setVisibility(View.VISIBLE);
-
+        welcome.setVisibility(View.VISIBLE);
         welcome.setText("ברוך הבא " + uName);
         welcome.setTextColor(Color.WHITE);
-
-        add_product.setTextColor(Color.BLACK);
-    }
-
-    // add button on/off
-    public void addButtonOn(boolean on)
-    {
-        if(on)
-        {
-            add_product.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent addIntent = new Intent(Menu.this, AddProduct.class);
-                    startActivity(addIntent);
-                }
-            });
-        }
-        else
-            {
-            add_product.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(), "על מנת להוסיף מוצרים למאגר, יש צורך בהרשמה או התחברות", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
     }
 }

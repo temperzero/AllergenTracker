@@ -13,6 +13,12 @@
         <item android:id="@+id/nav_info" android:title="מידע נוסף"
             android:icon="@drawable/ic_baseline_info_24" />
 
+        <item android:id="@+id/nav_register" android:title="התחברות"
+            android:icon="@drawable/ic_baseline_login_24" />
+
+        <item android:id="@+id/nav_signup" android:title="הרשמה"
+            android:icon="@drawable/ic_baseline_cake_24" />
+
         <item android:id="@+id/nav_logout" android:title="יציאה מהמשתמש"
             android:icon="@drawable/logout" />
 
