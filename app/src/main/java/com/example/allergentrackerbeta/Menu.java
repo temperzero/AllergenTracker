@@ -35,12 +35,10 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends DrawerBaseActivity {
     // views
-    Button scan_product, add_product, register, login, logout;
-    EditText username, password;
+    Button scan_product, add_product, logout;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
     TextView welcome;
-    TextView userNameText;
     // global variables
     boolean found = false; // used to check if product was found in DB
     FirebaseAuth fAuth;
@@ -55,9 +53,10 @@ public class Menu extends DrawerBaseActivity {
 
         initViews(); // arrange Views
 
-        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
-        username.setText(prefs.getString(USERNAME_KEY, ""));
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE); // PreferenceManager.getDefaultSharedPreferences(this);
+        //username.setText(prefs.getString(USERNAME_KEY, ""));
+        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         fAuth = FirebaseAuth.getInstance();
 
         //scan button
@@ -79,39 +78,12 @@ public class Menu extends DrawerBaseActivity {
             }
         });
 
-        //register button
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent regIntent = new Intent(Menu.this, SignUp.class);
-                startActivity(regIntent);
-            }
-        });
-
-        // login button
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-                String string_username = username.getText().toString();
-                String string_password = password.getText().toString();
-                if(!(checkPassword(string_password,password ) &&  checkEmail(string_username,username)))
-                    return;
-                Task<AuthResult> loginTask = fAuth.signInWithEmailAndPassword(string_username, string_password);
-                loginTask.addOnCompleteListener((Activity) view.getContext(), new LoginCompleteListener());
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString(USERNAME_KEY, string_username);
-                editor.putString(PASSWORD_KEY, string_password);
-                editor.apply();
-            }
-        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 initViews(); // arrange Views
                 addButtonOn(false);
-                password.getText().clear();
                 fAuth.signOut();
             }
         });
@@ -199,18 +171,10 @@ public class Menu extends DrawerBaseActivity {
     // starting views positioning
     public void initViews()
     {
-        username = findViewById(R.id.loginUsername);
-        username.setVisibility(View.VISIBLE);
-        password = findViewById(R.id.loginPassword);
-        password.setVisibility(View.VISIBLE);
         welcome = findViewById(R.id.userText);
         welcome.setVisibility(View.INVISIBLE);
         logout = findViewById(R.id.logoutBtn);
         logout.setVisibility(View.INVISIBLE);
-        login = findViewById(R.id.loginBtn);
-        login.setVisibility(View.VISIBLE);
-        register = findViewById(R.id.regBtn);
-        register.setVisibility(View.VISIBLE);
         add_product = findViewById(R.id.addBtn);
         add_product.setTextColor(Color.GRAY);
         scan_product = findViewById(R.id.scanBtn);
@@ -221,11 +185,6 @@ public class Menu extends DrawerBaseActivity {
     {
         welcome.setVisibility(View.VISIBLE);
         logout.setVisibility(View.VISIBLE);
-
-        login.setVisibility(View.INVISIBLE);
-        register.setVisibility(View.INVISIBLE);
-        username.setVisibility(View.INVISIBLE);
-        password.setVisibility(View.INVISIBLE);
 
         welcome.setText("ברוך הבא " + uName);
         welcome.setTextColor(Color.WHITE);
@@ -254,64 +213,6 @@ public class Menu extends DrawerBaseActivity {
                     Toast.makeText(getApplicationContext(), "על מנת להוסיף מוצרים למאגר, יש צורך בהרשמה או התחברות", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-    }
-
-    //check if password is valid -- will be deleted later
-    public static boolean checkPassword(String p, TextView password)
-    {
-        if(!p.isEmpty()) {
-            int length = p.length();
-            if (length < 5) {
-                password.setError("הסיסמא צריכה להכיל לפחות 6 תווים");
-                password.requestFocus();
-                return false;
-            }
-            else
-                return true;
-        }
-        else {
-            password.setError("שדה זה לא יכול להיות ריק");
-            password.requestFocus();
-            return false;
-        }
-    }
-
-    //check if email is valid -- will be deleted later
-    public static boolean checkEmail(String p, TextView email )
-    {
-        if (!p.isEmpty()) {
-            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
-                email.setError("כתובת מייל לא תקינה");
-                email.requestFocus();
-                return false;
-            } else
-                return true;
-        } else {
-            email.setError("שדה זה לא יכול להיות ריק");
-            email.requestFocus();
-            return false;
-        }
-    }
-
-    class LoginCompleteListener implements OnCompleteListener<AuthResult> {
-
-        @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-            if(task.isSuccessful()) {
-                FirebaseUser login = fAuth.getCurrentUser();
-                if (login.isEmailVerified()) {
-                    repositionButtons(login.getDisplayName());
-                    addButtonOn(true);
-                    Toast.makeText(getApplicationContext(), "ההתחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
-                }
-                else Toast.makeText(getApplicationContext(), "יש לאמת את המשתמש לפני התחברות", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                try { throw task.getException(); }
-                catch(FirebaseAuthInvalidCredentialsException e){ Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים", Toast.LENGTH_SHORT).show(); }
-                catch (Exception e) {}
-            }
         }
     }
 }
