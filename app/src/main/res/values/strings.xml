@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Allergen Tracker - Beta</string>
+    <string name="app_name">Allergen Tracker</string>
     <string name="scan">Scan</string>
     <string name="add_to_db">Add to DB</string>
     <string name="barcode_number">barcode number</string>
