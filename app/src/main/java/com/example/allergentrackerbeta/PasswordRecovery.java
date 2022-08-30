@@ -82,8 +82,8 @@ public class PasswordRecovery extends AppCompatActivity {
             if(task.isSuccessful()) {
                 //FirebaseUser login = fAuth.getCurrentUser();
                 Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PasswordRecovery.this, Menu.class);
-                startActivity(intent);
+                Intent menu = new Intent(PasswordRecovery.this, Menu.class);
+                startActivity(menu);
             }
             else {
                 try { throw task.getException(); }

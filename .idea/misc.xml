@@ -26,7 +26,7 @@
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_disclaimer.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_drawer_base.xml" value="0.2" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_experts.xml" value="0.4" />
-        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info.xml" value="0.264" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info_experts.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_login.xml" value="0.536" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -36,6 +36,7 @@
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_sign_up.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.2" />
+        <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.1" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/header_menu.xml" value="0.4" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/menu/main_menu.xml" value="0.264" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTracker/app/src/main/res/mipmap-anydpi-v26/description.xml" value="0.14791666666666667" />
@@ -47,10 +48,16 @@
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_products_table.xml" value="0.11203703703703703" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/item.xml" value="0.536" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_addproduct.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_drawer_base.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_experts.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_menu.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_password_recovery.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_register.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_sign_up.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/header_menu.xml" value="0.18704710144927536" />
       </map>
     </option>
   </component>
