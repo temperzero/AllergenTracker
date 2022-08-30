@@ -106,4 +106,9 @@
     <string name="signup_welcome">ברוכים הבאים</string>
     <string name="signup_slogan">הירשמו ותוכלו להוסיף מוצרים למאגר!</string>
     <string name="signup_newuser">משתמש קיים? התחברות</string>
+    <string name="reset_email">הכנס מייל</string>
+    <string name="reset_enter_email">הכניסו את האימייל של החשבון שלכם</string>
+    <string name="reset_button_text">איפוס סיסמה</string>
+    <string name="reset_main_text">איפוס סיסמה</string>
+    <string name="reset_explanation">הזינו את האימייל של החשבון ועקבו אחר ההוראות במייל</string>
 </resources>

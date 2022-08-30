@@ -92,6 +92,15 @@ public class Login extends LoginAndReg {
             }
         });
 
+        //go to register button
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent passwordIntent = new Intent(Login.this, PasswordRecovery.class);
+                startActivity(passwordIntent);
+            }
+        });
+
 
     }
 

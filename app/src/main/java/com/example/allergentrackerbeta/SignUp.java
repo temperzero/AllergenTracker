@@ -26,7 +26,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends LoginAndReg {
 
-    Button login, signup;
+    Button login, signup, recover;
     TextInputEditText username, email, password;
     FirebaseAuth fAuth; //firebase Authentication instance
 
@@ -46,6 +46,7 @@ public class SignUp extends LoginAndReg {
 
         login = findViewById(R.id.signup_login);
         signup = findViewById(R.id.signupButton);
+        recover = findViewById(R.id.passwordRecovery);
         username = findViewById(R.id.signup_username);
         email = findViewById(R.id.signup_email);
         password = findViewById(R.id.signup_password);
@@ -56,6 +57,14 @@ public class SignUp extends LoginAndReg {
             public void onClick(View view) {
                 Intent LoginIntent = new Intent(SignUp.this, Login.class);
                 startActivity(LoginIntent);
+            }
+        });
+
+        recover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent recoverIntent = new Intent(SignUp.this, PasswordRecovery.class);
+                startActivity(recoverIntent);
             }
         });
 
