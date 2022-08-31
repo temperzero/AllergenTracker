@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="@drawable/green_bg"
     tools:context=".Info">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
                 android:id="@+id/FoodAllergiesInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2088d1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/SymptomsHeader"
@@ -47,50 +48,50 @@
                 android:id="@+id/SymptomsInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/SymptomCausesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/bullet1text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/bullet2text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/bullet3text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/bullet4text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288D1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/bullet5text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0299d1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/bullet6text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
@@ -106,35 +107,35 @@
                 android:id="@+id/DoctorHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/DoctorHeader2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <TextView
                 android:id="@+id/doctorbullet1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#0288d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/doctorbullet2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2088d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/Doctorbullet3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2088d1" />
+                android:textColor="#0A395A" />
 
             <TextView
                 android:id="@+id/PrecautionHeader"
@@ -148,14 +149,14 @@
                 android:id="@+id/PrecautionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2088d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/precautionbullets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2088d1"
+                android:textColor="#0A395A"
                 tools:ignore="TextContrastCheck" />
 
             <TextView
