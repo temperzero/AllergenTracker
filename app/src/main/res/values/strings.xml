@@ -119,4 +119,8 @@
     <string name="menu_group1">פעולות</string>
     <string name="menu_group2">משתמש</string>
     <string name="guestH">אורח</string>
+    <string name="contact">צרו קשר</string>
+    <string name="contact_topic">נושא:</string>
+    <string name="contact_contents">מלל:</string>
+    <string name="contact_send">שליחה</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.core.view.GravityCompat;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -90,6 +91,19 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 Intent infoNexpertsIntent = new Intent(this, InfoAndExperts.class);
                 startActivity(infoNexpertsIntent);
                 overridePendingTransition(0,0);
+                break;
+            }
+            case R.id.nav_contact: {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:" + "allergentracker@gmail.com"));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "string_subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "string_msg");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                try {
+                    startActivity(Intent.createChooser(intent, "בחר אפליקציה לשליחת מייל..."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(), "לא נמצאו אפליקציות מתאימות", Toast.LENGTH_SHORT).show();
+                }
                 break;
             }
             case R.id.nav_signin: {
