@@ -36,14 +36,14 @@ public class LoadingScreen extends AppCompatActivity {
             }
         }).start();
 
-        ImageView aniView = (ImageView)findViewById(R.id.gifImageView);
-        ObjectAnimator mover = ObjectAnimator.ofFloat(aniView, "translationY", 600f, 0f);
-        mover.setDuration(3000);
+        //ImageView aniView = (ImageView)findViewById(R.id.gifImageView);
+        //ObjectAnimator mover = ObjectAnimator.ofFloat(aniView, "translationY", 600f, 0f);
+        //mover.setDuration(3000);
         //ObjectAnimator fadeIn = ObjectAnimator.ofFloat(aniView, "alpha", 0f, 1f);
         //fadeIn.setDuration(3000);
-        AnimatorSet animatorSet = new AnimatorSet();
+        //AnimatorSet animatorSet = new AnimatorSet();
         //animatorSet.play(fadeIn).with(mover);
-        animatorSet.play(mover);
-        animatorSet.start();
+        //animatorSet.play(mover);
+        //animatorSet.start();
     }
 }

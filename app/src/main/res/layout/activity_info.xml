@@ -173,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/websiteclick"
                 android:textColor="@color/white"
-                android:textColorLink="@color/white" />
+                android:textColorLink="#3F51B5" />
 
         </LinearLayout>
     </ScrollView>

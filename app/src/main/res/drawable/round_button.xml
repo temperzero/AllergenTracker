@@ -3,7 +3,7 @@
     <item android:state_pressed="false">
 
         <shape android:shape="oval">
-            <solid android:color="#26abff"/>
+            <solid android:background="@drawable/scanbtn"/>
         </shape>
 
     </item>
