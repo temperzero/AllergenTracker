@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2"
+    android:background="#d9f1ff"
     android:textDirection="rtl"
     tools:context=".Menu">
 
     <Button
         android:id="@+id/scanBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="97dp"
+        android:layout_height="100dp"
+        android:background="@drawable/round_button"
         android:text="@string/scanH"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
