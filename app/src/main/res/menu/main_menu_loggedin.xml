@@ -31,6 +31,9 @@
 
             <group android:checkableBehavior="single">
 
+                <item android:id="@+id/nav_reset" android:title="@string/reset_main_text"
+                    android:icon="@drawable/ic_reset_pass_vec" />
+
                 <item android:id="@+id/nav_logout" android:title="@string/menu_logout"
                     android:icon="@drawable/logout" />
 

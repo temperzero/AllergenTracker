@@ -44,24 +44,22 @@ public class PasswordRecovery extends AppCompatActivity {
         send = findViewById(R.id.sendButton);
 
         send.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        String string_email = email.getText().toString();
-                                        if (!CheckInput.checkEmail(string_email, email))
-                                            return;
-                                        resetPassword(string_email);
-                                    }
-
-                                }
-        );
+            @Override
+            public void onClick(View view) {
+                String string_email = email.getText().toString();
+                if (!CheckInput.checkEmail(string_email, email))
+                    return;
+                resetPassword(string_email);
+            }
+        });
     }
 
-        private void resetPassword(String email)
-        {
-            profile = FirebaseAuth.getInstance();
-            Task<Void> resetPassTask = profile.sendPasswordResetEmail(email);
-            resetPassTask.addOnCompleteListener(new ForgotPassCompleteListener());
-        }
+    private void resetPassword(String email)
+    {
+        profile = FirebaseAuth.getInstance();
+        Task<Void> resetPassTask = profile.sendPasswordResetEmail(email);
+        resetPassTask.addOnCompleteListener(new ForgotPassCompleteListener());
+    }
 
 
     // back button enabled

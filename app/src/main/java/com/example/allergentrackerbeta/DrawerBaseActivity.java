@@ -16,8 +16,11 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
 public class DrawerBaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,10 +53,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
 
         fAuth = FirebaseAuth.getInstance();
 
-        // if user is logged in
-        //boolean loggedIn = false;
-        //if(fAuth.getCurrentUser() != null)
-        //    loggedIn = true;
         LoggedInMenu(fAuth.getCurrentUser() != null); // true is user is logged in
     }
 
@@ -105,6 +104,12 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 overridePendingTransition(0,0);
                 break;
             }
+            case R.id.nav_reset: {
+                String email = fAuth.getCurrentUser().getEmail().toString();
+                Task<Void> resetPassTask = fAuth.sendPasswordResetEmail(email);
+                resetPassTask.addOnCompleteListener(new DrawerBaseActivity.ForgotPassCompleteListener());
+                break;
+            }
             case R.id.nav_logout: {
                 fAuth.signOut();
                 Intent logoutIntent = new Intent(this, Menu.class);
@@ -137,16 +142,41 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     {
         if(isLogged)
         {
-            Toast.makeText(getApplicationContext(), "mehubar", Toast.LENGTH_SHORT).show();
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.main_menu_loggedin);
         }
         else
         {
-            Toast.makeText(getApplicationContext(), "not mehubar", Toast.LENGTH_SHORT).show();
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.main_menu);
         }
+    }
+
+
+    class ForgotPassCompleteListener implements OnCompleteListener<Void> {
+
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            if(task.isSuccessful()) {
+                //FirebaseUser login = fAuth.getCurrentUser();
+                Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
+                fAuth.signOut();
+                Intent menu = new Intent(DrawerBaseActivity.this, Menu.class);
+                startActivity(menu);
+            }
+            else {
+                try { throw task.getException(); }
+                catch(FirebaseAuthInvalidCredentialsException e)
+                {
+                    Toast.makeText(getApplicationContext(), "בעיה בשליחת קישור לאיפוס הסיסמה לכתובת האימייל", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "בעיה בשליחת קישור לאיפוס הסיסמה לכתובת האימייל2", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
     }
 
 }
