@@ -13,13 +13,13 @@
         android:layout_width="143dp"
         android:layout_height="0dp"
         android:layout_marginTop="31dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="35dp"
         android:background="#00325523"
         android:hapticFeedbackEnabled="false"
         android:text="חיפוש מוצר"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/searchProductBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,30 +28,46 @@
         android:id="@+id/searchProduct"
         android:layout_width="295dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/search_layout"
         android:ems="10"
-        android:hint="הקלד שם מוצר לחיפוש "
-        android:textColorHint="#546E7A"
+        android:hint="הקלד שם מוצר לחיפוש"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="66dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="506dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageButton
+        android:id="@+id/searchProductBtn"
+        android:layout_width="51dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/search_prod_imgbtn"
         app:layout_constraintEnd_toStartOf="@+id/searchProduct"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ListView
+        android:id="@+id/productAllergens"
+        android:layout_width="412dp"
+        android:layout_height="460dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/search"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/productNotFound" />
+
+    <TextView
+        android:id="@+id/productNotFound"
+        android:layout_width="166dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="22dp"
+        android:text="לא נמצאו מוצרים"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchProductBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
