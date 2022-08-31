@@ -37,6 +37,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class Menu extends DrawerBaseActivity {
     // views
     Button scan_product;
+    Button searchProd;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
     // global variables
@@ -51,6 +52,7 @@ public class Menu extends DrawerBaseActivity {
         AllocateActivityTitle("מסך ראשי");
 
         scan_product = findViewById(R.id.scanBtn);
+        searchProd = findViewById(R.id.searchProdAllergens);
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,15 @@ public class Menu extends DrawerBaseActivity {
                 UpdateUserTags("אורח", "");
         else
             UpdateUserTags("אורח", "");
+
+        searchProd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent search = new Intent(Menu.this, SearchProduct.class);
+                startActivity(search);
+
+            }
+        });
     }
 
     // activated after scanning a barcode in Scan button

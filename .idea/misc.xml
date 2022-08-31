@@ -49,10 +49,29 @@
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_products_table.xml" value="0.11203703703703703" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Omer/AndroidStudioProjects/AllergenTrackerFinal/app/src/main/res/layout/item.xml" value="0.536" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/circle.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/circledimg.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/ic_baseline_cake_24.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/maccabi_background.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/round_button.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/search_layout.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/drawable/search_prod_imgbtn.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_addproduct.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_drawer_base.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_experts.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_info.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_menu.xml" value="0.2391304347826087" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_register.xml" value="0.19114583333333332" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_search_product.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/activity_sign_up.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/content_layout.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/header_menu.xml" value="0.18704710144927536" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AllergenTracker/app/src/main/res/layout/search_outline.xml" value="0.11639492753623189" />
       </map>
     </option>
   </component>

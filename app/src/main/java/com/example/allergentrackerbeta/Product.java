@@ -25,4 +25,11 @@ public class Product
         this.barcode = barcode;
         this.allergens = allergens;
     }
+
+    @Override
+    public String toString() {
+        return "Product name: " +pName +"\nAllergens: " + allergens;
+    }
 }
+
+
