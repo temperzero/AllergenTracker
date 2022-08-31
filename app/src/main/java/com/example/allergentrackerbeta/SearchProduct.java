@@ -38,15 +38,17 @@ public class SearchProduct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_product);
 
+        setContentView(R.layout.activity_search_product);
         searchBox = findViewById(R.id.searchProduct);
         searchBtn = findViewById(R.id.searchProductBtn);
         productsNotFound = findViewById(R.id.productNotFound);
         prodAllergensList = findViewById(R.id.productAllergens);
+        textView = findViewById(R.id.textView);
+
         productsNotFound.setVisibility(View.INVISIBLE);
         productsList = new ArrayList<Product>();
-        textView = findViewById(R.id.textView);
+
         ArrayAdapter<Product> productsAdapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, productsList);
         prodAllergensList.setAdapter(productsAdapter);
 
@@ -58,6 +60,18 @@ public class SearchProduct extends AppCompatActivity {
                 productsList.clear();
                 productsAdapter.notifyDataSetChanged();
                 Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
+                            productsNotFound.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 q.addChildEventListener(new  ChildEventListener(){
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -86,19 +100,10 @@ public class SearchProduct extends AppCompatActivity {
 
                     }
                 });
-                if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
-                    productsNotFound.setVisibility(View.VISIBLE);
-
+                //if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
+                    //productsNotFound.setVisibility(View.VISIBLE);
             }
 
         });
-
-
-
-
-
-
-
-
     }
 }
