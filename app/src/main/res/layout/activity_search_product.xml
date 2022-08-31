@@ -33,7 +33,7 @@
         android:background="@drawable/search_layout"
         android:ems="10"
         android:hint="הקלד שם מוצר לחיפוש "
-        android:hintTextColor="#546E7A"
+        android:textColorHint="#546E7A"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         app:layout_constraintEnd_toStartOf="@+id/searchProduct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/Search"
+        app:srcCompat="@drawable/search"
         tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

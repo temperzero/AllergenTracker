@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     DrawerLayout drawerLayout;
     TextView userNameText, emailText;
     FirebaseAuth fAuth;
+    Toolbar toolbar;
+    NavigationView navigationView;
 
     @Override
     public void setContentView(View view) {
@@ -32,10 +35,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         super.setContentView(drawerLayout);
 
 
-        Toolbar toolbar = drawerLayout.findViewById(R.id.toolBar);
+        toolbar = drawerLayout.findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
-        NavigationView navigationView = drawerLayout.findViewById(R.id.nav_view);
+        navigationView = drawerLayout.findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         // saving the view id of the drawer text
         userNameText = navigationView.getHeaderView(0).findViewById(R.id.HeaderUserText);
@@ -46,6 +49,12 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
         fAuth = FirebaseAuth.getInstance();
+
+        // if user is logged in
+        //boolean loggedIn = false;
+        //if(fAuth.getCurrentUser() != null)
+        //    loggedIn = true;
+        LoggedInMenu(fAuth.getCurrentUser() != null); // true is user is logged in
     }
 
 
@@ -53,7 +62,8 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // close the drawer after selecting an item
         drawerLayout.closeDrawer(GravityCompat.START);
-        switch(item.getItemId())
+        int id = item.getItemId();
+        switch(id)
         {
             case R.id.nav_home: {
                 Intent homeIntent = new Intent(this, Menu.class);
@@ -62,9 +72,19 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_add: {
-                Intent addIntent = new Intent(this, AddProduct.class);
-                startActivity(addIntent);
-                overridePendingTransition(0,0);
+                if(fAuth.getCurrentUser() != null)
+                {
+                    if(fAuth.getCurrentUser().isEmailVerified())
+                    {
+                        Intent addIntent = new Intent(this, AddProduct.class);
+                        startActivity(addIntent);
+                        overridePendingTransition(0, 0);
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "יש לאשר את המייל על מנת להוסיף מוצרים", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "הירשמו בכדי להוסיף מוצרים!", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_info: {
@@ -86,17 +106,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                 break;
             }
             case R.id.nav_logout: {
-                if(fAuth.getCurrentUser() != null)
-                {
-                    fAuth.signOut();
-                    Intent logoutIntent = new Intent(this, Menu.class);
-                    startActivity(logoutIntent);
-                    overridePendingTransition(0,0);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "משתמש כבר מנותק - בהמשך אני אוריד את האייקון", Toast.LENGTH_SHORT).show();
-                }
+                fAuth.signOut();
+                Intent logoutIntent = new Intent(this, Menu.class);
+                startActivity(logoutIntent);
+                overridePendingTransition(0,0);
                 break;
             }
             default:
@@ -118,6 +131,22 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     {
             userNameText.setText(userName);
             emailText.setText(email);
+    }
+
+    protected void LoggedInMenu(boolean isLogged)
+    {
+        if(isLogged)
+        {
+            Toast.makeText(getApplicationContext(), "mehubar", Toast.LENGTH_SHORT).show();
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.main_menu_loggedin);
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "not mehubar", Toast.LENGTH_SHORT).show();
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.main_menu);
+        }
     }
 
 }
