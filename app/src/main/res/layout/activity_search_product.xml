@@ -17,6 +17,8 @@
         android:background="#00325523"
         android:hapticFeedbackEnabled="false"
         android:text="חיפוש מוצר"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-black"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/searchProductBtn"
