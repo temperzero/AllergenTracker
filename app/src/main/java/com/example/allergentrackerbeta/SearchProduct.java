@@ -75,16 +75,6 @@ public class SearchProduct extends AppCompatActivity {
                 if (!productName.isEmpty())
                 {
                     Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
-                    q.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
-                                productsNotFound.setVisibility(View.VISIBLE);
-                        }
-                        @Override public void onCancelled(@NonNull DatabaseError error) {
-
-                         }
-                    });
                     q.addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -110,6 +100,17 @@ public class SearchProduct extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    //an Event called after all onChildAdded events of addChildEventListener finishes
+                    q.addValueEventListener (new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (productsList.size() == 0)
+                                productsNotFound.setVisibility(View.VISIBLE);
+                        }
+                        @Override public void onCancelled(@NonNull DatabaseError error) {
 
                         }
                     });
