@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -36,8 +37,6 @@ public class SearchProduct extends AppCompatActivity {
     ImageButton searchBtn;
     ListView prodAllergensList;
     ArrayList<Product> productsList;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,5 +118,16 @@ public class SearchProduct extends AppCompatActivity {
             }
 
         });
+
+    }
+    // back button enabled
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
