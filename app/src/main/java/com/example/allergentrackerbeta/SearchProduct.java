@@ -38,6 +38,7 @@ public class SearchProduct extends AppCompatActivity {
     ArrayList<Product> productsList;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,6 @@ public class SearchProduct extends AppCompatActivity {
 
         productsNotFound.setVisibility(View.INVISIBLE);
         productsList = new ArrayList<Product>();
-
         ArrayAdapter<Product> productsAdapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, productsList);
         prodAllergensList.setAdapter(productsAdapter);
 
@@ -77,15 +77,13 @@ public class SearchProduct extends AppCompatActivity {
                     Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
                     q.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        public void onDataChange(DataSnapshot dataSnapshot) {
                             if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
                                 productsNotFound.setVisibility(View.VISIBLE);
                         }
+                        @Override public void onCancelled(@NonNull DatabaseError error) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
+                         }
                     });
                     q.addChildEventListener(new ChildEventListener() {
                         @Override
@@ -116,8 +114,7 @@ public class SearchProduct extends AppCompatActivity {
                         }
                     });
                 }
-                //if (productsList.size() == 0) //does not work properly due to asynchronous search operation onChildAdded
-                    //productsNotFound.setVisibility(View.VISIBLE);
+
             }
 
         });
