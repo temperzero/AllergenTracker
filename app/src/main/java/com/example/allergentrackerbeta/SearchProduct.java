@@ -12,13 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +24,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class SearchProduct extends AppCompatActivity {
@@ -69,7 +65,7 @@ public class SearchProduct extends AppCompatActivity {
                 String productName = searchBox.getText().toString();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 productsList.clear();
-                productsAdapter.notifyDataSetChanged();
+                productsAdapter.notifyDataSetChanged(); //notify for searching a different product
                 productsNotFound.setVisibility(View.INVISIBLE);
                 if (!productName.isEmpty())
                 {
@@ -83,24 +79,16 @@ public class SearchProduct extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                        }
+                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
 
                         @Override
-                        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                        }
+                        public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
 
                         @Override
-                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                        }
+                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
+                        public void onCancelled(@NonNull DatabaseError error) { }
                     });
                     //an Event called after all onChildAdded events of addChildEventListener finishes
                     q.addValueEventListener (new ValueEventListener() {
@@ -114,12 +102,10 @@ public class SearchProduct extends AppCompatActivity {
                         }
                     });
                 }
-
             }
-
         });
-
     }
+
     // back button enabled
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
