@@ -21,12 +21,14 @@
         android:id="@+id/add_product_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginTop="5dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/add_product_slogan"
-        android:textSize="20sp"
         android:textColor="@color/white"
-        android:layout_gravity="end" />
+        android:textSize="20sp"
+        android:maxLines="2"
+        android:minLines="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,7 +67,6 @@
                 android:textColor="@color/white"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,12 +91,11 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:layout_marginTop="20dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp">
 
             <TableRow
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -104,7 +104,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/seasame"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/Fishbox"
@@ -112,26 +113,28 @@
                     android:layout_height="30dp"
                     android:text="@string/fish"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/EggsBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/eggs"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/MilkBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/milk"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </TableRow>
 
             <TableRow
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -140,33 +143,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/seafruits"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/PeanutBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/nuts"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/NutsBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/nuts2"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/WheatBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/wheat"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             </TableRow>
 
             <TableRow
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -175,28 +181,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/oat"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/RyeBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/rye"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/BarleyBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/barley"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
                     android:id="@+id/SoyBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="@string/soy"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             </TableRow>
 
@@ -205,7 +215,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp" >
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" >
 
             <Button
                 android:id="@+id/bt_scan"
