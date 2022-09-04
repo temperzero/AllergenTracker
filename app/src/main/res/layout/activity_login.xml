@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Login">
+    tools:context=".Login" >
 
     <ImageView
         android:id="@+id/logo_image_login"
@@ -15,7 +15,7 @@
         android:layout_height="150dp"
         android:contentDescription="@string/login_user_logo"
         android:src="@drawable/user"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/logo_name_login"
@@ -25,7 +25,7 @@
         android:text="@string/login_welcome_text"
         android:textSize="40sp"
         android:textColor="@color/black"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end" />
 
     <TextView
         android:id="@+id/slogan_name_login"
@@ -33,21 +33,21 @@
         android:layout_height="wrap_content"
         android:text="@string/login_slogan"
         android:textSize="18sp"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameLogin"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/emailH">
+            android:hint="@string/emailH" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_username"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordH"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_password"
@@ -72,7 +72,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
-
 
         </com.google.android.material.textfield.TextInputLayout>
 

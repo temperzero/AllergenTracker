@@ -1,5 +1,10 @@
 package com.example.allergentrackerbeta;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,11 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,19 +26,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+public class NewAddProduct extends AppCompatActivity {
 
-public class AddProduct extends AppCompatActivity
-{
     int num = 0; // number of products
     //init global buttons variables
     Button btScan;
     Button addToDB;
-    Button back;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_addproduct);
+        setContentView(R.layout.activity_new_add_product);
 
         // action bar initialization
         ActionBar actionBar = getSupportActionBar();
@@ -49,11 +47,7 @@ public class AddProduct extends AppCompatActivity
         // set actionbar title
         actionBar.setTitle("הוספת מוצר");
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        btScan = findViewById(R.id.bt_scan);
-
-        TextView bc = (TextView)findViewById(R.id.barcode);
+        TextView bc = findViewById(R.id.barcode);
         SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
         SharedPreferences.Editor sedt = sp.edit();
         String getBarcode = sp.getString("barcode",null);
@@ -61,6 +55,9 @@ public class AddProduct extends AppCompatActivity
         sedt.putString("barcode", "");
         sedt.commit();
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        btScan = findViewById(R.id.bt_scan);
         // scan button click event
         btScan.setOnClickListener(new View.OnClickListener()
         {
@@ -68,7 +65,7 @@ public class AddProduct extends AppCompatActivity
             public void onClick(View view)
             {
                 //init intent integrator
-                IntentIntegrator intentIntegrator = new IntentIntegrator(AddProduct.this);
+                IntentIntegrator intentIntegrator = new IntentIntegrator(NewAddProduct.this);
                 //set prompt text -- show message
                 intentIntegrator.setPrompt("לפלאש השתמש בכפתור הגברת עוצמת הקול");
                 //set beep
@@ -79,16 +76,6 @@ public class AddProduct extends AppCompatActivity
                 intentIntegrator.setCaptureActivity(Capture.class);
                 //init scan
                 intentIntegrator.initiateScan();
-            }
-        });
-
-        back = findViewById(R.id.backBtn3);
-        back.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
             }
         });
 
@@ -103,7 +90,7 @@ public class AddProduct extends AppCompatActivity
             public void onCancelled(DatabaseError error)
             {
                 // Failed to read value
-                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "שגיאה לא צפויה", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -115,9 +102,9 @@ public class AddProduct extends AppCompatActivity
             {
                 EditText editP = findViewById(R.id.ProductName);
                 String Pname = editP.getText().toString(); // get product name string
-                EditText editC = (EditText)findViewById(R.id.CompanyName);
+                EditText editC = findViewById(R.id.CompanyName);
                 String Cname = editC.getText().toString(); // get company name string
-                TextView text = (TextView)findViewById(R.id.barcode);
+                TextView text = findViewById(R.id.barcode);
                 String BarcodeNum = text.getText().toString(); // get product name string
 
                 // check allergens
@@ -185,11 +172,10 @@ public class AddProduct extends AppCompatActivity
                     Soy.toggle();
                 }
 
-
                 // check if barcode is empty
                 if(!BarcodeNum.isEmpty())
                 {
-                    Product addProduct = new Product(Pname, Cname, BarcodeNum, allergens,num);
+                    Product addProduct = new Product(Pname, Cname, BarcodeNum, allergens, num);
                     DatabaseReference productToAdd = database.getReference("Products").child("Product " + addProduct.pNum);
 
                     productToAdd.child("Products").child("Product " + addProduct.pNum);
@@ -208,6 +194,7 @@ public class AddProduct extends AppCompatActivity
             }
         });
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data)
     {
@@ -217,7 +204,7 @@ public class AddProduct extends AppCompatActivity
         //check condition
         if (intentResult.getContents() != null)
         {
-            TextView text = (TextView)findViewById(R.id.barcode);
+            TextView text = findViewById(R.id.barcode);
             text.setText(intentResult.getContents());
             Toast.makeText(getApplicationContext(), "הסריקה בוצעה בהצלחה!",Toast.LENGTH_SHORT).show();
         }

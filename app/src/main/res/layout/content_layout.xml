@@ -18,6 +18,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:titleTextColor="@color/white" />
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/blue_bg"
+    tools:context=".NewAddProduct">
+
+    <ImageView
+        android:id="@+id/add_product_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/add_product_img"
+        android:src="@drawable/add_product_white"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/add_product_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/add_product_slogan"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_gravity="end" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/barcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/barcodeH"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_product_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:hintTextColor="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidth="2dp"
+            android:hint="@string/productnameH" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/add_product_company"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextColor="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:boxStrokeWidth="2dp"
+            android:hint="@string/companynameH" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/CompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/SeasameBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/seasame"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/Fishbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/fish"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/EggsBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/eggs"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/MilkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/milk"
+                    android:textColor="@color/white" />
+
+            </TableRow>
+
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/SeaBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/seafruits"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/PeanutBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/nuts"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/NutsBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/nuts2"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/WheatBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/wheat"
+                    android:textColor="@color/white" />
+
+            </TableRow>
+
+            <TableRow
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/OatsBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/oat"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/RyeBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/rye"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/BarleyBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/barley"
+                    android:textColor="@color/white" />
+
+                <CheckBox
+                    android:id="@+id/SoyBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/soy"
+                    android:textColor="@color/white" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp" >
+
+            <Button
+                android:id="@+id/bt_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scanH"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:id="@+id/addbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addH"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
+            android:name=".NewAddProduct"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
+        <activity
             android:name=".AllergenPreferences"
             android:exported="true" />
         <activity
@@ -58,10 +62,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddProduct"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
             android:name=".Capture"
             android:screenOrientation="portrait"

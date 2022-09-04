@@ -143,7 +143,7 @@ public class Menu extends DrawerBaseActivity {
                                 SharedPreferences.Editor sedt = sp.edit();
                                 sedt.putString("barcode", intentResult.getContents());
                                 sedt.commit();
-                                Intent addProduct = new Intent(Menu.this, AddProduct.class);
+                                Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
                                 startActivity(addProduct);
                             }
                         })
@@ -162,7 +162,7 @@ public class Menu extends DrawerBaseActivity {
                 public void onCancelled(DatabaseError error)
                 {
                     // Failed to read value
-                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "שגיאה לא צפויה", Toast.LENGTH_SHORT).show();
                 }
             });
         }

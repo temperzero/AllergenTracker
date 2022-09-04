@@ -123,4 +123,7 @@
     <string name="contact_topic">נושא:</string>
     <string name="contact_contents">מלל:</string>
     <string name="contact_send">שליחה</string>
+    <string name="btnExp">הסבר</string>
+    <string name="add_product_img">הוספת מוצר - תמונה</string>
+    <string name="add_product_slogan">מלאו או הפרטים וסמנו את האלרגנים על מנת להוסיף את המוצר למאגר</string>
 </resources>
