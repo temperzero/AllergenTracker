@@ -24,7 +24,7 @@ public class InfoAndExperts extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         // Set BackgroundDrawable
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#57B15A"));
         actionBar.setBackgroundDrawable(colorDrawable);
         // set actionbar title
         actionBar.setTitle("מידע שימושי");

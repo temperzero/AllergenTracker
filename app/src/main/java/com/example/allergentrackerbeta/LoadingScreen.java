@@ -6,13 +6,16 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class LoadingScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_loading_screen);
         new Thread(new Runnable()
         {
@@ -23,7 +26,7 @@ public class LoadingScreen extends AppCompatActivity {
                 {
                     synchronized (this)
                     {
-                        wait(3000);
+                        wait(5000);
                         Intent intent = new Intent(LoadingScreen.this, Menu.class);
                         startActivity(intent);
                         finish();

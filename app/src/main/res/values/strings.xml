@@ -126,4 +126,5 @@
     <string name="btnExp">הסבר</string>
     <string name="add_product_img">הוספת מוצר - תמונה</string>
     <string name="add_product_slogan">מלאו או הפרטים וסמנו את האלרגנים על מנת להוסיף את המוצר למאגר</string>
+    <string name="dev_by">Developed by O. Peretz and B. Lisker</string>
 </resources>

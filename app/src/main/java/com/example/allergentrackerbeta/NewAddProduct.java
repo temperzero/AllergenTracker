@@ -42,7 +42,7 @@ public class NewAddProduct extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         // Set BackgroundDrawable
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0F5B91"));
         actionBar.setBackgroundDrawable(colorDrawable);
         // set actionbar title
         actionBar.setTitle("הוספת מוצר");
