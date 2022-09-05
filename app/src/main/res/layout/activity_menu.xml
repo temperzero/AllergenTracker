@@ -8,27 +8,27 @@
     android:textDirection="rtl"
     tools:context=".Menu">
 
-    <Button
-        android:id="@+id/scanBtn"
-        android:layout_width="97dp"
-        android:layout_height="100dp"
+    <ImageButton
+        android:id="@+id/ScanImgBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="173dp"
         android:background="@drawable/round_button"
-        android:text="@string/scanH"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/scanBtnH"
+        android:src="@drawable/applogo_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/searchProdAllergens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
-        android:text="חיפוש מוצר"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scanBtn" />
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="170dp"
+        android:text="@string/searchH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ScanImgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/ScanImgBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

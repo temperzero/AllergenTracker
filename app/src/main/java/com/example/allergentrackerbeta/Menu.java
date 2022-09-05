@@ -1,5 +1,10 @@
 package com.example.allergentrackerbeta;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,15 +13,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,9 +43,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 public class Menu extends DrawerBaseActivity {
     // views
-    Button scan_product;
+    boolean animShuffle = true;
+    ImageButton scan_product;
     Button searchProd;
     final static String USERNAME_KEY = "username";
     final static String PASSWORD_KEY = "password";
@@ -51,8 +66,58 @@ public class Menu extends DrawerBaseActivity {
         setContentView(activityMenuBinding.getRoot());
         AllocateActivityTitle("מסך ראשי");
 
-        scan_product = findViewById(R.id.scanBtn);
+        scan_product = findViewById(R.id.ScanImgBtn);
         searchProd = findViewById(R.id.searchProdAllergens);
+
+        ///---- animations ----///
+        // normal
+        ObjectAnimator anim_n = ObjectAnimator.ofPropertyValuesHolder(scan_product,
+                PropertyValuesHolder.ofFloat("scaleX", 1f),
+                PropertyValuesHolder.ofFloat("scaleY", 1f));
+        anim_n.setInterpolator(new FastOutSlowInInterpolator());
+        anim_n.setDuration(1000);
+        AnimatorSet animatorSet_N = new AnimatorSet();
+        animatorSet_N.play(anim_n);
+        // shrink
+        ObjectAnimator anim_s = ObjectAnimator.ofPropertyValuesHolder(scan_product,
+                PropertyValuesHolder.ofFloat("scaleX", 0.95f),
+                PropertyValuesHolder.ofFloat("scaleY", 0.95f));
+        anim_s.setInterpolator(new FastOutSlowInInterpolator());
+        anim_s.setDuration(1000);
+        AnimatorSet animatorSet_S = new AnimatorSet();
+        animatorSet_S.play(anim_s);
+        // enlarge
+        ObjectAnimator anim_l = ObjectAnimator.ofPropertyValuesHolder(scan_product,
+                PropertyValuesHolder.ofFloat("scaleX", 1.05f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.05f));
+        anim_l.setInterpolator(new FastOutSlowInInterpolator());
+        anim_l.setDuration(1000);
+        AnimatorSet animatorSet_L = new AnimatorSet();
+        animatorSet_L.playSequentially(animatorSet_S,animatorSet_N);
+
+        animatorSet_L.addListener(new AnimatorListenerAdapter() {
+
+            private boolean mCanceled;
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                mCanceled = false;
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                mCanceled = true;
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (!mCanceled) {
+                    animation.start();
+                }
+            }
+
+        });
+        animatorSet_L.start();
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
