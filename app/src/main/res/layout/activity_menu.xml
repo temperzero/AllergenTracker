@@ -13,22 +13,27 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="173dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/round_button"
         android:contentDescription="@string/scanBtnH"
         android:src="@drawable/applogo_button"
+        app:layout_constraintBottom_toTopOf="@+id/searchProdAllergens"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/searchProdAllergens"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginBottom="170dp"
-        android:text="@string/searchH"
+        android:layout_width="95dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="155dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/ScanImgBtn"
-        app:layout_constraintTop_toBottomOf="@+id/ScanImgBtn" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ScanImgBtn"
+        app:srcCompat="@drawable/search2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

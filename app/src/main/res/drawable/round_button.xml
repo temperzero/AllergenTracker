@@ -3,8 +3,8 @@
     <item android:state_pressed="false">
 
         <shape android:shape="oval">
-            <solid android:background="@drawable/scanbtn"/>
-            <stroke android:width="2dp"
+            <solid android:background="#90CAF9"/>
+            <stroke android:width="1dp"
                     android:color="#4169e1"/>
         </shape>
 
@@ -12,7 +12,7 @@
     <item android:state_pressed="true">
         <shape android:shape="oval">
             <solid android:color="#90CAF9"/>
-            <stroke android:width="2dp"
+            <stroke android:width="1dp"
                 android:color="#4169e1"/>
         </shape>
     </item>
