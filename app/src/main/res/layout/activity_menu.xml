@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d9f1ff"
+    android:background="@drawable/menu_gradient_background"
     android:textDirection="rtl"
     tools:context=".Menu">
 
