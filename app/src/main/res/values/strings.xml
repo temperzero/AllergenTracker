@@ -129,4 +129,6 @@
     <string name="dev_by">Developed by O. Peretz and B. Lisker</string>
     <string name="searchH">חיפוש מוצר</string>
     <string name="scanBtnH">כפתור סריקה</string>
+    <string name="searchBtnH">כפתור חיפוש</string>
+    <string name="menu_text">לחצו כדי לסרוק</string>
 </resources>
