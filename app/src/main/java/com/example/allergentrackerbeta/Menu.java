@@ -223,6 +223,6 @@ public class Menu extends DrawerBaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        moveTaskToBack(true);
     }
 }

@@ -153,6 +153,7 @@ public class SignUp extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        moveTaskToBack(true);
+        Intent MenuIntent = new Intent(SignUp.this, Menu.class);
+        startActivity(MenuIntent);
     }
 }
