@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
@@ -42,6 +43,10 @@ public class Menu extends DrawerBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //disable night mode display
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         activityMenuBinding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(activityMenuBinding.getRoot());
         AllocateActivityTitle("מסך ראשי");
