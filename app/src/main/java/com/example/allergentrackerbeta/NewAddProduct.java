@@ -30,6 +30,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class NewAddProduct extends AppCompatActivity {
 
     int num = 0; // number of products
+
     //init global buttons variables
     Button btScan;
     Button addToDB;
