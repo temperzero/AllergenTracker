@@ -91,6 +91,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent passwordIntent = new Intent(Login.this, PasswordRecovery.class);
                 startActivity(passwordIntent);
+
             }
         });
     }
@@ -104,6 +105,12 @@ public class Login extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent MenuIntent = new Intent(Login.this, Menu.class);
+        startActivity(MenuIntent);
     }
 
     class LoginCompleteListener implements OnCompleteListener<AuthResult> {

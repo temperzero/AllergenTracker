@@ -77,6 +77,12 @@ public class PasswordRecovery extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent MenuIntent = new Intent(PasswordRecovery.this, Menu.class);
+        startActivity(MenuIntent);
+    }
+
     class ForgotPassCompleteListener implements OnCompleteListener<Void> {
 
         @Override

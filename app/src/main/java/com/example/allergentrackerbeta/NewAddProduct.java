@@ -230,4 +230,10 @@ public class NewAddProduct extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent MenuIntent = new Intent(NewAddProduct.this, Menu.class);
+        startActivity(MenuIntent);
+    }
 }

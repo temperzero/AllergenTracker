@@ -67,4 +67,10 @@ public class InfoAndExperts extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent MenuIntent = new Intent(InfoAndExperts.this, Menu.class);
+        startActivity(MenuIntent);
+    }
 }

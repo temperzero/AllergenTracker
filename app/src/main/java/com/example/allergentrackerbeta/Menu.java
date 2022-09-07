@@ -220,4 +220,9 @@ public class Menu extends DrawerBaseActivity {
             //when result content is null
             Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
