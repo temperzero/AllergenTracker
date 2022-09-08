@@ -28,7 +28,7 @@ public class Product
 
     @Override
     public String toString() {
-        return "שם המוצר: " +pName +"\nאלרגנים: " + allergens;
+        return "שם המוצר: " + pName +"\nשם היצרן: " + cName + "\nאלרגנים: " + allergens;
     }
 }
 
