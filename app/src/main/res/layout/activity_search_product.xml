@@ -5,20 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00FFFFFF"
-    tools:context=".SearchProduct"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".SearchProduct" >
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="254dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:layout_marginBottom="35dp"
         android:background="#00325523"
         android:fontFamily="sans-serif-black"
         android:hapticFeedbackEnabled="false"
-        android:text="הקלד שם מוצר לחיפוש ידני לקבלת מידע אודות מוצרים תואמים"
-        android:textAlignment="center"
+        android:text="@string/searchprodH"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/searchProductBtn"
@@ -36,7 +34,7 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/search_layout"
         android:ems="10"
-        android:hint="הקלד שם מוצר לחיפוש"
+        android:hint="@string/searchproductH"
         android:inputType="textPersonName"
         android:paddingRight="15dp"
         android:paddingLeft="15dp"
@@ -73,7 +71,7 @@
         android:layout_height="21dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
-        android:text="לא נמצאו מוצרים"
+        android:text="@string/notfoundH"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchProductBtn" />

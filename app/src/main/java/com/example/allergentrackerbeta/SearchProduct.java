@@ -6,17 +6,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,11 +30,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
-
 public class SearchProduct extends AppCompatActivity {
 
-    TextView searchBox, productsNotFound, textView;
+    TextView productsNotFound;
+    TextInputEditText searchBox;
     ImageButton searchBtn;
     ListView prodAllergensList;
     ArrayList<Product> productsList;
@@ -52,12 +54,11 @@ public class SearchProduct extends AppCompatActivity {
         // set actionbar title
         actionBar.setTitle("חיפוש מוצר");
 
-        setContentView(R.layout.activity_search_product);
+        setContentView(R.layout.activity_new_search_product);
         searchBox = findViewById(R.id.searchProduct);
         searchBtn = findViewById(R.id.searchProductBtn);
         productsNotFound = findViewById(R.id.productNotFound);
         prodAllergensList = findViewById(R.id.productAllergens);
-        textView = findViewById(R.id.textView);
 
         productsNotFound.setVisibility(View.INVISIBLE);
         productsList = new ArrayList<Product>();
@@ -67,6 +68,11 @@ public class SearchProduct extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // close keyboard
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 String productName = searchBox.getText().toString();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 productsList.clear();

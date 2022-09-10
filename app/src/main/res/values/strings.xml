@@ -137,4 +137,9 @@
     <string name="info3">מתי לראות רופא</string>
     <string name="info4">אמצעי זהירות</string>
     <string name="info5">המידע נלקח מהאתר</string>
+    <string name="searchproductH">הקלד שם מוצר לחיפוש</string>
+    <string name="notfoundH">לא נמצאו מוצרים</string>
+    <string name="searchprodH">הקלד שם מוצר לחיפוש ידני לקבלת מידע אודות מוצרים תואמים</string>
+    <string name="searchprodimgH">תמונת חיפוש מוצר</string>
+    <string name="searchtnH">כפתור חיפוש מוצר</string>
 </resources>
