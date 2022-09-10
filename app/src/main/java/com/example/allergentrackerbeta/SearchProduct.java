@@ -66,13 +66,9 @@ public class SearchProduct extends AppCompatActivity {
         prodAllergensList.setAdapter(productsAdapter);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
-                // close keyboard
-                InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
                 String productName = searchBox.getText().toString();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                 productsList.clear();
@@ -80,6 +76,10 @@ public class SearchProduct extends AppCompatActivity {
                 productsNotFound.setVisibility(View.INVISIBLE);
                 if (!productName.isEmpty())
                 {
+                    // close phone's keyboard
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                     Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
                     q.addChildEventListener(new ChildEventListener() {
                         @Override
