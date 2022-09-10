@@ -131,4 +131,10 @@
     <string name="scanBtnH">כפתור סריקה</string>
     <string name="searchBtnH">כפתור חיפוש</string>
     <string name="menu_text">לחצו כדי לסרוק</string>
+    <string name="discH">אחריות</string>
+    <string name="info1">מידע כללי על אלרגיות מזון</string>
+    <string name="info2">תסמינים</string>
+    <string name="info3">מתי לראות רופא</string>
+    <string name="info4">אמצעי זהירות</string>
+    <string name="info5">המידע נלקח מהאתר</string>
 </resources>

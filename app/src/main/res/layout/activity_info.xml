@@ -26,9 +26,10 @@
                 android:id="@+id/FoodAllergiesHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="מידע כללי על אלרגיות מזון"
+                android:text="@string/info1"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/FoodAllergiesInfo"
@@ -40,9 +41,10 @@
                 android:id="@+id/SymptomsHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="תסמינים"
+                android:text="@string/info2"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/SymptomsInfo"
@@ -98,7 +100,7 @@
                 android:id="@+id/WhenToSeeADoctorHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="מתי לראות רופא"
+                android:text="@string/info3"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 tools:ignore="TextContrastCheck" />
@@ -141,9 +143,10 @@
                 android:id="@+id/PrecautionHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="אמצעי זהירות"
+                android:text="@string/info4"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/PrecautionText"
@@ -163,9 +166,10 @@
                 android:id="@+id/Credits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="המידע נלקח מהאתר"
+                android:text="@string/info5"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/Website"
@@ -173,7 +177,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/websiteclick"
                 android:textColor="@color/white"
-                android:textColorLink="#3F51B5" />
+                android:textColorLink="#3F51B5"
+                tools:ignore="TextContrastCheck" />
 
         </LinearLayout>
     </ScrollView>

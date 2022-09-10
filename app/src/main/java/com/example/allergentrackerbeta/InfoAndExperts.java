@@ -15,7 +15,7 @@ import android.widget.Button;
 
 public class InfoAndExperts extends AppCompatActivity {
 
-    Button info, experts;
+    Button info, experts, disclaimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class InfoAndExperts extends AppCompatActivity {
         // set actionbar title
         actionBar.setTitle("מידע שימושי");
 
-        info = findViewById(R.id.InfoButton);
+        info = findViewById(R.id.infoButton);
         info.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -52,6 +52,17 @@ public class InfoAndExperts extends AppCompatActivity {
             {
                 Intent ExpertsIntent = new Intent(InfoAndExperts.this, Experts.class);
                 startActivity(ExpertsIntent);
+            }
+        });
+
+        disclaimer = findViewById(R.id.DisclaimerBtn);
+        disclaimer.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent InfoIntent = new Intent(InfoAndExperts.this, Disclaimer.class);
+                startActivity(InfoIntent);
             }
         });
 

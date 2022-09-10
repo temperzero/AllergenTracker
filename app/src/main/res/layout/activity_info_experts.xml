@@ -9,31 +9,44 @@
     tools:context=".InfoAndExperts">
 
     <Button
-        android:id="@+id/InfoButton"
+        android:id="@+id/infoButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="253dp"
-        android:layout_marginBottom="26dp"
         android:backgroundTint="#649866"
         android:text="@string/genInfo"
         android:textColor="#212121"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/ExpertsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/DisclaimerBtn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#649866"
+        android:text="@string/discH"
+        android:textColor="#212121"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExpertsButton"
         tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/ExpertsButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="224dp"
         android:backgroundTint="#649866"
         android:text="@string/Exp"
         android:textColor="#212121"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/DisclaimerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InfoButton"
+        app:layout_constraintTop_toBottomOf="@+id/infoButton"
         tools:ignore="TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
