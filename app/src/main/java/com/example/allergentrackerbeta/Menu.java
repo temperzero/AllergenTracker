@@ -31,11 +31,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends DrawerBaseActivity {
     // views
-    boolean animShuffle = true;
-    ImageButton scan_product, searchProd;
+       ImageButton scan_product, searchProd;
 
-    final static String USERNAME_KEY = "username";
-    final static String PASSWORD_KEY = "password";
     // global variables
     boolean found = false; // used to check if product was found in DB
     // drawer menu binding

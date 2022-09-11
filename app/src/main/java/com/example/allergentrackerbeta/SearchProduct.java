@@ -162,6 +162,7 @@ public class SearchProduct extends AppCompatActivity {
             });
         }
     }
+
     // back button enabled
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
