@@ -64,12 +64,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         int id = item.getItemId();
         switch(id)
         {
-            case R.id.nav_home: {
-                Intent homeIntent = new Intent(this, Menu.class);
-                startActivity(homeIntent);
-                overridePendingTransition(0,0);
-                break;
-            }
             case R.id.nav_add: {
                 if(fAuth.getCurrentUser() != null)
                 {
