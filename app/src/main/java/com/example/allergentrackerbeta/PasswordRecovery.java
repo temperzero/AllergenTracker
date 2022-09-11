@@ -88,7 +88,6 @@ public class PasswordRecovery extends AppCompatActivity {
         @Override
         public void onComplete(@NonNull Task<Void> task) {
             if(task.isSuccessful()) {
-                //FirebaseUser login = fAuth.getCurrentUser();
                 Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
                 Intent menu = new Intent(PasswordRecovery.this, Menu.class);
                 startActivity(menu);
