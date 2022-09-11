@@ -55,7 +55,7 @@ public class SearchProduct extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         // Set BackgroundDrawable
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#5C9CED"));
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#63CEFF"));
         actionBar.setBackgroundDrawable(colorDrawable);
         // set actionbar title
         actionBar.setTitle("חיפוש מוצר");
