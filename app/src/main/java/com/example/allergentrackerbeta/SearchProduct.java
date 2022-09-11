@@ -85,7 +85,8 @@ public class SearchProduct extends AppCompatActivity {
                 {
                     // close phone's keyboard
                     InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    if (inputManager.isAcceptingText())
+                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
                     Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
                     q.addChildEventListener(new ChildEventListener() {
