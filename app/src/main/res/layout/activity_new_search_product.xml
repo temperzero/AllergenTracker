@@ -38,14 +38,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="6dp"
             android:hint="@string/productnameH"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/searchProductBtn"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/searchProductBtn">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchProduct"
@@ -59,17 +57,21 @@
 
         <ImageButton
             android:id="@+id/searchProductBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="6dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/search_prod_imgbtn"
+            android:background="@drawable/round_search_button"
             android:contentDescription="@string/searchtnH"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/search_button"
+            app:layout_constraintBottom_toBottomOf="@+id/search_product_text"
             app:layout_constraintEnd_toStartOf="@+id/search_product_text"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_product_text"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

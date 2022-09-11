@@ -29,7 +29,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
     FirebaseAuth fAuth;
     Toolbar toolbar;
     NavigationView navigationView;
-    Button expBtn;
 
     @Override
     public void setContentView(View view) {
