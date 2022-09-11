@@ -21,9 +21,6 @@
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".AllergenPreferences"
-            android:exported="true" />
-        <activity
             android:name=".SearchProduct"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
