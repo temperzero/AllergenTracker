@@ -83,7 +83,7 @@ public class SearchProduct extends AppCompatActivity {
                 productsNotFound.setVisibility(View.INVISIBLE);
                 if (!productName.isEmpty())
                 {
-                    // close phone's keyboard
+                    // close keyboard
                     InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (inputManager.isAcceptingText())
                         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
