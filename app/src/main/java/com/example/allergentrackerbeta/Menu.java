@@ -189,12 +189,17 @@ public class Menu extends DrawerBaseActivity {
                                 .setCancelable(false).setPositiveButton("הוסף", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
-                                SharedPreferences.Editor sedt = sp.edit();
-                                sedt.putString("barcode", intentResult.getContents());
-                                sedt.commit();
-                                Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
-                                startActivity(addProduct);
+                                if (fAuth.getCurrentUser() != null)
+                                {
+                                    SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
+                                    SharedPreferences.Editor sedt = sp.edit();
+                                    sedt.putString("barcode", intentResult.getContents());
+                                    sedt.commit();
+                                    Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
+                                    startActivity(addProduct);
+                                }
+                                else
+                                    Toast.makeText(getApplicationContext(), "עליך להיות משתמש רשום כדי להוסיף מוצרים", Toast.LENGTH_SHORT).show();
                             }
                         })
                                 .setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
