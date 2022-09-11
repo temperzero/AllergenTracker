@@ -41,6 +41,7 @@ public class SearchProduct extends AppCompatActivity {
     ImageButton searchBtn, speechToTextBtn;
     ListView prodAllergensList;
     ArrayList<Product> productsList;
+    ArrayAdapter<Product> productsAdapter;
 
     private static final int REQUEST_CODE_SPEECH_INPUT = 1000;
 
@@ -69,7 +70,7 @@ public class SearchProduct extends AppCompatActivity {
 
         productsNotFound.setVisibility(View.INVISIBLE);
         productsList = new ArrayList<Product>();
-        ArrayAdapter<Product> productsAdapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, productsList);
+        productsAdapter = new ArrayAdapter<Product>(this, android.R.layout.simple_list_item_1, productsList);
         prodAllergensList.setAdapter(productsAdapter);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
@@ -77,50 +78,8 @@ public class SearchProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String productName = searchBox.getText().toString();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                productsList.clear();
-                productsAdapter.notifyDataSetChanged(); //notify for searching a different product
-                productsNotFound.setVisibility(View.INVISIBLE);
-                if (!productName.isEmpty())
-                {
-                    // close keyboard
-                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    if (inputManager.isAcceptingText())
-                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                searchProducts(productName);
 
-                    Query q = ref.child("Products").orderByChild("pName").startAt(productName).endAt(productName + "\uf8ff");
-                    q.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            Product p = snapshot.getValue(Product.class);
-                            productsList.add(p);
-                            productsAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) { }
-                    });
-                    //an Event called after all onChildAdded events of addChildEventListener finishes
-                    q.addValueEventListener (new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (productsList.size() == 0)
-                                productsNotFound.setVisibility(View.VISIBLE);
-                        }
-                        @Override public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
             }
         });
 
@@ -150,10 +109,59 @@ public class SearchProduct extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_SPEECH_INPUT && resultCode == RESULT_OK)
+        if(requestCode == REQUEST_CODE_SPEECH_INPUT && resultCode == RESULT_OK) {
             searchBox.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            searchProducts(searchBox.getText().toString());
+        }
     }
 
+    public void searchProducts(String pName)
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        productsList.clear();
+        productsAdapter.notifyDataSetChanged(); //notify for searching a different product
+        productsNotFound.setVisibility(View.INVISIBLE);
+        if (!pName.isEmpty())
+        {
+            // close keyboard
+            InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputManager.isAcceptingText())
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+            Query q = ref.child("Products").orderByChild("pName").startAt(pName).endAt(pName + "\uf8ff");
+            q.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Product p = snapshot.getValue(Product.class);
+                    productsList.add(p);
+                    productsAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) { }
+            });
+            //an Event called after all onChildAdded events of addChildEventListener finishes
+            q.addValueEventListener (new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (productsList.size() == 0)
+                        productsNotFound.setVisibility(View.VISIBLE);
+                }
+                @Override public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
     // back button enabled
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
