@@ -142,4 +142,5 @@
     <string name="searchprodH">הקלד שם מוצר לחיפוש ידני לקבלת מידע אודות מוצרים תואמים</string>
     <string name="searchprodimgH">תמונת חיפוש מוצר</string>
     <string name="searchtnH">כפתור חיפוש מוצר</string>
+    <string name="speechtotextH">דיבור לטקסט</string>
 </resources>

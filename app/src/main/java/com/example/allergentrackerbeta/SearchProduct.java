@@ -1,5 +1,6 @@
 package com.example.allergentrackerbeta;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -30,14 +32,17 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class SearchProduct extends AppCompatActivity {
 
     TextView productsNotFound;
     TextInputEditText searchBox;
-    ImageButton searchBtn;
+    ImageButton searchBtn, speechToTextBtn;
     ListView prodAllergensList;
     ArrayList<Product> productsList;
+
+    private static final int REQUEST_CODE_SPEECH_INPUT = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class SearchProduct extends AppCompatActivity {
         setContentView(R.layout.activity_new_search_product);
         searchBox = findViewById(R.id.searchProduct);
         searchBtn = findViewById(R.id.searchProductBtn);
+        speechToTextBtn = findViewById(R.id.speechtotext);
         productsNotFound = findViewById(R.id.productNotFound);
         prodAllergensList = findViewById(R.id.productAllergens);
 
@@ -116,6 +122,35 @@ public class SearchProduct extends AppCompatActivity {
                 }
             }
         });
+
+        speechToTextBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // intent to start speech to text
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "he");
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "אמרו את שם המוצר");
+
+                // start intent
+                try
+                {
+                    startActivityForResult(intent, REQUEST_CODE_SPEECH_INPUT);
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(), "שגיאה בזיהוי הדיבור", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE_SPEECH_INPUT && resultCode == RESULT_OK)
+            searchBox.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
     }
 
     // back button enabled
