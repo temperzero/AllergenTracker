@@ -78,9 +78,14 @@ public class Info extends AppCompatActivity {
         b_prec.append("\u2022 היו זהירים במסעדות, תהיו בטוחים שהמלצר או השף מודעים  לכך שאתם לחלוטין לא יכולים לאכול את המנות שאתם אלרגיים אליהם. כמו כן אתם צריכים להיות בטוחים לחלוטין שהארוכה שאתם מזמינים לא מכילה אלרגניים בעייתיים עבורכם. כמו כן, וודאו כי שהאוכל אינו מוכן על גבי משטחים או כלים שהכילו כל סוג שהוא של אוכל שאתם אלרגיים אליו\n");
         b_prec.append("\u2022 תכננו ארוחות וחטיפים לפני היציאה מהבית. במידת הצורך, קחו צידנית עמוסה במזון נטול אלרגנים כשאתם נוסעים או הולכים לאירוע. אם אתם או ילדכם לא יכולים לקבל את העוגה או הקינוח במסיבה, הביאו פינוק מיוחד כדי שאף אחד לא ירגיש מחוץ לחגיגה\n");
 
-
         TextView Website = (TextView)findViewById(R.id.Website);
         Website.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     // back button enabled
@@ -97,5 +102,6 @@ public class Info extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+        //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

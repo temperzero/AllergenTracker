@@ -60,6 +60,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 Intent LoginIntent = new Intent(SignUp.this, Login.class);
                 startActivity(LoginIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -115,6 +116,7 @@ public class SignUp extends AppCompatActivity {
                                 fAuth.signOut();
                                 Intent MenuIntent = new Intent(SignUp.this, Menu.class);
                                 startActivity(MenuIntent);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -133,11 +135,15 @@ public class SignUp extends AppCompatActivity {
                 catch(Exception ex){
                     if(ex.getCause() instanceof FirebaseAuthUserCollisionException)
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
-                    //else if (ex.getCause() instanceof FirebaseAuthWeakPasswordException){
-                    //    Toast.makeText(getApplicationContext(), "ססמא לא תקינה" , Toast.LENGTH_SHORT).show();
                 }
             }
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     // back button enabled
@@ -155,5 +161,6 @@ public class SignUp extends AppCompatActivity {
     public void onBackPressed() {
         Intent MenuIntent = new Intent(SignUp.this, Menu.class);
         startActivity(MenuIntent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

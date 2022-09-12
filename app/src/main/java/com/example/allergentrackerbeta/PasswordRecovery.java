@@ -65,6 +65,12 @@ public class PasswordRecovery extends AppCompatActivity {
         resetPassTask.addOnCompleteListener(new ForgotPassCompleteListener());
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
 
     // back button enabled
     @Override
@@ -90,6 +96,7 @@ public class PasswordRecovery extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
                 Intent menu = new Intent(PasswordRecovery.this, Menu.class);
                 startActivity(menu);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
             else {
                 try { throw task.getException(); }

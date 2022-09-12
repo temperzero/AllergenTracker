@@ -41,6 +41,7 @@ public class InfoAndExperts extends AppCompatActivity {
             {
                 Intent InfoIntent = new Intent(InfoAndExperts.this, Info.class);
                 startActivity(InfoIntent);
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -52,6 +53,7 @@ public class InfoAndExperts extends AppCompatActivity {
             {
                 Intent ExpertsIntent = new Intent(InfoAndExperts.this, Experts.class);
                 startActivity(ExpertsIntent);
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -63,9 +65,16 @@ public class InfoAndExperts extends AppCompatActivity {
             {
                 Intent InfoIntent = new Intent(InfoAndExperts.this, Disclaimer.class);
                 startActivity(InfoIntent);
+                //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     // back button enabled
@@ -83,5 +92,6 @@ public class InfoAndExperts extends AppCompatActivity {
     public void onBackPressed() {
         Intent MenuIntent = new Intent(InfoAndExperts.this, Menu.class);
         startActivity(MenuIntent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

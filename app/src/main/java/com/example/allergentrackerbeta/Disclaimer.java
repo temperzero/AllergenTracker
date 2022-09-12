@@ -44,6 +44,12 @@ public class Disclaimer extends AppCompatActivity {
         disc3.setText("אי לכך ובהתאם לזאת, תמיד ניתן לבדוק את האלרגנים המצויים במוצר על ידי הסתכלות בגב אריזתו.\n");
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        //overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
     // back button enabled
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

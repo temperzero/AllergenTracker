@@ -1,6 +1,5 @@
 package com.example.allergentrackerbeta;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -32,7 +31,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class SearchProduct extends AppCompatActivity {
 
@@ -79,7 +77,6 @@ public class SearchProduct extends AppCompatActivity {
             public void onClick(View v) {
                 String productName = searchBox.getText().toString();
                 searchProducts(productName);
-
             }
         });
 
@@ -92,7 +89,6 @@ public class SearchProduct extends AppCompatActivity {
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "he");
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "אמרו את שם המוצר");
-
                 // start intent
                 try
                 {
@@ -156,11 +152,15 @@ public class SearchProduct extends AppCompatActivity {
                     if (productsList.size() == 0)
                         productsNotFound.setVisibility(View.VISIBLE);
                 }
-                @Override public void onCancelled(@NonNull DatabaseError error) {
-
-                }
+                @Override public void onCancelled(@NonNull DatabaseError error) { }
             });
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     // back button enabled

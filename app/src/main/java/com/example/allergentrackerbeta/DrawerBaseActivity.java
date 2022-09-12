@@ -70,7 +70,8 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
                     {
                         Intent addIntent = new Intent(this, NewAddProduct.class);
                         startActivity(addIntent);
-                        overridePendingTransition(0, 0);
+                        //overridePendingTransition(0, 0);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     }
                     else
                         Toast.makeText(getApplicationContext(), "יש לאשר את המייל על מנת להוסיף מוצרים", Toast.LENGTH_SHORT).show();
@@ -82,7 +83,8 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             case R.id.nav_info: {
                 Intent infoNexpertsIntent = new Intent(this, InfoAndExperts.class);
                 startActivity(infoNexpertsIntent);
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             }
             case R.id.nav_contact: {
@@ -101,13 +103,15 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             case R.id.nav_signin: {
                 Intent LoginIntent = new Intent(this, Login.class);
                 startActivity(LoginIntent);
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             }
             case R.id.nav_signup: {
                 Intent registerIntent = new Intent(this, SignUp.class);
                 startActivity(registerIntent);
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
             }
             case R.id.nav_reset: {
@@ -157,7 +161,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             navigationView.inflateMenu(R.menu.main_menu);
         }
     }
-
 
     class ForgotPassCompleteListener implements OnCompleteListener<Void> {
 

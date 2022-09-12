@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent SignupIntent = new Intent(Login.this, SignUp.class);
                 startActivity(SignupIntent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -91,9 +92,15 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent passwordIntent = new Intent(Login.this, PasswordRecovery.class);
                 startActivity(passwordIntent);
-
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     // back button enabled
@@ -111,6 +118,7 @@ public class Login extends AppCompatActivity {
     public void onBackPressed() {
         Intent MenuIntent = new Intent(Login.this, Menu.class);
         startActivity(MenuIntent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     class LoginCompleteListener implements OnCompleteListener<AuthResult> {
@@ -131,6 +139,7 @@ public class Login extends AppCompatActivity {
                     editor.apply();
                     Intent MenuIntent = new Intent(Login.this, Menu.class);
                     startActivity(MenuIntent);
+                    overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 }
                 else
                 {
@@ -146,7 +155,6 @@ public class Login extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    //if (e.getCause() instanceof FirebaseAuthInvalidUserException)
                         Toast.makeText(getApplicationContext(), "ההתחברות נכשלה, אחד או יותר מהפרטים שהזנת שגויים", Toast.LENGTH_SHORT).show();
                 }
             }

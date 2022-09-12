@@ -100,6 +100,7 @@ public class Menu extends DrawerBaseActivity {
 
         });
         animatorSet_L.start();
+        ///---- end animations ----///
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +134,7 @@ public class Menu extends DrawerBaseActivity {
             public void onClick(View v) {
                 Intent search = new Intent(Menu.this, SearchProduct.class);
                 startActivity(search);
-
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }

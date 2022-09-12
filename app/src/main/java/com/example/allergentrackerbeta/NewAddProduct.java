@@ -220,6 +220,12 @@ public class NewAddProduct extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
     // back button enabled
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -235,5 +241,6 @@ public class NewAddProduct extends AppCompatActivity {
     public void onBackPressed() {
         Intent MenuIntent = new Intent(NewAddProduct.this, Menu.class);
         startActivity(MenuIntent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }
