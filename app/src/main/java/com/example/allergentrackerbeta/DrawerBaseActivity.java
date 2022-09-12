@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +35,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         FrameLayout container = drawerLayout.findViewById(R.id.activityContainer);
         container.addView(view);
         super.setContentView(drawerLayout);
-
 
         toolbar = drawerLayout.findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
@@ -167,7 +165,6 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         @Override
         public void onComplete(@NonNull Task<Void> task) {
             if(task.isSuccessful()) {
-                //FirebaseUser login = fAuth.getCurrentUser();
                 Toast.makeText(getApplicationContext(), "קישור לאיפוס הסיסמה נשלח אל כתובת האימייל", Toast.LENGTH_SHORT).show();
                 fAuth.signOut();
                 Intent menu = new Intent(DrawerBaseActivity.this, Menu.class);

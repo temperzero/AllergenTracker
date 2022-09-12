@@ -3,13 +3,9 @@ package com.example.allergentrackerbeta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 public class LoadingScreen extends AppCompatActivity {
 
@@ -43,15 +39,5 @@ public class LoadingScreen extends AppCompatActivity {
                 }
             }
         }).start();
-
-        //ImageView aniView = (ImageView)findViewById(R.id.gifImageView);
-        //ObjectAnimator mover = ObjectAnimator.ofFloat(aniView, "translationY", 600f, 0f);
-        //mover.setDuration(3000);
-        //ObjectAnimator fadeIn = ObjectAnimator.ofFloat(aniView, "alpha", 0f, 1f);
-        //fadeIn.setDuration(3000);
-        //AnimatorSet animatorSet = new AnimatorSet();
-        //animatorSet.play(fadeIn).with(mover);
-        //animatorSet.play(mover);
-        //animatorSet.start();
     }
 }

@@ -31,7 +31,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Menu extends DrawerBaseActivity {
     // views
-       ImageButton scan_product, searchProd;
+    ImageButton scan_product, searchProd;
 
     // global variables
     boolean found = false; // used to check if product was found in DB

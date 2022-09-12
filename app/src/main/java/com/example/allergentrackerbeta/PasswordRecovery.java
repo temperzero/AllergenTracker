@@ -26,7 +26,6 @@ public class PasswordRecovery extends AppCompatActivity {
     private Button send;
     private FirebaseAuth profile;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
