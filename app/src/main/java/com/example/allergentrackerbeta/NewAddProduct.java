@@ -125,6 +125,10 @@ public class NewAddProduct extends AppCompatActivity {
                 CheckBox Peanuts = findViewById(R.id.PeanutBox);
                 CheckBox Nuts = findViewById(R.id.NutsBox);
                 CheckBox Soy = findViewById(R.id.SoyBox);
+                CheckBox Mustard = findViewById(R.id.MustardBox);
+                CheckBox Sulphate = findViewById(R.id.SulphateBox);
+                CheckBox Almond = findViewById(R.id.AlmondBox);
+                CheckBox Celery = findViewById(R.id.CeleryBox);
 
                 // concatenate allergens
                 String allergens = "";
@@ -175,6 +179,22 @@ public class NewAddProduct extends AppCompatActivity {
                 if(Soy.isChecked()) {
                     allergens = allergens + " סויה";
                     Soy.toggle();
+                }
+                if(Celery.isChecked()) {
+                    allergens = allergens + " סלרי";
+                    Celery.toggle();
+                }
+                if(Sulphate.isChecked()) {
+                    allergens = allergens + " סולפיט";
+                    Sulphate.toggle();
+                }
+                if(Mustard.isChecked()) {
+                    allergens = allergens + " חרדל";
+                    Mustard.toggle();
+                }
+                if(Almond.isChecked()) {
+                    allergens = allergens + " שקדים";
+                    Almond.toggle();
                 }
 
                 // check if barcode is empty

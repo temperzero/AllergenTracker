@@ -143,4 +143,8 @@
     <string name="searchprodimgH">תמונת חיפוש מוצר</string>
     <string name="searchtnH">כפתור חיפוש מוצר</string>
     <string name="speechtotextH">דיבור לטקסט</string>
+    <string name="mustard">חרדל</string>
+    <string name="celery">סלרי</string>
+    <string name="almond">שקדים</string>
+    <string name="sulphate">סולפיט</string>
 </resources>

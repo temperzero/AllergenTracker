@@ -45,8 +45,8 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
             tools:ignore="TextContrastCheck" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -95,9 +95,9 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:paddingEnd="2dp"
-            android:paddingStart="2dp">
+            android:paddingStart="2dp" >
 
             <TableRow
                 android:layout_width="match_parent"
@@ -117,7 +117,6 @@
                     android:layout_height="30dp"
                     android:text="@string/fish"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
@@ -214,6 +213,44 @@
 
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/MustardBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/mustard"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+                <CheckBox
+                    android:id="@+id/CeleryBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/celery"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+                <CheckBox
+                    android:id="@+id/AlmondBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/almond"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+                <CheckBox
+                    android:id="@+id/SulphateBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@string/sulphate"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </TableRow>
+
         </TableLayout>
 
         <RelativeLayout
@@ -228,8 +265,9 @@
                 android:id="@+id/bt_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:text="@string/scanH"
-                android:layout_alignParentEnd="true" />
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/addbutton"
