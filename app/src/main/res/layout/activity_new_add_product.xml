@@ -27,7 +27,7 @@
         android:text="@string/add_product_slogan"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:maxLines="2"
+        android:maxLines="3"
         android:minLines="1" />
 
     <LinearLayout
@@ -218,12 +218,12 @@
                 android:layout_height="wrap_content" >
 
                 <CheckBox
-                    android:id="@+id/MustardBox"
+                    android:id="@+id/SulphateBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="@string/mustard"
+                    android:text="@string/sulphate"
                     android:textColor="@color/white"
-                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <CheckBox
                     android:id="@+id/CeleryBox"
@@ -242,12 +242,12 @@
                     tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 <CheckBox
-                    android:id="@+id/SulphateBox"
+                    android:id="@+id/MustardBox"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:text="@string/sulphate"
+                    android:text="@string/mustard"
                     android:textColor="@color/white"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             </TableRow>
 
