@@ -124,6 +124,10 @@ public class SearchProduct extends AppCompatActivity {
             InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputManager.isAcceptingText())
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            if(productName.length() < 3) {
+                Toast.makeText(getApplicationContext(), "שם המוצר בשדה החיפוש חייב להכיל לפחות שלוש אותיות", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // adds every product to the product list
             DatabaseReference products = ref.child("Products");
             products.addValueEventListener(new ValueEventListener()

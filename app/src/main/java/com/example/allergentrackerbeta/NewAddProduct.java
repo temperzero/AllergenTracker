@@ -200,6 +200,8 @@ public class NewAddProduct extends AppCompatActivity {
                 // check if barcode is empty
                 if(!BarcodeNum.isEmpty())
                 {
+                    if(allergens == "")
+                        allergens += "ללא";
                     Product addProduct = new Product(Pname, Cname, BarcodeNum, allergens, num);
                     DatabaseReference productToAdd = database.getReference("Products").child("Product " + addProduct.pNum);
 
