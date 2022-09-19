@@ -111,51 +111,75 @@ public class SearchProduct extends AppCompatActivity {
         }
     }
 
-    public void searchProducts(String pName)
+    public void searchProducts(String productName)
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
         productsList.clear();
         productsAdapter.notifyDataSetChanged(); //notify for searching a different product
         productsNotFound.setVisibility(View.INVISIBLE);
-        if (!pName.isEmpty())
+        if (!productName.isEmpty())
         {
             // close keyboard
             InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputManager.isAcceptingText())
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-            Query q = ref.child("Products").orderByChild("pName").startAt(pName).endAt(pName + "\uf8ff");
-            q.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                    Product p = snapshot.getValue(Product.class);
-                    productsList.add(p);
-                    productsAdapter.notifyDataSetChanged();
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) { }
-            });
-            //an Event called after all onChildAdded events of addChildEventListener finishes
-            q.addValueEventListener (new ValueEventListener() {
+            // adds every product to the product list
+            DatabaseReference products = ref.child("Products");
+            products.addValueEventListener(new ValueEventListener()
+            {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        Product p = child.getValue(Product.class);
+                        // searches for instances where string is in the pName of all products in the list
+                        if (p.pName.contains(productName))
+                            productsList.add(p);
+                    }
+                    productsAdapter.notifyDataSetChanged();
                     if (productsList.size() == 0)
                         productsNotFound.setVisibility(View.VISIBLE);
                 }
-                @Override public void onCancelled(@NonNull DatabaseError error) { }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getApplicationContext(), "שגיאה לא צפויה", Toast.LENGTH_SHORT).show();
+                }
             });
         }
+        else
+            Toast.makeText(getApplicationContext(), "שורת החיפוש ריקה", Toast.LENGTH_SHORT).show();
     }
+
+//            Query q = ref.child("Products").orderByChild("pName").startAt(pName).endAt(pName + "\uf8ff");
+//            q.addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                    Product p = snapshot.getValue(Product.class);
+//                    productsList.add(p);
+//                    productsAdapter.notifyDataSetChanged();
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) { }
+//            });
+//            //an Event called after all onChildAdded events of addChildEventListener finishes
+//            q.addValueEventListener (new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    if (productsList.size() == 0)
+//                        productsNotFound.setVisibility(View.VISIBLE);
+//                }
+//                @Override public void onCancelled(@NonNull DatabaseError error) { }
+//            });
 
     @Override
     public void finish() {

@@ -183,7 +183,6 @@ public class Menu extends DrawerBaseActivity {
                         // set dialog box
                         alertDialogBuilder.setTitle("מוצר לא נמצא");
                         alertDialogBuilder.setMessage("האם תרצו להוסיף את המוצר ידנית?")
-
                                 .setCancelable(false).setPositiveButton("הוסף", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -2,7 +2,6 @@ package com.example.allergentrackerbeta;
 
 public class Product
 {
-
     public int pNum; // product number / ID
     public String pName; // product name
     public String cName; // company name

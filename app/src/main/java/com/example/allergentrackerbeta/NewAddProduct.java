@@ -251,8 +251,12 @@ public class NewAddProduct extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
-                return true;
+                // changed to new intent because otherwise dialog box doesn't disappear after adding product
+                Intent MenuIntent = new Intent(NewAddProduct.this, Menu.class);
+                startActivity(MenuIntent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                //this.finish();
+                //return true;
         }
         return super.onOptionsItemSelected(item);
     }
