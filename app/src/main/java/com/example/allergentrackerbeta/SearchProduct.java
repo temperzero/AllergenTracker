@@ -154,37 +154,6 @@ public class SearchProduct extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "שורת החיפוש ריקה", Toast.LENGTH_SHORT).show();
     }
 
-//            Query q = ref.child("Products").orderByChild("pName").startAt(pName).endAt(pName + "\uf8ff");
-//            q.addChildEventListener(new ChildEventListener() {
-//                @Override
-//                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                    Product p = snapshot.getValue(Product.class);
-//                    productsList.add(p);
-//                    productsAdapter.notifyDataSetChanged();
-//                }
-//
-//                @Override
-//                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-//
-//                @Override
-//                public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-//
-//                @Override
-//                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) { }
-//            });
-//            //an Event called after all onChildAdded events of addChildEventListener finishes
-//            q.addValueEventListener (new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    if (productsList.size() == 0)
-//                        productsNotFound.setVisibility(View.VISIBLE);
-//                }
-//                @Override public void onCancelled(@NonNull DatabaseError error) { }
-//            });
-
     @Override
     public void finish() {
         super.finish();
