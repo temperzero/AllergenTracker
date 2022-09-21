@@ -132,6 +132,7 @@ public class Menu extends DrawerBaseActivity {
         searchProd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchProd.setSelected(false);
                 Intent search = new Intent(Menu.this, SearchProduct.class);
                 startActivity(search);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" >
+    <item android:state_pressed="false">
         <shape android:shape="oval">
             <stroke android:width="1dp"
-                android:color="#005B9F" />
+                android:color="#527A93"/>
             <gradient
-                android:startColor = "#3D4DAD"
-                android:centerColor = "#3B4AA8"
-                android:endColor = "#3D4DAD"
+                android:startColor = "#2D3983"
+                android:centerColor = "#2E3A85"
+                android:endColor = "#2D3983"
                 android:angle = "45"
                 android:type="linear" />
         </shape>

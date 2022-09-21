@@ -29,7 +29,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="120dp"
-        android:background="@drawable/round_search_button"
+        android:background="@drawable/complete_button"
         android:contentDescription="@string/searchBtnH"
         android:src="@drawable/search_button"
         app:layout_constraintBottom_toBottomOf="parent"
