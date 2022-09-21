@@ -125,7 +125,9 @@ public class SearchProduct extends AppCompatActivity {
             if (inputManager.isAcceptingText())
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             if(productName.length() < 3) {
-                Toast.makeText(getApplicationContext(), "שם המוצר בשדה החיפוש חייב להכיל לפחות שלוש אותיות", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "שם המוצר בשדה החיפוש חייב להכיל לפחות שלוש אותיות", Toast.LENGTH_SHORT).show();
+                searchBox.setError("שם המוצר בשדה החיפוש חייב להכיל לפחות שלוש אותיות");
+                searchBox.requestFocus();
                 return;
             }
             // adds every product to the product list
@@ -150,8 +152,11 @@ public class SearchProduct extends AppCompatActivity {
                 }
             });
         }
-        else
-            Toast.makeText(getApplicationContext(), "שורת החיפוש ריקה", Toast.LENGTH_SHORT).show();
+        //else {
+            //Toast.makeText(getApplicationContext(), "שורת החיפוש ריקה", Toast.LENGTH_SHORT).show();
+            //searchBox.setError("שורת החיפוש ריקה");
+           // searchBox.requestFocus();
+        //}
     }
 
     @Override
