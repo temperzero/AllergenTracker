@@ -129,13 +129,13 @@ public class Login extends AppCompatActivity {
                 if (login.isEmailVerified())
                 {
                     Toast.makeText(getApplicationContext(),"ההתחברות בוצעה בהצלחה" , Toast.LENGTH_SHORT).show();
-                    SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-                    String string_username = mail.getText().toString();
-                    String string_password = password.getText().toString();
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putString(USERNAME_KEY, string_username);
-                    editor.putString(PASSWORD_KEY, string_password);
-                    editor.apply();
+                    //SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+                    //String string_username = mail.getText().toString();
+                    //String string_password = password.getText().toString();
+                    //SharedPreferences.Editor editor = prefs.edit();
+                    //editor.putString(USERNAME_KEY, string_username);
+                    //editor.putString(PASSWORD_KEY, string_password);
+                    //editor.apply();
                     Intent MenuIntent = new Intent(Login.this, Menu.class);
                     startActivity(MenuIntent);
                     overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);

@@ -110,7 +110,7 @@ public class NewAddProduct extends AppCompatActivity {
                 EditText editC = findViewById(R.id.CompanyName);
                 String Cname = editC.getText().toString(); // get company name string
                 TextView text = findViewById(R.id.barcode);
-                String BarcodeNum = text.getText().toString(); // get product name string
+                String BarcodeNum = text.getText().toString(); // get product barcode string
 
                 // check allergens
                 CheckBox Fish = findViewById(R.id.Fishbox);
@@ -202,6 +202,20 @@ public class NewAddProduct extends AppCompatActivity {
                 {
                     if(allergens.equals(""))
                         allergens += "ללא";
+
+                    // check if product name field is empty
+                    if( Pname.isEmpty() ) {
+                        editP.setError("שדה זה לא יכול להיות ריק");
+                        editP.requestFocus();
+                        return;
+                    }
+                    // check if company name field is empty
+                    else if (Cname.isEmpty()) {
+                        editC.setError("שדה זה לא יכול להיות ריק");
+                        editC.requestFocus();
+                        return;
+                    }
+
                     Product addProduct = new Product(Pname, Cname, BarcodeNum, allergens, num);
                     DatabaseReference productToAdd = database.getReference("Products").child("Product " + addProduct.pNum);
 
@@ -257,8 +271,6 @@ public class NewAddProduct extends AppCompatActivity {
                 Intent MenuIntent = new Intent(NewAddProduct.this, Menu.class);
                 startActivity(MenuIntent);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-                //this.finish();
-                //return true;
         }
         return super.onOptionsItemSelected(item);
     }
