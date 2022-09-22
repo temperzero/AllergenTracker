@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class LoadingScreen extends AppCompatActivity {
+
+    TextView versionName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,10 @@ public class LoadingScreen extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_loading_screen);
+
+        versionName = findViewById(R.id.ver_num);
+        versionName.setText("version " + BuildConfig.VERSION_NAME);
+
         new Thread(new Runnable()
         {
             @Override

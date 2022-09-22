@@ -41,4 +41,16 @@
         android:textColor="@color/black"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/ver_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dev_by"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/calistoga"
+        android:textAlignment="center"
+        android:textColor="#808080"
+        android:textSize="10sp" />
+
 </RelativeLayout>
