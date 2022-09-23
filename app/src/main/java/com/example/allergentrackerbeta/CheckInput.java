@@ -11,7 +11,8 @@ public class CheckInput {
     public static boolean checkUsername(String p, TextInputEditText username)
     {
         if(!p.isEmpty()) {
-            if (!p.matches("^[a-zA-Z0-9._-]{3,}$")) {
+            if (!p.matches("^[a-zA-Z]([0-9_-](?![_-])|[a-zA-Z0-9]){2,}$")) {
+
                 username.setError("שם משתמש לא תקין");
                 username.requestFocus();
                 return false;
@@ -32,7 +33,7 @@ public class CheckInput {
         if(!p.isEmpty()) {
             int length = p.length();
             if (length < 5) {
-                password.setError("הסיסמא צריכה להכיל לפחות 6 תווים");
+                password.setError("הסיסמא צריכה להכיל  6 תווים לפחות");
                 password.requestFocus();
                 return false;
             }
@@ -50,7 +51,7 @@ public class CheckInput {
     public static boolean checkEmail(String p, TextInputEditText email )
     {
         if(!p.isEmpty()) {
-            if (!p.matches("[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")) {
+            if (!p.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
                 email.setError("כתובת מייל לא תקינה");
                 email.requestFocus();
                 return false;
