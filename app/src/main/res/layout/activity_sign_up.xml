@@ -51,6 +51,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_username"
+                android:drawableLeft="@drawable/ic_question_mark_svg_adobe_express"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -69,6 +70,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_email"
+                android:drawableLeft="@drawable/ic_question_mark_svg_adobe_express"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
