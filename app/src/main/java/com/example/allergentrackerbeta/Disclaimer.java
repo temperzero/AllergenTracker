@@ -65,5 +65,4 @@ public class Disclaimer extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
-
 }

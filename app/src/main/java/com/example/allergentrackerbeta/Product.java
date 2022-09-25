@@ -30,5 +30,3 @@ public class Product
         return "שם המוצר: " + pName +"\nשם היצרן: " + cName + "\nאלרגנים: " + allergens;
     }
 }
-
-

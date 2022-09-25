@@ -184,5 +184,4 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         }
 
     }
-
 }

@@ -1,6 +1,4 @@
 package com.example.allergentrackerbeta;
-
-
 import com.google.android.material.textfield.TextInputEditText;
 
 public class CheckInput {

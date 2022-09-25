@@ -109,8 +109,5 @@ public class PasswordRecovery extends AppCompatActivity {
                 }
             }
         }
-
     }
-
-
 }
