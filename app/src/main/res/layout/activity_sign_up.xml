@@ -42,60 +42,114 @@
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/usernameSignUp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/UserName">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_username"
-                android:drawableLeft="@drawable/ic_question_mark_svg_adobe_express"
+
+            <ImageButton
+                android:id="@+id/username_info"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/question_mark"
+                android:translationZ="10dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernameSignUp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="1"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+                android:hint="@string/UserName"
+                android:translationZ="2dp"
+                android:orientation="horizontal">
 
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingLeft="48dp"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailSignUp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/emailH" >
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_email"
-                android:drawableLeft="@drawable/ic_question_mark_svg_adobe_express"
+            <ImageButton
+                android:id="@+id/email_info"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/question_mark"
+                android:translationZ="10dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailSignUp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+                android:hint="@string/emailH" >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="48dp"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordSignUp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/passwordH"
-            app:passwordToggleEnabled="true">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_password"
+            <ImageButton
+                android:id="@+id/password_info"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/question_mark"
+                android:translationZ="10dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordSignUp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
+                android:hint="@string/passwordH"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:paddingLeft="48dp"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TextContrastCheck" />
 
 
-        </com.google.android.material.textfield.TextInputLayout>
-
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
         <Button
             android:id="@+id/signupButton"
             android:layout_width="match_parent"

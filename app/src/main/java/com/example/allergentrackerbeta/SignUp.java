@@ -5,6 +5,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,9 +31,21 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends AppCompatActivity {
 
+    private static final String TITLE_USERNAME = "מילוי שם משתמש";
+    private static final String TITLE_EMAIL = "מילוי כתובת אימייל";
+    private static final String TITLE_PASSWORD = "מילוי סיסמא";
+    private static final String MSG_USERNAME = "שם משתמש יכול להכיל אותיות a-z או A-Z, את הספרות 0-9 ואת התווים: - _ \n" +
+            "שם המשתמש חייב להכיל לפחות 3 תווים\n" +
+            "שם המשתמש אינו יכול להתחיל בספרה\n" +
+            "התווים -_ לא יכולים להופיע אחד אחרי השני";
+    private static final String MSG_EMAIL ="כתובת מייל תקנית, למשל name@example.com";
+    private static final String MSG_PASSWORD ="הסיסמא חייבת להכיל לפחות 6 ספרות";
+
     Button login, signup;
     TextInputEditText username, email, password;
+    ImageButton usernameInfo, emailInfo, passwordInfo;
     FirebaseAuth fAuth; //firebase Authentication instance
+    AlertDialog.Builder dialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +69,12 @@ public class SignUp extends AppCompatActivity {
         username = findViewById(R.id.signup_username);
         email = findViewById(R.id.signup_email);
         password = findViewById(R.id.signup_password);
+        usernameInfo = findViewById(R.id.username_info);
+        emailInfo = findViewById(R.id.email_info);
+        passwordInfo = findViewById(R.id.password_info);
         fAuth = FirebaseAuth.getInstance();
+        final Context context = this;
+        dialogBuilder = new AlertDialog.Builder(context);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +101,38 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "ההרשמה נכשלה, נתונים לא תקינים", Toast.LENGTH_SHORT).show();
             }
         });
+        usernameInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createDialog(TITLE_USERNAME, MSG_USERNAME);
+            }
+        });
+        emailInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createDialog(TITLE_EMAIL, MSG_EMAIL);
+            }
+        });
+        passwordInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createDialog(TITLE_PASSWORD, MSG_PASSWORD);
+            }
+        });
     }
 
+    public void createDialog(String title, String message){
+        dialogBuilder.setTitle(title);
+        dialogBuilder.setMessage(message);
+        dialogBuilder.setCancelable(false).setPositiveButton("סגור", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
     // check whether all user credentials are valid
     public boolean validateUser(String username, String password, String email)
     {
