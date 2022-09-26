@@ -34,12 +34,12 @@ public class SignUp extends AppCompatActivity {
     private static final String TITLE_USERNAME = "מילוי שם משתמש";
     private static final String TITLE_EMAIL = "מילוי כתובת אימייל";
     private static final String TITLE_PASSWORD = "מילוי סיסמא";
-    private static final String MSG_USERNAME = "שם משתמש יכול להכיל אותיות a-z או A-Z, את הספרות 0-9 ואת התווים: - _ \n" +
-            "שם המשתמש חייב להכיל לפחות 3 תווים\n" +
-            "שם המשתמש אינו יכול להתחיל בספרה\n" +
-            "התווים -_ לא יכולים להופיע אחד אחרי השני";
+    private static final String MSG_USERNAME = "\u2022שם משתמש יכול להכיל אותיות a-z או A-Z, את הספרות 0-9 ואת התווים: - _ \n" +
+            "\u2022שם המשתמש חייב להכיל לפחות 3 תווים\n" +
+            "\u2022שם המשתמש אינו יכול להתחיל בספרה\n" +
+            "\u2022התווים -_ לא יכולים להופיע אחד אחרי השני";
     private static final String MSG_EMAIL ="כתובת מייל תקנית, למשל name@example.com";
-    private static final String MSG_PASSWORD ="הסיסמא חייבת להכיל לפחות 6 ספרות";
+    private static final String MSG_PASSWORD ="הסיסמא חייבת להכיל לפחות 6 תווים";
 
     Button login, signup;
     TextInputEditText username, email, password;
