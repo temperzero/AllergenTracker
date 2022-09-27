@@ -94,10 +94,9 @@ public class SignUp extends AppCompatActivity {
                 String string_password = password.getText().toString();
 
                 // check if the user credentials are legal, if they are continue to registration process
-                if(validateUser(string_username, string_password, string_email))
+                if (validateUser(string_username, string_password, string_email))
                     register(string_email, string_password);
-
-                else // invalid user
+                 else // invalid user
                     Toast.makeText(getApplicationContext(), "ההרשמה נכשלה, נתונים לא תקינים", Toast.LENGTH_SHORT).show();
             }
         });
