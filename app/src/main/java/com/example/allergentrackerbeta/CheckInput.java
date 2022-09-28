@@ -3,7 +3,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class CheckInput {
 
-    // class contains the check input functions for SignUp, Login and PasswordRecovery classes
+    // class contains the check input functions for SignUp, Login and PasswordRecovery classes.
 
     //check if username is valid
     public static boolean checkUsername(String p, TextInputEditText username)
