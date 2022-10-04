@@ -51,6 +51,8 @@ public class Menu extends DrawerBaseActivity {
         scan_product = findViewById(R.id.ScanImgBtn);
         searchProd = findViewById(R.id.searchProdAllergens);
 
+        Toast.makeText(getApplicationContext(), "cool?", Toast.LENGTH_SHORT).show();
+
         ///---- animations ----///
         // normal
         ObjectAnimator anim_n = ObjectAnimator.ofPropertyValuesHolder(scan_product,

@@ -32,6 +32,8 @@ public class NewAddProduct extends AppCompatActivity {
     int num = 0; // number of products
 
     //init global buttons variables
+    //test ?????????????
+
     Button btScan;
     Button addToDB;
 
