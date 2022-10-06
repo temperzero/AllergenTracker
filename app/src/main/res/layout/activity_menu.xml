@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/menu_gradient_background"
     android:textDirection="rtl"
-    tools:context=".Menu">
+    tools:context="com.ruppin.allergentrackerbeta.Menu">
 
     <ImageButton
         android:id="@+id/ScanImgBtn"

@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 public class Product
 {

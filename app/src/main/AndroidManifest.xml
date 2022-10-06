@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.allergentrackerbeta">
+    package="com.ruppin.allergentrackerbeta">
 
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -12,49 +12,49 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
-            android:name=".Disclaimer"
+            android:name="com.ruppin.allergentrackerbeta.Disclaimer"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".NewAddProduct"
+            android:name="com.ruppin.allergentrackerbeta.NewAddProduct"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".SearchProduct"
+            android:name="com.ruppin.allergentrackerbeta.SearchProduct"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".PasswordRecovery"
+            android:name="com.ruppin.allergentrackerbeta.PasswordRecovery"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".SignUp"
+            android:name="com.ruppin.allergentrackerbeta.SignUp"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".Login"
+            android:name="com.ruppin.allergentrackerbeta.Login"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
         <activity
-            android:name=".InfoAndExperts"
+            android:name="com.ruppin.allergentrackerbeta.InfoAndExperts"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".DrawerBaseActivity"
+            android:name="com.ruppin.allergentrackerbeta.DrawerBaseActivity"
             android:exported="false" />
         <activity
-            android:name=".Experts"
+            android:name="com.ruppin.allergentrackerbeta.Experts"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".Menu"
+            android:name="com.ruppin.allergentrackerbeta.Menu"
             android:exported="false" />
         <activity
-            android:name=".Info"
+            android:name="com.ruppin.allergentrackerbeta.Info"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity
-            android:name=".LoadingScreen"
+            android:name="com.ruppin.allergentrackerbeta.LoadingScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Capture"
+            android:name="com.ruppin.allergentrackerbeta.Capture"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme" />

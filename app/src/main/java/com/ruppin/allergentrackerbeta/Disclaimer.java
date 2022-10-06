@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,6 +10,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.ruppin.allergentrackerbeta.R;
 
 public class Disclaimer extends AppCompatActivity {
 

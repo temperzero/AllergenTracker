@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ruppin.allergentrackerbeta.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,7 +55,7 @@ public class NewAddProduct extends AppCompatActivity {
         actionBar.setTitle("הוספת מוצר");
 
         TextView bc = findViewById(R.id.barcode);
-        SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
+        SharedPreferences sp = getSharedPreferences("com.ruppin.allergentrackerbeta", 0);
         SharedPreferences.Editor sedt = sp.edit();
         String getBarcode = sp.getString("barcode",null);
         bc.setText(getBarcode);

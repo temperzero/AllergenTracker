@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.ruppin.allergentrackerbeta.R;
 
 public class LoadingScreen extends AppCompatActivity {
 

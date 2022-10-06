@@ -7,7 +7,7 @@
     android:background="@drawable/searchbackground"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".SearchProduct" >
+    tools:context="com.ruppin.allergentrackerbeta.SearchProduct" >
 
     <ImageView
         android:id="@+id/search_product_img"

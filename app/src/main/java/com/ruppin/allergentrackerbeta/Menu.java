@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -20,7 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
-import com.example.allergentrackerbeta.databinding.ActivityMenuBinding;
+import com.ruppin.allergentrackerbeta.R;
+import com.ruppin.allergentrackerbeta.databinding.ActivityMenuBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -189,7 +190,7 @@ public class Menu extends DrawerBaseActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 if (fAuth.getCurrentUser() != null)
                                 {
-                                    SharedPreferences sp = getSharedPreferences("com.example.allergentrackerbeta", 0);
+                                    SharedPreferences sp = getSharedPreferences("com.ruppin.allergentrackerbeta", 0);
                                     SharedPreferences.Editor sedt = sp.edit();
                                     sedt.putString("barcode", intentResult.getContents());
                                     sedt.commit();

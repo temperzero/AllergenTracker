@@ -1,4 +1,4 @@
-package com.example.allergentrackerbeta;
+package com.ruppin.allergentrackerbeta;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.ruppin.allergentrackerbeta.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,7 +39,7 @@ public class SignUp extends AppCompatActivity {
             "\u2022שם המשתמש חייב להכיל לפחות 3 תווים\n" +
             "\u2022שם המשתמש אינו יכול להתחיל בספרה\n" +
             "\u2022התווים -_ לא יכולים להופיע אחד אחרי השני";
-    private static final String MSG_EMAIL ="כתובת מייל תקנית, למשל name@example.com";
+    private static final String MSG_EMAIL ="כתובת מייל תקנית, למשל name@ruppin.com";
     private static final String MSG_PASSWORD ="הסיסמא חייבת להכיל לפחות 6 תווים";
 
     Button login, signup;
