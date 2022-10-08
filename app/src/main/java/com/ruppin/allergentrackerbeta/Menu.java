@@ -182,31 +182,44 @@ public class Menu extends DrawerBaseActivity {
                     }
                     if(!found)
                     {
-                        // set dialog box
-                        alertDialogBuilder.setTitle("מוצר לא נמצא");
-                        alertDialogBuilder.setMessage("האם תרצו להוסיף את המוצר ידנית?")
-                                .setCancelable(false).setPositiveButton("הוסף", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (fAuth.getCurrentUser() != null)
-                                {
-                                    SharedPreferences sp = getSharedPreferences("com.ruppin.allergentrackerbeta", 0);
-                                    SharedPreferences.Editor sedt = sp.edit();
-                                    sedt.putString("barcode", intentResult.getContents());
-                                    sedt.commit();
-                                    Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
-                                    startActivity(addProduct);
+                        if(fAuth.getCurrentUser() != null)
+                        {
+                            // set dialog box
+                            alertDialogBuilder.setTitle("מוצר לא נמצא");
+                            alertDialogBuilder.setMessage("האם תרצו להוסיף את המוצר ידנית?")
+                                    .setCancelable(false).setPositiveButton("הוסף", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                        SharedPreferences sp = getSharedPreferences("com.ruppin.allergentrackerbeta", 0);
+                                        SharedPreferences.Editor sedt = sp.edit();
+                                        sedt.putString("barcode", intentResult.getContents());
+                                        sedt.commit();
+                                        Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
+                                        startActivity(addProduct);
+
+                                    //    Toast.makeText(getApplicationContext(), "עליך להיות משתמש רשום כדי להוסיף מוצרים", Toast.LENGTH_SHORT).show();
                                 }
-                                else
-                                    Toast.makeText(getApplicationContext(), "עליך להיות משתמש רשום כדי להוסיף מוצרים", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                                .setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
-                                    }
-                                });
+                            })
+                                    .setNegativeButton("ביטול", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                        }
+                        else
+                        {
+                            alertDialogBuilder.setTitle("מוצר לא נמצא");
+                            alertDialogBuilder.setMessage("על מנת להוסיף את המוצר עליכם להיות מחוברים למערכת").setPositiveButton("סגור",new DialogInterface.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                        }
+
                     }
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
