@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -36,6 +38,7 @@ public class Menu extends DrawerBaseActivity {
 
     // global variables
     boolean found = false; // used to check if product was found in DB
+
     // drawer menu binding
     ActivityMenuBinding activityMenuBinding;
     @Override
@@ -102,6 +105,7 @@ public class Menu extends DrawerBaseActivity {
         });
         animatorSet_L.start();
         ///---- end animations ----///
+
 
         //scan button
         scan_product.setOnClickListener(new View.OnClickListener() {

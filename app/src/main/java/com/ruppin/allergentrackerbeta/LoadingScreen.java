@@ -3,12 +3,19 @@ package com.ruppin.allergentrackerbeta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ruppin.allergentrackerbeta.R;
+
+import java.util.concurrent.CountDownLatch;
 
 public class LoadingScreen extends AppCompatActivity {
 
@@ -17,15 +24,20 @@ public class LoadingScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //disable night mode display
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_loading_screen);
 
         versionName = findViewById(R.id.ver_num);
         versionName.setText("version " + BuildConfig.VERSION_NAME);
+
+        //check internet connection on app's startup
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED) &&
+                !(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
+            Toast.makeText(getApplicationContext(), "אין חיבור לאינטרנט", Toast.LENGTH_SHORT).show();
+        }
 
         new Thread(new Runnable()
         {
