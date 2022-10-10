@@ -3,7 +3,6 @@ package com.ruppin.allergentrackerbeta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,9 +12,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ruppin.allergentrackerbeta.R;
-
-import java.util.concurrent.CountDownLatch;
 
 public class LoadingScreen extends AppCompatActivity {
 
