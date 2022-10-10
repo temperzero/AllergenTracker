@@ -11,6 +11,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -184,7 +186,12 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "תהליך ההרשמה נכשל" + error, Toast.LENGTH_SHORT).show();
                 }
                 catch(Exception ex){
-                    if(ex.getCause() instanceof FirebaseAuthUserCollisionException)
+                    //check internet connection
+                    ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                    if (!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED) &&
+                            !(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED))
+                        Toast.makeText(getApplicationContext(), "ההרשמה נכשלה, אין חיבור לאינטרנט", Toast.LENGTH_SHORT).show();
+                    else if(ex.getCause() instanceof FirebaseAuthUserCollisionException)
                         Toast.makeText(getApplicationContext(), "כתובת המייל שהוזנה כבר נמצאת בשימוש" , Toast.LENGTH_SHORT).show();
                 }
             }
