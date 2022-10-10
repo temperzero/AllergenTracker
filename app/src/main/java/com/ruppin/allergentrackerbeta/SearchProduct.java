@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.MenuItem;
@@ -110,13 +112,8 @@ public class SearchProduct extends AppCompatActivity {
         }
     }
 
-    public void searchProducts(String productName)
-    {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    public void searchProducts(String productName) {
 
-        productsList.clear();
-        productsAdapter.notifyDataSetChanged(); //notify for searching a different product
-        productsNotFound.setVisibility(View.INVISIBLE);
         if (!productName.isEmpty())
         {
             // close keyboard
@@ -128,6 +125,21 @@ public class SearchProduct extends AppCompatActivity {
                 searchBox.requestFocus();
                 return;
             }
+
+        //check internet connection
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED) &&
+                !(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED))
+        {
+            Toast.makeText(getApplicationContext(), "לא ניתן לגשת לבסיס הנתונים, אין חיבור לאינטרנט", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        productsList.clear();
+        productsAdapter.notifyDataSetChanged(); //notify for searching a different product
+        productsNotFound.setVisibility(View.INVISIBLE);
+
             // adds every product to the product list
             DatabaseReference products = ref.child("Products");
             products.addValueEventListener(new ValueEventListener()
