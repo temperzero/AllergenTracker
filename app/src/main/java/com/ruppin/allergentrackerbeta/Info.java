@@ -12,8 +12,6 @@ import android.text.method.LinkMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.ruppin.allergentrackerbeta.R;
-
 public class Info extends AppCompatActivity {
 
     TextView info, s_info, s_causes, b_text1, b_text2 ,b_text3, b_text4, b_text5, b_text6;

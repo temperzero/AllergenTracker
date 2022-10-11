@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.ruppin.allergentrackerbeta.R;
 
 public class Experts extends AppCompatActivity {
     ImageView clalit, maccabi, meuhedet, leumit, yahel;

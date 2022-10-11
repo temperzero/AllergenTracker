@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.ruppin.allergentrackerbeta.R;
-
 public class Disclaimer extends AppCompatActivity {
 
     TextView disc0, disc1, disc2, disc3;

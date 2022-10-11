@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.ruppin.allergentrackerbeta.R;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -35,9 +34,6 @@ public class Login extends AppCompatActivity {
     TextInputEditText mail, password;
 
     FirebaseAuth fAuth;
-
-    final static String USERNAME_KEY = "username";
-    final static String PASSWORD_KEY = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
