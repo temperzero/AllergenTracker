@@ -31,6 +31,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class NewAddProduct extends AppCompatActivity {
 
     int num = 0; // number of products
+    boolean found = false;
 
     //init global buttons variables
 
@@ -205,6 +206,8 @@ public class NewAddProduct extends AppCompatActivity {
                     if(allergens.equals(""))
                         allergens += "ללא";
 
+                    final String allergensF = allergens;
+
                     // check if product name field is empty
                     if( Pname.isEmpty() ) {
                         editP.setError("שדה זה לא יכול להיות ריק");
@@ -218,14 +221,43 @@ public class NewAddProduct extends AppCompatActivity {
                         return;
                     }
 
-                    Product addProduct = new Product(Pname, Cname, BarcodeNum, allergens, num);
-                    DatabaseReference productToAdd = database.getReference("Products").child("Product " + addProduct.pNum);
+                    // check if product exists
+                    DatabaseReference products = database.getReference("Products");
+                    products.addValueEventListener(new ValueEventListener()
+                    {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot)
+                        {
+                            for (DataSnapshot child: dataSnapshot.getChildren())
+                            {
+                                Product p = child.getValue(Product.class);
+                                if(p.barcode.equals(BarcodeNum)) // check if barcode is equal
+                                {
+                                    found = true;
+                                    Toast.makeText(getApplicationContext(), "מוצר קיים במערכת", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+                            }
+                            if(!found)
+                            {
+                                Product addProduct = new Product(Pname, Cname, BarcodeNum, allergensF, num);
+                                DatabaseReference productToAdd = database.getReference("Products").child("Product " + addProduct.pNum);
 
-                    productToAdd.child("Products").child("Product " + addProduct.pNum);
-                    productToAdd.setValue(addProduct);
+                                productToAdd.child("Products").child("Product " + addProduct.pNum);
+                                productToAdd.setValue(addProduct);
 
-                    Toast.makeText(getApplicationContext(), "שם החברה: " + addProduct.cName + "\nשם המוצר: " + addProduct.pName
-                            + "\nברקוד: " + addProduct.barcode +"\nאלרגנים: " + allergens +"\nמס' מוצר: " + num, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "שם החברה: " + addProduct.cName + "\nשם המוצר: " + addProduct.pName
+                                        + "\nברקוד: " + addProduct.barcode +"\nאלרגנים: " + allergensF +"\nמס' מוצר: " + num, Toast.LENGTH_SHORT).show();
+                            }
+                            found = false; // reset for next product scan
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError error)
+                        {
+                            // Failed to read value
+                            Toast.makeText(getApplicationContext(), "שגיאה לא צפויה", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
                 else
                     Toast.makeText(getApplicationContext(), "ברקוד לא מזוהה", Toast.LENGTH_SHORT).show();

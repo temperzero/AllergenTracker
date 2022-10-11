@@ -197,8 +197,6 @@ public class Menu extends DrawerBaseActivity {
                                         sedt.commit();
                                         Intent addProduct = new Intent(Menu.this, NewAddProduct.class);
                                         startActivity(addProduct);
-
-                                    //    Toast.makeText(getApplicationContext(), "עליך להיות משתמש רשום כדי להוסיף מוצרים", Toast.LENGTH_SHORT).show();
                                 }
                             })
                                     .setNegativeButton("ביטול", new DialogInterface.OnClickListener() {

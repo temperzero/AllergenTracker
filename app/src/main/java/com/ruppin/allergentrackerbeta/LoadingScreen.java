@@ -28,7 +28,7 @@ public class LoadingScreen extends AppCompatActivity {
         versionName = findViewById(R.id.ver_num);
         versionName.setText("version " + BuildConfig.VERSION_NAME);
 
-        //check internet connection on app's startup
+        //check internet connection on apps startup
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if (!(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED) &&
                 !(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED)) {
