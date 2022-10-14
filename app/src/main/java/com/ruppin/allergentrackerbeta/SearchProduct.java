@@ -148,7 +148,7 @@ public class SearchProduct extends AppCompatActivity {
                     for (DataSnapshot child : dataSnapshot.getChildren()) {
                         Product p = child.getValue(Product.class);
                         // searches for instances where string is in the pName of all products in the list
-                        if (p.pName.contains(productName))
+                        if (p.pName.contains(productName.toUpperCase()) || p.pName.contains(productName.toLowerCase()))
                             productsList.add(p);
                     }
                     productsAdapter.notifyDataSetChanged();
