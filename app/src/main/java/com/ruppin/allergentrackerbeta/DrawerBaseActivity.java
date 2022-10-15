@@ -1,6 +1,8 @@
 package com.ruppin.allergentrackerbeta;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.view.MenuItem;
 import android.view.View;
@@ -131,6 +133,16 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
             }
         }
         return false;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final Configuration override = new Configuration(newBase.getResources().getConfiguration());
+        override.fontScale = 1.0f;
+        applyOverrideConfiguration(override);
+
+        super.attachBaseContext(newBase);
     }
 
     // the title of the activity

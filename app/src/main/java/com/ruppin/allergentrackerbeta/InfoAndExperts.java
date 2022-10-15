@@ -5,7 +5,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -69,6 +71,16 @@ public class InfoAndExperts extends AppCompatActivity {
                 //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final Configuration override = new Configuration(newBase.getResources().getConfiguration());
+        override.fontScale = 1.0f;
+        applyOverrideConfiguration(override);
+
+        super.attachBaseContext(newBase);
     }
 
     @Override

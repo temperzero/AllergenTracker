@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -56,5 +57,15 @@ public class LoadingScreen extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final Configuration override = new Configuration(newBase.getResources().getConfiguration());
+        override.fontScale = 1.0f;
+        applyOverrideConfiguration(override);
+
+        super.attachBaseContext(newBase);
     }
 }

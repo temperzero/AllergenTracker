@@ -94,7 +94,6 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
-
         <Button
             android:id="@+id/loginToSignup"
             android:layout_width="match_parent"
@@ -105,7 +104,6 @@
             android:text="@string/login_register"
             android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck" />
-
 
     </LinearLayout>
 

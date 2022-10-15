@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -42,6 +44,16 @@ public class Disclaimer extends AppCompatActivity {
         disc1.setText("חלק מהמידע אודות המוצרים באפליקציה מתקבל ממקורות שאינם באחריות צוות Allergen Tracker ואין בהצגתו יצירת מחויבות מצד הצוות לגבי נכונותו.\n");
         disc2.setText("באפליקציה ניתנת האפשרות למשתמשים רשומים להוסיף מוצרים באופן עצמאי ואין הצוות אחראי על פספוס של אלרגנים כשאלה יוצגו באפליקציה לאחר סריקת מוצרים.\n");
         disc3.setText("אי לכך ובהתאם לזאת, תמיד ניתן לבדוק את האלרגנים המצויים במוצר על ידי הסתכלות בגב אריזתו.\n");
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final Configuration override = new Configuration(newBase.getResources().getConfiguration());
+        override.fontScale = 1.0f;
+        applyOverrideConfiguration(override);
+
+        super.attachBaseContext(newBase);
     }
 
     @Override

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -298,6 +299,16 @@ public class NewAddProduct extends AppCompatActivity {
             //when result content is null
             Toast.makeText(getApplicationContext(), "שגיאה בסריקה! נסו שוב",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        final Configuration override = new Configuration(newBase.getResources().getConfiguration());
+        override.fontScale = 1.0f;
+        applyOverrideConfiguration(override);
+
+        super.attachBaseContext(newBase);
     }
 
     @Override
